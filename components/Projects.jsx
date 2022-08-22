@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import propertyImg from "../public/assets/projects/property.jpg";
-import cryptoImg from "../public/assets/projects/crypto.jpg";
-import netflixImg from "../public/assets/projects/netflix.jpg";
-import twitchImg from "../public/assets/projects/twitch.jpg";
+
+import expenseApp from "../public/assets/projects/expenseapp.png";
+import foodApp from "../public/assets/projects/foodApp.png";
+import weatherApp from "../public/assets/projects/weather.png";
+import capture from "../public/assets/projects/capture.png";
 import ProjectItem from "./ProjectItem";
 
 const Projects = () => {
@@ -15,29 +16,29 @@ const Projects = () => {
           Projects
         </p>
         <h2 className="py-4">What I&apos;ve Built</h2>
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid gap-8 md:grid-cols-2">
           <ProjectItem
-            title="Property Finder"
-            backgroundImg={propertyImg}
-            projectUrl="/property"
+            title="Expense App"
+            backgroundImg={expenseApp}
+            projectUrl="/expense"
             tech="React JS"
           />
           <ProjectItem
-            title="Crypto App"
-            backgroundImg={cryptoImg}
-            projectUrl="/crypto"
+            title="Food App"
+            backgroundImg={foodApp}
+            projectUrl="/food"
             tech="React JS"
           />
           <ProjectItem
-            title="Netflix App"
-            backgroundImg={netflixImg}
-            projectUrl="/netflix"
+            title="Weather App"
+            backgroundImg={weatherApp}
+            projectUrl="/weather"
             tech="React JS"
           />
           <ProjectItem
-            title="Twitch UI"
-            backgroundImg={twitchImg}
-            projectUrl="/twitch"
+            title="Photography"
+            backgroundImg={capture}
+            projectUrl="/photograph"
             tech="Next JS"
           />
         </div>
