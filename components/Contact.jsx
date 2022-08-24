@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useForm } from "react-hook-form";
 import Link from "next/link";
 import React, { useState } from "react";
 import { AiOutlineMail } from "react-icons/ai";
@@ -13,6 +14,8 @@ const Contact = () => {
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
+
+  // const { register, handleSubmit } = useForm();
 
   const handleSubmit = () => {
     setName("");
@@ -95,7 +98,7 @@ const Contact = () => {
             <div className="p-4">
               <form
                 onSubmit={handleSubmit}
-                action="https://getform.io/f/85d44cc9-fb1f-4110-82ab-623e494ea0d5"
+                action="https://getform.io/f/fab4ff9f-c8b1-4076-a534-f5f98a069666"
                 method="POST"
               >
                 <div className="grid md:grid-cols-2 gap-4 w-full py-2">
