@@ -17,13 +17,13 @@ const Contact = () => {
 
   // const { register, handleSubmit } = useForm();
 
-  const handleSubmit = () => {
-    setName("");
-    setPhone("");
-    setEmail("");
-    setSubject("");
-    setMessage("");
-  };
+  // const handleSubmit = () => {
+  //   setName("");
+  //   setPhone("");
+  //   setEmail("");
+  //   setSubject("");
+  //   setMessage("");
+  // };
 
   return (
     <div id="contact" className="w-full lg:h-screen">
@@ -97,7 +97,7 @@ const Contact = () => {
           <div className="col-span-3 w-full h-auto shadow-xl shadow-gray-400 rounded-xl lg:p-4">
             <div className="p-4">
               <form
-                onSubmit={handleSubmit}
+                // onSubmit={handleSubmit}
                 action="https://getform.io/f/fab4ff9f-c8b1-4076-a534-f5f98a069666"
                 method="POST"
               >
