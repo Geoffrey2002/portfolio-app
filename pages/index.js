@@ -1,13 +1,21 @@
 import Head from "next/head";
-import Image from "next/image";
+
 import About from "../components/About";
 import Contact from "../components/Contact";
 
 import Main from "../components/Main";
 import Projects from "../components/Projects";
 import Skills from "../components/Skills";
+// import animate on scroll
+import Aos from "aos";
+import "aos/dist/aos.css";
 
-export default function Home() {
+const Home = () => {
+  // animate on scroll initialization
+  // Aos.init({
+  //   duration: 1800,
+  //   offset: 0,
+  // });
   return (
     <div>
       <Head>
@@ -26,4 +34,6 @@ export default function Home() {
       <Contact />
     </div>
   );
-}
+};
+
+export default Home;
