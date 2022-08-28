@@ -36,9 +36,6 @@ const Navbar = () => {
           ? "fixed w-full h-20 shadow-xl z-[100] ease-in-out duration-300"
           : "fixed w-full h-20 z-[100]"
       }
-      data-aos="fade-down"
-      data-aos-delay="1000"
-      data-aos-duration="1000"
     >
       <div className="flex justify-between items-center w-full h-full px-2 2xl:px-16">
         <Link href="/">

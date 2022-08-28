@@ -26,12 +26,7 @@ const Contact = () => {
   // };
 
   return (
-    <div
-      id="contact"
-      className="w-full lg:h-screen"
-      data-aos="fade-up"
-      data-aos-duration="3000"
-    >
+    <div id="contact" className="w-full lg:h-screen">
       <div className="max-w-[1240px] m-auto px-2 py-16 w-full ">
         <p className="text-xl tracking-widest uppercase text-[#5651e5]">
           Contact
