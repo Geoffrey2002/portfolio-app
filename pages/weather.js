@@ -30,7 +30,7 @@ const food = () => {
             Weather App is a React JS application that displays the current
             weather in your city. The weather is displayed in Celsius and
             Fahrenheit. I get the weather information from the Open weather Api.
-            have used the Tailwind CSS framework to style the application.
+            I have used the Tailwind CSS framework to style the application.
           </p>
           <a
             href="https://github.com/Geoffrey2002/weather-app-reactTw"
