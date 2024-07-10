@@ -15,6 +15,7 @@ const Main = () => {
             src={Passport}
             width="200"
             height="200"
+            alt="profile"
             layout="fixed"
             className="rounded-full p-4 shadow shadow-gray-400 hover:scale-105 ease-in duration-300"
           />
