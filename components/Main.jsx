@@ -25,8 +25,7 @@ const Main = () => {
             A React Front-End Web Developer
           </h1>
           <p className="py-4 text-gray-600 sm:max-w-[70%] m-auto">
-            I’m focused on building responsive front-end web applications while
-            learning back-end technologies.
+          I specialize in creating responsive front-end web applications and am expanding my skills in back-end technologies.
           </p>
           <div className="flex items-center justify-between max-w-[330px] m-auto py-4">
             <a

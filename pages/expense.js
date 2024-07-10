@@ -27,8 +27,7 @@ const expense = () => {
           <p>Project</p>
           <h2>Overview</h2>
           <p>
-            I built this app to demonstrate knowledge working in React JS. Users
-            are able to create new expenses which are then rendered.
+          This app showcases my proficiency in React JS, allowing users to create and display new expenses seamlessly.
           </p>
           <a
             href="https://github.com/Geoffrey2002/Expense-App"
