@@ -133,21 +133,23 @@ const Projects = () => {
           className="mt-8"
         >
           <Tabs defaultValue="all" className="w-full">
-            <div className="flex justify-center mb-12">
-              <TabsList className="gap-2 bg-[--color-bg-card] p-2 border-2 border-[--color-border] rounded-xl shadow-lg">
-                <TabsTrigger value="all" className="rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-violet-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-violet-500/20 transition-all">
-                  All Projects
-                </TabsTrigger>
-                <TabsTrigger value="nextjs" className="rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-violet-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-violet-500/20 transition-all">
-                  Next.js
-                </TabsTrigger>
-                <TabsTrigger value="react" className="rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-violet-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-violet-500/20 transition-all">
-                  React
-                </TabsTrigger>
-                <TabsTrigger value="wordpress" className="rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-violet-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-violet-500/20 transition-all">
-                  WordPress
-                </TabsTrigger>
-              </TabsList>
+            <div className="flex justify-center mb-8 md:mb-12">
+              <div className="w-full overflow-x-auto pb-2 px-2 md:px-0">
+                <TabsList className="flex gap-1 md:gap-2 bg-[--color-bg-card] p-1.5 md:p-2 border-2 border-[--color-border] rounded-xl shadow-lg min-w-max mx-auto">
+                  <TabsTrigger value="all" className="text-xs md:text-sm px-3 md:px-4 py-2 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-violet-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-violet-500/20 transition-all whitespace-nowrap">
+                    All Projects
+                  </TabsTrigger>
+                  <TabsTrigger value="nextjs" className="text-xs md:text-sm px-3 md:px-4 py-2 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-violet-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-violet-500/20 transition-all whitespace-nowrap">
+                    Next.js
+                  </TabsTrigger>
+                  <TabsTrigger value="react" className="text-xs md:text-sm px-3 md:px-4 py-2 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-violet-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-violet-500/20 transition-all whitespace-nowrap">
+                    React
+                  </TabsTrigger>
+                  <TabsTrigger value="wordpress" className="text-xs md:text-sm px-3 md:px-4 py-2 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-violet-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-violet-500/20 transition-all whitespace-nowrap">
+                    WordPress
+                  </TabsTrigger>
+                </TabsList>
+              </div>
             </div>
 
             <TabsContent value="all" className="mt-0">
@@ -155,7 +157,7 @@ const Projects = () => {
                 variants={staggerContainer}
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
-                className="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-2"
+                className="grid gap-4 md:gap-6 lg:gap-8 grid-cols-1 md:grid-cols-2"
               >
                 {allProjects.map((project) => (
                   <motion.div key={project.title} variants={staggerItem}>
@@ -170,7 +172,7 @@ const Projects = () => {
                 variants={staggerContainer}
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
-                className="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-2"
+                className="grid gap-4 md:gap-6 lg:gap-8 grid-cols-1 md:grid-cols-2"
               >
                 {nextjsProjects.map((project) => (
                   <motion.div key={project.title} variants={staggerItem}>
@@ -185,7 +187,7 @@ const Projects = () => {
                 variants={staggerContainer}
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
-                className="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-2"
+                className="grid gap-4 md:gap-6 lg:gap-8 grid-cols-1 md:grid-cols-2"
               >
                 {reactProjects.map((project) => (
                   <motion.div key={project.title} variants={staggerItem}>
@@ -200,7 +202,7 @@ const Projects = () => {
                 variants={staggerContainer}
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
-                className="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-2"
+                className="grid gap-4 md:gap-6 lg:gap-8 grid-cols-1 md:grid-cols-2"
               >
                 {wordpressProjects.map((project) => (
                   <motion.div key={project.title} variants={staggerItem}>

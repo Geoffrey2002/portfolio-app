@@ -95,13 +95,13 @@ const Contact = () => {
             </span>
           </motion.div>
           
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[--color-text]">Get In Touch</h2>
-          <p className="text-[--color-text-light] text-lg max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-[--color-text]">Get In Touch</h2>
+          <p className="text-[--color-text-light] text-base md:text-lg max-w-2xl mx-auto">
             Have a question or want to work together? I&apos;d love to hear from you.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-5 gap-8">
+        <div className="grid lg:grid-cols-5 gap-6 md:gap-8">
           {/* Left - Contact Info */}
           <motion.div
             initial="hidden"
@@ -129,21 +129,21 @@ const Contact = () => {
                   />
                 </motion.div>
 
-                <div className="flex-1 space-y-4">
+                <div className="flex-1 space-y-3 md:space-y-4">
                   <div>
-                    <h2 className="text-2xl md:text-3xl font-bold text-[--color-text] mb-2">
+                    <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-[--color-text] mb-2">
                       Geoffrey Muthoni
                     </h2>
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-1 h-6 bg-gradient-to-b from-[--color-primary] to-[--color-primary-light] rounded-full"></div>
-                      <p className="text-[--color-text-light] font-medium">
+                      <p className="text-[--color-text-light] font-medium text-sm md:text-base">
                         Frontend Developer | WordPress, Next.js & React
                       </p>
                     </div>
                   </div>
                   
-                  <div className="p-4 rounded-xl bg-[--color-bg] border border-[--color-border]">
-                    <p className="text-[--color-text-light] leading-relaxed">
+                  <div className="p-3 md:p-4 rounded-lg md:rounded-xl bg-[--color-bg] border border-[--color-border]">
+                    <p className="text-[--color-text-light] leading-relaxed text-sm md:text-base">
                       Open to freelance and full-time opportunities. Let&apos;s
                       discuss how I can contribute to your projects.
                     </p>
@@ -161,7 +161,7 @@ const Contact = () => {
                     variants={staggerContainer}
                     initial="hidden"
                     animate={isInView ? "visible" : "hidden"}
-                    className="grid grid-cols-4 gap-3"
+                    className="grid grid-cols-4 gap-2 md:gap-3"
                   >
                     {socialLinks.map((social) => {
                       const Icon = social.icon;
@@ -170,9 +170,9 @@ const Contact = () => {
                           variants={staggerItem}
                           whileHover={{ scale: 1.1, y: -3 }}
                           whileTap={{ scale: 0.95 }}
-                          className="rounded-xl shadow-lg shadow-[--color-primary]/10 p-4 cursor-pointer bg-[--color-bg] group-hover:bg-gradient-to-br group-hover:from-[--color-primary] group-hover:to-[--color-primary-light] transition-all duration-300 group min-h-[56px] min-w-[56px] flex items-center justify-center border-2 border-[--color-border] group-hover:border-[--color-primary]/50"
+                          className="rounded-lg md:rounded-xl shadow-lg shadow-[--color-primary]/10 p-3 md:p-4 cursor-pointer bg-[--color-bg] group-hover:bg-gradient-to-br group-hover:from-[--color-primary] group-hover:to-[--color-primary-light] transition-all duration-300 group min-h-[48px] min-w-[48px] md:min-h-[56px] md:min-w-[56px] flex items-center justify-center border-2 border-[--color-border] group-hover:border-[--color-primary]/50"
                         >
-                          <Icon className="text-[--color-text] group-hover:text-white transition-colors" size={20} />
+                          <Icon className="text-[--color-text] group-hover:text-white transition-colors" size={18} />
                         </motion.div>
                       );
 

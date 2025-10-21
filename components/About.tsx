@@ -25,7 +25,7 @@ const About = () => {
     <div
       id="about"
       ref={ref}
-      className="relative flex items-center w-full px-4 py-20 md:py-32 overflow-hidden"
+      className="relative flex items-center w-full px-4 py-16 md:py-24 lg:py-32 overflow-hidden"
     >
       {/* Decorative background elements */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
@@ -34,7 +34,7 @@ const About = () => {
       </div>
 
       <div className="max-w-[1240px] m-auto w-full">
-        <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
           {/* Content */}
           <motion.div
             initial="hidden"
@@ -59,27 +59,27 @@ const About = () => {
             </motion.div>
 
             {/* Heading */}
-            <motion.div variants={fadeInUp} className="space-y-4">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+            <motion.div variants={fadeInUp} className="space-y-3 md:space-y-4">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
                 Who I Am
               </h2>
-              <div className="w-20 h-1 bg-gradient-to-r from-[--color-primary] to-[--color-primary-light] rounded-full" />
+              <div className="w-16 md:w-20 h-1 bg-gradient-to-r from-[--color-primary] to-[--color-primary-light] rounded-full" />
             </motion.div>
 
             {/* Description */}
-            <motion.div variants={fadeInUp} className="space-y-4">
-              <p className="text-[--color-text-light] text-lg leading-relaxed">
+            <motion.div variants={fadeInUp} className="space-y-3 md:space-y-4">
+              <p className="text-[--color-text-light] text-base md:text-lg leading-relaxed">
                 I am a <span className="text-[--color-text] font-semibold">self-taught web developer</span> with a passion for creating beautiful
                 and functional websites. Over the past <span className="text-[--color-primary] font-semibold">4 years</span>, I have dedicated myself to
                 mastering coding and crafting exceptional digital experiences.
               </p>
 
-              <p className="text-[--color-text-light] text-lg leading-relaxed">
+              <p className="text-[--color-text-light] text-base md:text-lg leading-relaxed">
                 My journey began in 2019 with simple HTML and CSS edits for a small business website.
                 What started as minor tweaks quickly evolved into a <span className="text-[--color-text] font-semibold">deep passion for programming</span>.
               </p>
 
-              <p className="text-[--color-text-light] text-lg leading-relaxed">
+              <p className="text-[--color-text-light] text-base md:text-lg leading-relaxed">
                 Fascinated by the intricacy of code, I dove into JavaScript and became captivated by
                 creating interactive experiences. Today, I specialize in building modern applications with
                 <span className="text-[--color-primary] font-semibold"> React, Next.js, and Supabase</span>, constantly exploring new technologies.
@@ -87,31 +87,31 @@ const About = () => {
             </motion.div>
 
             {/* Highlights */}
-            <motion.div variants={fadeInUp} className="grid grid-cols-3 gap-4 pt-4">
+            <motion.div variants={fadeInUp} className="grid grid-cols-3 gap-2 md:gap-4 pt-4">
               {highlights.map((item, index) => (
                 <motion.div
                   key={item.label}
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                   transition={{ delay: 0.4 + index * 0.1, duration: 0.5 }}
-                  className="text-center p-4 rounded-xl bg-[--color-bg-card] border border-[--color-border] hover:border-[--color-primary]/30 transition-all"
+                  className="text-center p-2 md:p-4 rounded-lg md:rounded-xl bg-[--color-bg-card] border border-[--color-border] hover:border-[--color-primary]/30 transition-all"
                 >
-                  <item.icon className="w-6 h-6 mx-auto mb-2 text-[--color-primary]" />
-                  <div className="text-2xl font-bold text-[--color-text] mb-1">{item.value}</div>
-                  <div className="text-xs text-[--color-text-light]">{item.label}</div>
+                  <item.icon className="w-4 h-4 md:w-6 md:h-6 mx-auto mb-1 md:mb-2 text-[--color-primary]" />
+                  <div className="text-lg md:text-2xl font-bold text-[--color-text] mb-0.5 md:mb-1">{item.value}</div>
+                  <div className="text-[10px] md:text-xs text-[--color-text-light] leading-tight">{item.label}</div>
                 </motion.div>
               ))}
             </motion.div>
 
             {/* CTA Button */}
-            <motion.div variants={fadeInUp} className="pt-2">
+            <motion.div variants={fadeInUp} className="pt-2 md:pt-4">
               <Link href="/#projects">
                 <Button
                   size="lg"
-                  className="group bg-[--color-primary] hover:bg-[--color-primary-light] text-white font-semibold px-8 py-6 rounded-full shadow-lg shadow-[--color-primary]/20 hover:shadow-xl hover:shadow-[--color-primary]/30 transition-all"
+                  className="group bg-[--color-primary] hover:bg-[--color-primary-light] text-white font-semibold px-6 md:px-8 py-5 md:py-6 rounded-full shadow-lg shadow-[--color-primary]/20 hover:shadow-xl hover:shadow-[--color-primary]/30 transition-all text-sm md:text-base"
                 >
                   View My Projects
-                  <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                  <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={14} />
                 </Button>
               </Link>
             </motion.div>
@@ -147,20 +147,20 @@ const About = () => {
                 </div>
               </Card>
 
-              {/* Floating badge */}
+              {/* Floating badge - hidden on small mobile, shown on md+ */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
                 transition={{ delay: 0.6, duration: 0.5 }}
-                className="absolute -bottom-6 -left-6 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-600 rounded-2xl p-4 shadow-2xl backdrop-blur-sm"
+                className="hidden md:block absolute -bottom-4 md:-bottom-6 -left-4 md:-left-6 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-600 rounded-xl md:rounded-2xl p-3 md:p-4 shadow-2xl backdrop-blur-sm"
               >
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center shadow-lg">
-                    <span className="text-2xl">💡</span>
+                <div className="flex items-center gap-2 md:gap-3">
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center shadow-lg">
+                    <span className="text-xl md:text-2xl">💡</span>
                   </div>
                   <div>
-                    <div className="text-sm font-bold text-slate-900 dark:text-white">Always Learning</div>
-                    <div className="text-xs font-medium text-slate-600 dark:text-slate-300">Building the future</div>
+                    <div className="text-xs md:text-sm font-bold text-slate-900 dark:text-white">Always Learning</div>
+                    <div className="text-[10px] md:text-xs font-medium text-slate-600 dark:text-slate-300">Building the future</div>
                   </div>
                 </div>
               </motion.div>

@@ -79,7 +79,7 @@ const Testimonials = () => {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={fadeInUp}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
           {/* Section badge */}
           <motion.div 
@@ -97,8 +97,8 @@ const Testimonials = () => {
             </span>
           </motion.div>
 
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[--color-text]">What Clients Say</h2>
-          <p className="text-[--color-text-light] text-lg max-w-2xl mx-auto leading-relaxed">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-[--color-text]">What Clients Say</h2>
+          <p className="text-[--color-text-light] text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
             Don&apos;t just take my word for it - hear from some of the clients I&apos;ve worked with
           </p>
         </motion.div>
@@ -128,14 +128,14 @@ const Testimonials = () => {
                       {/* Decorative gradient corner */}
                       <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[--color-primary]/10 to-transparent rounded-full blur-2xl" />
                       
-                      <CardContent className="p-8 md:p-12 relative z-10">
+                      <CardContent className="p-6 md:p-8 lg:p-12 relative z-10">
                         {/* Quote icon with enhanced styling */}
-                        <div className="mb-6 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-500 shadow-lg shadow-amber-500/20">
-                          <FaQuoteLeft className="text-2xl text-white" />
+                        <div className="mb-4 md:mb-6 inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-gradient-to-br from-amber-500 to-orange-500 shadow-lg shadow-amber-500/20">
+                          <FaQuoteLeft className="text-lg md:text-2xl text-white" />
                         </div>
                         
                         {/* Testimonial text */}
-                        <p className="text-[--color-text] text-lg md:text-xl leading-relaxed mb-8 font-medium">
+                        <p className="text-[--color-text] text-base md:text-lg lg:text-xl leading-relaxed mb-6 md:mb-8 font-medium">
                           &quot;{testimonial.content}&quot;
                         </p>
                         
@@ -143,22 +143,22 @@ const Testimonials = () => {
                         <div className="h-px bg-gradient-to-r from-transparent via-[--color-border] to-transparent mb-6" />
                         
                         {/* Author info */}
-                        <div className="flex items-center gap-4">
+                        <div className="flex items-center gap-3 md:gap-4">
                           <div className="relative group">
                             {/* Gradient ring */}
                             <div className="absolute -inset-1 bg-gradient-to-br from-amber-500 via-orange-500 to-rose-500 rounded-full opacity-70 blur-sm group-hover:opacity-100 transition-opacity" />
-                            <div className="relative w-16 h-16 rounded-full bg-gradient-to-br from-amber-500 to-rose-500 flex items-center justify-center text-white font-bold text-2xl shadow-lg">
+                            <div className="relative w-12 h-12 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-amber-500 to-rose-500 flex items-center justify-center text-white font-bold text-lg md:text-2xl shadow-lg">
                               {testimonial.name.charAt(0)}
                             </div>
                           </div>
                           <div>
-                            <h4 className="font-bold text-[--color-text] text-lg mb-1">
+                            <h4 className="font-bold text-[--color-text] text-base md:text-lg mb-1">
                               {testimonial.name}
                             </h4>
-                            <p className="text-[--color-text-light] text-sm font-medium">
+                            <p className="text-[--color-text-light] text-xs md:text-sm font-medium">
                               {testimonial.role}
                             </p>
-                            <p className="text-[--color-primary] text-xs font-semibold mt-1">
+                            <p className="text-[--color-primary] text-xs font-semibold mt-0.5 md:mt-1">
                               {testimonial.company}
                             </p>
                           </div>
@@ -193,31 +193,31 @@ const Testimonials = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="mt-16 flex flex-wrap justify-center items-center gap-8 md:gap-12"
+          className="mt-12 md:mt-16 flex flex-wrap justify-center items-center gap-6 md:gap-8 lg:gap-12"
         >
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent mb-2">
+            <div className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent mb-1 md:mb-2">
               100%
             </div>
-            <div className="text-sm text-[--color-text-light] font-medium">
+            <div className="text-xs md:text-sm text-[--color-text-light] font-medium">
               Client Satisfaction
             </div>
           </div>
-          <div className="h-12 w-px bg-[--color-border]" />
+          <div className="h-10 md:h-12 w-px bg-[--color-border]" />
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-orange-500 to-rose-500 bg-clip-text text-transparent mb-2">
+            <div className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-orange-500 to-rose-500 bg-clip-text text-transparent mb-1 md:mb-2">
               50+
             </div>
-            <div className="text-sm text-[--color-text-light] font-medium">
+            <div className="text-xs md:text-sm text-[--color-text-light] font-medium">
               Projects Delivered
             </div>
           </div>
-          <div className="h-12 w-px bg-[--color-border] hidden md:block" />
+          <div className="h-10 md:h-12 w-px bg-[--color-border] hidden sm:block" />
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-rose-500 to-pink-500 bg-clip-text text-transparent mb-2">
+            <div className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-rose-500 to-pink-500 bg-clip-text text-transparent mb-1 md:mb-2">
               4+
             </div>
-            <div className="text-sm text-[--color-text-light] font-medium">
+            <div className="text-xs md:text-sm text-[--color-text-light] font-medium">
               Years Experience
             </div>
           </div>

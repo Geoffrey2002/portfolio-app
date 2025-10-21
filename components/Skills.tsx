@@ -244,7 +244,7 @@ const Skills = () => {
 
 
   return (
-    <div id="skills" className="relative w-full px-4 py-20 md:py-32 overflow-hidden">
+    <div id="skills" className="relative w-full px-4 py-16 md:py-24 lg:py-32 overflow-hidden">
       {/* Decorative background */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute top-40 right-20 w-96 h-96 bg-[--color-primary]/5 rounded-full blur-3xl" />
@@ -277,8 +277,8 @@ const Skills = () => {
 
           {/* Heading */}
           <motion.div variants={fadeInUp}>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[--color-text]">My Skillset</h2>
-            <p className="text-[--color-text-light] text-lg max-w-2xl mx-auto leading-relaxed">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-[--color-text]">My Skillset</h2>
+            <p className="text-[--color-text-light] text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
               A comprehensive collection of technologies and tools I use to build modern, scalable web applications
             </p>
           </motion.div>
@@ -291,21 +291,23 @@ const Skills = () => {
           variants={fadeInUp}
         >
           <Tabs defaultValue="all" value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <div className="flex justify-center mb-12">
-              <TabsList className="gap-2 bg-[--color-bg-card] p-2 border-2 border-[--color-border] rounded-xl shadow-lg">
-                <TabsTrigger value="all" className="rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-500 data-[state=active]:to-blue-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-cyan-500/20 transition-all">
-                  All Skills
-                </TabsTrigger>
-                <TabsTrigger value="frontend" className="rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-500 data-[state=active]:to-blue-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-cyan-500/20 transition-all">
-                  Frontend
-                </TabsTrigger>
-                <TabsTrigger value="backend" className="rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-500 data-[state=active]:to-blue-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-cyan-500/20 transition-all">
-                  Backend
-                </TabsTrigger>
-                <TabsTrigger value="cms" className="rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-500 data-[state=active]:to-blue-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-cyan-500/20 transition-all">
-                  CMS
-                </TabsTrigger>
-              </TabsList>
+            <div className="flex justify-center mb-8 md:mb-12">
+              <div className="w-full overflow-x-auto pb-2 px-2 md:px-0">
+                <TabsList className="flex gap-1 md:gap-2 bg-[--color-bg-card] p-1.5 md:p-2 border-2 border-[--color-border] rounded-xl shadow-lg min-w-max mx-auto">
+                  <TabsTrigger value="all" className="text-xs md:text-sm px-3 md:px-4 py-2 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-500 data-[state=active]:to-blue-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-cyan-500/20 transition-all whitespace-nowrap">
+                    All Skills
+                  </TabsTrigger>
+                  <TabsTrigger value="frontend" className="text-xs md:text-sm px-3 md:px-4 py-2 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-500 data-[state=active]:to-blue-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-cyan-500/20 transition-all whitespace-nowrap">
+                    Frontend
+                  </TabsTrigger>
+                  <TabsTrigger value="backend" className="text-xs md:text-sm px-3 md:px-4 py-2 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-500 data-[state=active]:to-blue-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-cyan-500/20 transition-all whitespace-nowrap">
+                    Backend
+                  </TabsTrigger>
+                  <TabsTrigger value="cms" className="text-xs md:text-sm px-3 md:px-4 py-2 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-500 data-[state=active]:to-blue-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-cyan-500/20 transition-all whitespace-nowrap">
+                    CMS
+                  </TabsTrigger>
+                </TabsList>
+              </div>
             </div>
 
             {Object.entries(categories).map(([key, categorySkills]) => (
@@ -354,7 +356,7 @@ const Skills = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ delay: 0.8, duration: 0.6 }}
-          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6"
+          className="mt-12 md:mt-16 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6"
         >
           {[
             { label: "Technologies", value: skills.length.toString() },
@@ -367,12 +369,12 @@ const Skills = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
               transition={{ delay: 0.9 + index * 0.1, duration: 0.5 }}
-              className="text-center p-6 rounded-2xl bg-[--color-bg-card] border-2 border-[--color-border] hover:border-[--color-primary]/30 hover:shadow-lg transition-all group"
+              className="text-center p-4 md:p-6 rounded-xl md:rounded-2xl bg-[--color-bg-card] border-2 border-[--color-border] hover:border-[--color-primary]/30 hover:shadow-lg transition-all group"
             >
-              <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent mb-2">
+              <div className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent mb-1 md:mb-2">
                 {stat.value}
               </div>
-              <div className="text-sm text-[--color-text-light] font-medium">{stat.label}</div>
+              <div className="text-xs md:text-sm text-[--color-text-light] font-medium">{stat.label}</div>
             </motion.div>
           ))}
         </motion.div>
