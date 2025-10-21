@@ -41,29 +41,32 @@ const ProjectItem = ({
             className="object-cover w-full h-full transition-all duration-500 group-hover:opacity-20 group-hover:scale-110"
           />
 
-          {/* Gradient Overlay on Hover */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[--color-primary] to-[--color-primary-light] opacity-0 group-hover:opacity-90 transition-opacity duration-500" />
+          {/* Gradient Overlay on Hover - adapts to theme */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[--color-primary] via-[--color-primary-light] to-[--color-primary] opacity-0 group-hover:opacity-95 transition-opacity duration-500" />
+          
+          {/* Dark overlay for better text contrast */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/40 to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
           {/* Content */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileHover={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 p-6 text-center"
+            className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 p-6 text-center z-10"
           >
-            <h3 className="text-2xl md:text-3xl text-white tracking-wider font-bold mb-3">
+            <h3 className="text-2xl md:text-3xl text-white tracking-wider font-bold mb-3 drop-shadow-lg">
               {title}
             </h3>
 
             {description && (
-              <p className="text-white/90 text-sm mb-4 line-clamp-2 max-w-md">
+              <p className="text-white text-sm mb-4 line-clamp-2 max-w-md drop-shadow-md">
                 {description}
               </p>
             )}
 
             <div className="flex flex-wrap gap-2 justify-center mb-6">
               {tech.map((t) => (
-                <TechBadge key={t} tech={t} />
+                <TechBadge key={t} tech={t} variant="light" />
               ))}
             </div>
 
@@ -73,7 +76,7 @@ const ProjectItem = ({
                 <Link href={projectUrl}>
                   <Button
                     variant="outline"
-                    className="bg-white text-gray-900 hover:bg-gray-100 border-white font-bold min-h-[44px]"
+                    className="bg-white/95 text-gray-900 hover:bg-white border-2 border-white font-bold min-h-[44px] shadow-lg hover:shadow-xl hover:scale-105 transition-all"
                   >
                     More Info
                   </Button>
@@ -83,7 +86,7 @@ const ProjectItem = ({
                 <a href={liveUrl} target="_blank" rel="noopener noreferrer">
                   <Button
                     variant="outline"
-                    className="bg-white text-gray-900 hover:bg-gray-100 border-white font-bold min-h-[44px] gap-2"
+                    className="bg-white/95 text-gray-900 hover:bg-white border-2 border-white font-bold min-h-[44px] gap-2 shadow-lg hover:shadow-xl hover:scale-105 transition-all"
                   >
                     <FaExternalLinkAlt size={14} />
                     Live Demo
@@ -94,7 +97,7 @@ const ProjectItem = ({
                 <a href={githubUrl} target="_blank" rel="noopener noreferrer">
                   <Button
                     variant="outline"
-                    className="bg-white text-gray-900 hover:bg-gray-100 border-white font-bold min-h-[44px] gap-2"
+                    className="bg-white/95 text-gray-900 hover:bg-white border-2 border-white font-bold min-h-[44px] gap-2 shadow-lg hover:shadow-xl hover:scale-105 transition-all"
                   >
                     <FaGithub size={16} />
                     GitHub
