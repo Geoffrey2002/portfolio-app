@@ -242,7 +242,6 @@ const Skills = () => {
     cms: skills.filter(s => s.category === "CMS"),
   };
 
-  const getSkillsByCategory = (category: keyof typeof categories) => categories[category];
 
   return (
     <div id="skills" className="relative w-full px-4 py-20 md:py-32 overflow-hidden">

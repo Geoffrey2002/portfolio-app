@@ -11,6 +11,7 @@ import { TypeAnimation } from "react-type-animation";
 import Passport from "@/public/assets/my passport.jpg";
 import { fadeInUp, staggerContainer, staggerItem } from "@/lib/animations";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 
 const Main = () => {
   const socialLinks = [
@@ -43,12 +44,13 @@ const Main = () => {
   return (
     <div id="home" className="w-full h-screen text-center pt-36 px-4">
       <div className="max-w-[1240px] w-full h-full mx-auto p-2 flex justify-center items-center">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          animate="visible"
-          className="flex flex-col items-center"
-        >
+        <Card className="w-full bg-[--color-bg-card] border-[--color-border] p-8 md:p-12 rounded-2xl">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            animate="visible"
+            className="flex flex-col items-center"
+          >
           {/* Profile Image */}
           <motion.div variants={fadeInUp}>
             <motion.div
@@ -206,6 +208,7 @@ const Main = () => {
             </Link>
           </motion.div>
         </motion.div>
+        </Card>
       </div>
     </div>
   );

@@ -37,10 +37,13 @@ const Navbar = () => {
     if (pathname === "/resume") {
       setActiveSection("resume");
       return;
-    } else if (pathname === "/blog" || pathname.startsWith("/blog/")) {
-      setActiveSection("blog");
-      return;
-    } else if (pathname !== "/") {
+    } 
+    // Blog section commented out
+    // else if (pathname === "/blog" || pathname.startsWith("/blog/")) {
+    //   setActiveSection("blog");
+    //   return;
+    // } 
+    else if (pathname !== "/") {
       // For other routes, don't highlight any section
       setActiveSection("");
       return;
@@ -75,7 +78,7 @@ const Navbar = () => {
     { href: "/#about", label: "About", section: "about" },
     { href: "/#skills", label: "Skills", section: "skills" },
     { href: "/#projects", label: "Projects", section: "projects" },
-    { href: "/blog", label: "Blog", section: "blog" },
+    // { href: "/blog", label: "Blog", section: "blog" }, // Commented out - Blog section
     { href: "/resume", label: "Resume", section: "resume" },
     { href: "/#contact", label: "Contact", section: "contact" },
   ];
