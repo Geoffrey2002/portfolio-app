@@ -8,7 +8,6 @@ import { Mail, Menu, Github, Linkedin, FileUser } from "lucide-react";
 import { motion } from "framer-motion";
 import navLogo from "@/public/assets/navlogo.png";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet";
-import { Separator } from "@/components/ui/separator";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
