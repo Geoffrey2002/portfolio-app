@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Raleway, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/theme-provider";
 import { PersonStructuredData, WebsiteStructuredData, ProfilePageStructuredData } from "@/components/StructuredData";
 import { GoogleAnalytics } from "@/components/Analytics";
@@ -75,6 +76,7 @@ export default function RootLayout({
         <ThemeProvider defaultTheme="dark" storageKey="portfolio-theme">
           <Navbar />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

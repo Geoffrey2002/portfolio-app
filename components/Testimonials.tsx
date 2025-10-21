@@ -67,19 +67,38 @@ const Testimonials = () => {
   );
 
   return (
-    <div id="testimonials" className="w-full py-16 md:py-24 px-4 bg-[--color-bg-card]/30">
+    <div id="testimonials" className="relative w-full py-16 md:py-24 px-4 overflow-hidden">
+      {/* Decorative background */}
+      <div className="absolute inset-0 -z-10 overflow-hidden bg-[--color-bg-card]/30">
+        <div className="absolute top-40 -left-20 w-96 h-96 bg-[--color-primary]/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 -right-20 w-96 h-96 bg-[--color-primary]/5 rounded-full blur-3xl" />
+      </div>
+
       <div ref={ref} className="max-w-[1240px] mx-auto">
         <motion.div
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={fadeInUp}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
-          <p className="text-xl tracking-widest uppercase text-[--color-primary] font-semibold">
-            Testimonials
-          </p>
-          <h2 className="py-4">What Clients Say</h2>
-          <p className="text-[--color-text-light] max-w-2xl mx-auto">
+          {/* Section badge */}
+          <motion.div 
+            variants={fadeInUp} 
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 relative overflow-hidden border-2 border-[--color-border]"
+          >
+            {/* Animated gradient background */}
+            <div className="absolute inset-0 bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 opacity-20 dark:opacity-30 animate-gradient-rotate" />
+            <div className="absolute inset-[2px] bg-[--color-bg] rounded-full" />
+            
+            {/* Content */}
+            <span className="relative z-10 w-2 h-2 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 animate-pulse shadow-lg shadow-amber-500/50" />
+            <span className="relative z-10 text-sm font-semibold bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 bg-clip-text text-transparent uppercase tracking-wider">
+              Testimonials
+            </span>
+          </motion.div>
+
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[--color-text]">What Clients Say</h2>
+          <p className="text-[--color-text-light] text-lg max-w-2xl mx-auto leading-relaxed">
             Don&apos;t just take my word for it - hear from some of the clients I&apos;ve worked with
           </p>
         </motion.div>
@@ -105,22 +124,42 @@ const Testimonials = () => {
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <Card className="border-[--color-border] bg-[--color-bg-card]">
-                      <CardContent className="p-8 md:p-12">
-                        <FaQuoteLeft className="text-4xl text-[--color-primary] mb-6 opacity-50" />
-                        <p className="text-[--color-text-light] text-lg md:text-xl leading-relaxed mb-8 italic">
+                    <Card className="relative overflow-hidden border-2 border-[--color-border] bg-[--color-bg-card] shadow-xl hover:shadow-2xl transition-all duration-300">
+                      {/* Decorative gradient corner */}
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[--color-primary]/10 to-transparent rounded-full blur-2xl" />
+                      
+                      <CardContent className="p-8 md:p-12 relative z-10">
+                        {/* Quote icon with enhanced styling */}
+                        <div className="mb-6 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-500 shadow-lg shadow-amber-500/20">
+                          <FaQuoteLeft className="text-2xl text-white" />
+                        </div>
+                        
+                        {/* Testimonial text */}
+                        <p className="text-[--color-text] text-lg md:text-xl leading-relaxed mb-8 font-medium">
                           &quot;{testimonial.content}&quot;
                         </p>
+                        
+                        {/* Divider */}
+                        <div className="h-px bg-gradient-to-r from-transparent via-[--color-border] to-transparent mb-6" />
+                        
+                        {/* Author info */}
                         <div className="flex items-center gap-4">
-                          <div className="w-14 h-14 rounded-full bg-gradient-to-r from-[--color-primary] to-[--color-primary-light] flex items-center justify-center text-white font-bold text-xl">
-                            {testimonial.name.charAt(0)}
+                          <div className="relative group">
+                            {/* Gradient ring */}
+                            <div className="absolute -inset-1 bg-gradient-to-br from-amber-500 via-orange-500 to-rose-500 rounded-full opacity-70 blur-sm group-hover:opacity-100 transition-opacity" />
+                            <div className="relative w-16 h-16 rounded-full bg-gradient-to-br from-amber-500 to-rose-500 flex items-center justify-center text-white font-bold text-2xl shadow-lg">
+                              {testimonial.name.charAt(0)}
+                            </div>
                           </div>
                           <div>
-                            <h4 className="font-bold text-[--color-text] text-lg">
+                            <h4 className="font-bold text-[--color-text] text-lg mb-1">
                               {testimonial.name}
                             </h4>
-                            <p className="text-[--color-text-light] text-sm">
-                              {testimonial.role} at {testimonial.company}
+                            <p className="text-[--color-text-light] text-sm font-medium">
+                              {testimonial.role}
+                            </p>
+                            <p className="text-[--color-primary] text-xs font-semibold mt-1">
+                              {testimonial.company}
                             </p>
                           </div>
                         </div>
@@ -130,20 +169,59 @@ const Testimonials = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden md:flex -left-16 bg-[--color-bg-card] border-[--color-border] hover:bg-[--color-primary] hover:text-white" />
-            <CarouselNext className="hidden md:flex -right-16 bg-[--color-bg-card] border-[--color-border] hover:bg-[--color-primary] hover:text-white" />
+            <CarouselPrevious className="hidden md:flex -left-16 bg-[--color-bg-card] border-2 border-[--color-border] hover:bg-gradient-to-br hover:from-[--color-primary] hover:to-[--color-primary-light] hover:text-white hover:border-transparent transition-all duration-300 shadow-lg" />
+            <CarouselNext className="hidden md:flex -right-16 bg-[--color-bg-card] border-2 border-[--color-border] hover:bg-gradient-to-br hover:from-[--color-primary] hover:to-[--color-primary-light] hover:text-white hover:border-transparent transition-all duration-300 shadow-lg" />
           </Carousel>
         </motion.div>
 
-        {/* Dots indicator for mobile */}
-        <div className="flex justify-center gap-2 mt-8 md:hidden">
+        {/* Enhanced dots indicator */}
+        <div className="flex justify-center items-center gap-3 mt-12">
           {testimonials.map((_, index) => (
-            <div
+            <motion.div
               key={index}
-              className="w-2 h-2 rounded-full bg-[--color-border]"
-            />
+              whileHover={{ scale: 1.2 }}
+              className="relative group cursor-pointer"
+            >
+              <div className="w-3 h-3 rounded-full bg-[--color-border] group-hover:bg-gradient-to-r group-hover:from-amber-500 group-hover:to-orange-500 transition-all duration-300" />
+            </motion.div>
           ))}
         </div>
+        
+        {/* Trust indicators */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="mt-16 flex flex-wrap justify-center items-center gap-8 md:gap-12"
+        >
+          <div className="text-center">
+            <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent mb-2">
+              100%
+            </div>
+            <div className="text-sm text-[--color-text-light] font-medium">
+              Client Satisfaction
+            </div>
+          </div>
+          <div className="h-12 w-px bg-[--color-border]" />
+          <div className="text-center">
+            <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-orange-500 to-rose-500 bg-clip-text text-transparent mb-2">
+              50+
+            </div>
+            <div className="text-sm text-[--color-text-light] font-medium">
+              Projects Delivered
+            </div>
+          </div>
+          <div className="h-12 w-px bg-[--color-border] hidden md:block" />
+          <div className="text-center">
+            <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-rose-500 to-pink-500 bg-clip-text text-transparent mb-2">
+              4+
+            </div>
+            <div className="text-sm text-[--color-text-light] font-medium">
+              Years Experience
+            </div>
+          </div>
+        </motion.div>
       </div>
     </div>
   );

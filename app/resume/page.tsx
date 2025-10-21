@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 import { 
   FaDownload, 
   FaEnvelope, 
@@ -131,7 +130,7 @@ const ResumePage = () => {
           className="mb-12"
         >
           {/* Hero Section */}
-          <Card className="relative overflow-hidden bg-white dark:bg-[--color-bg-card] border-2 border-[--color-border] shadow-2xl">
+          <Card className="relative overflow-hidden bg-[--color-bg-card] border-2 border-[--color-border] shadow-2xl">
             <div className="absolute top-0 right-0 w-64 h-64 bg-[--color-primary]/10 rounded-full blur-3xl" />
             <CardContent className="p-8 md:p-12 relative z-10">
               <motion.div 
@@ -139,21 +138,21 @@ const ResumePage = () => {
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 relative overflow-hidden border-2 border-[--color-border]"
               >
                 {/* Animated gradient background */}
-                <div className="absolute inset-0 bg-gradient-to-r from-[--color-primary]/10 via-[--color-primary]/20 to-[--color-primary]/10 animate-gradient-rotate" />
-                <div className="absolute inset-[2px] bg-white dark:bg-[--color-bg-card] rounded-full" />
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 opacity-20 dark:opacity-30 animate-gradient-rotate" />
+                <div className="absolute inset-[2px] bg-[--color-bg-card] rounded-full" />
                 
                 {/* Content */}
-                <span className="relative z-10 w-2 h-2 rounded-full bg-[--color-primary] animate-pulse" />
-                <span className="relative z-10 text-sm font-semibold text-slate-900 dark:text-[--color-text] uppercase tracking-wider">
+                <span className="relative z-10 w-2 h-2 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 animate-pulse shadow-lg shadow-emerald-500/50" />
+                <span className="relative z-10 text-sm font-semibold bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 bg-clip-text text-transparent uppercase tracking-wider">
                   Available for Opportunities
                 </span>
               </motion.div>
 
-              <motion.h1 variants={fadeInUp} className="text-4xl md:text-6xl font-bold mb-4 text-slate-900 dark:text-[--color-text]">
+              <motion.h1 variants={fadeInUp} className="text-4xl md:text-6xl font-bold mb-4 text-[--color-text]">
                 Geoffrey Mwangi Muthoni
               </motion.h1>
               
-              <motion.p variants={fadeInUp} className="text-xl md:text-2xl text-slate-600 dark:text-[--color-text-light] mb-8 font-medium">
+              <motion.p variants={fadeInUp} className="text-xl md:text-2xl text-[--color-text-light] mb-8 font-medium">
                 Self-Taught Frontend Developer
               </motion.p>
 
@@ -161,27 +160,27 @@ const ResumePage = () => {
               <motion.div variants={fadeInUp} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
                 <a 
                   href="mailto:gmwangi3174@gmail.com" 
-                  className="flex items-center gap-3 p-3 rounded-xl bg-slate-50 dark:bg-[--color-bg] border border-slate-200 dark:border-[--color-border] hover:border-[--color-primary]/50 transition-all group"
+                  className="flex items-center gap-3 p-3 rounded-xl bg-[--color-bg] border border-[--color-border] hover:border-[--color-primary]/50 transition-all group"
                 >
                   <div className="w-10 h-10 rounded-full bg-[--color-primary]/10 flex items-center justify-center group-hover:bg-[--color-primary]/20 transition-colors">
                     <FaEnvelope className="text-[--color-primary]" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="text-xs text-slate-600 dark:text-[--color-text-light]">Email</div>
-                    <div className="text-sm font-medium text-slate-900 dark:text-[--color-text] truncate">gmwangi3174@gmail.com</div>
+                    <div className="text-xs text-[--color-text-light]">Email</div>
+                    <div className="text-sm font-medium text-[--color-text] truncate">gmwangi3174@gmail.com</div>
                   </div>
                 </a>
 
                 <a 
                   href="tel:+254708760017" 
-                  className="flex items-center gap-3 p-3 rounded-xl bg-slate-50 dark:bg-[--color-bg] border border-slate-200 dark:border-[--color-border] hover:border-[--color-primary]/50 transition-all group"
+                  className="flex items-center gap-3 p-3 rounded-xl bg-[--color-bg] border border-[--color-border] hover:border-[--color-primary]/50 transition-all group"
                 >
                   <div className="w-10 h-10 rounded-full bg-[--color-primary]/10 flex items-center justify-center group-hover:bg-[--color-primary]/20 transition-colors">
                     <FaPhone className="text-[--color-primary]" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="text-xs text-slate-600 dark:text-[--color-text-light]">Phone</div>
-                    <div className="text-sm font-medium text-slate-900 dark:text-[--color-text]">+254 708 760017</div>
+                    <div className="text-xs text-[--color-text-light]">Phone</div>
+                    <div className="text-sm font-medium text-[--color-text]">+254 708 760017</div>
                   </div>
                 </a>
 
@@ -189,14 +188,14 @@ const ResumePage = () => {
                   href="https://linkedin.com/in/geoffrey-muthoni" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="flex items-center gap-3 p-3 rounded-xl bg-slate-50 dark:bg-[--color-bg] border border-slate-200 dark:border-[--color-border] hover:border-[--color-primary]/50 transition-all group"
+                  className="flex items-center gap-3 p-3 rounded-xl bg-[--color-bg] border border-[--color-border] hover:border-[--color-primary]/50 transition-all group"
                 >
                   <div className="w-10 h-10 rounded-full bg-[--color-primary]/10 flex items-center justify-center group-hover:bg-[--color-primary]/20 transition-colors">
                     <FaLinkedin className="text-[--color-primary]" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="text-xs text-slate-600 dark:text-[--color-text-light]">LinkedIn</div>
-                    <div className="text-sm font-medium text-slate-900 dark:text-[--color-text]">Connect</div>
+                    <div className="text-xs text-[--color-text-light]">LinkedIn</div>
+                    <div className="text-sm font-medium text-[--color-text]">Connect</div>
                   </div>
                 </a>
 
@@ -204,14 +203,14 @@ const ResumePage = () => {
                   href="https://github.com/Geoffrey2002" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="flex items-center gap-3 p-3 rounded-xl bg-slate-50 dark:bg-[--color-bg] border border-slate-200 dark:border-[--color-border] hover:border-[--color-primary]/50 transition-all group"
+                  className="flex items-center gap-3 p-3 rounded-xl bg-[--color-bg] border border-[--color-border] hover:border-[--color-primary]/50 transition-all group"
                 >
                   <div className="w-10 h-10 rounded-full bg-[--color-primary]/10 flex items-center justify-center group-hover:bg-[--color-primary]/20 transition-colors">
                     <FaGithub className="text-[--color-primary]" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="text-xs text-slate-600 dark:text-[--color-text-light]">GitHub</div>
-                    <div className="text-sm font-medium text-slate-900 dark:text-[--color-text]">@Geoffrey2002</div>
+                    <div className="text-xs text-[--color-text-light]">GitHub</div>
+                    <div className="text-sm font-medium text-[--color-text]">@Geoffrey2002</div>
                   </div>
                 </a>
               </motion.div>
@@ -286,7 +285,7 @@ const ResumePage = () => {
           </div>
           
           <div className="relative pl-8 border-l-2 border-[--color-border] space-y-8">
-            {experience.map((job, index) => (
+            {experience.map((job) => (
               <motion.div 
                 key={job.id} 
                 variants={staggerItem}
@@ -526,8 +525,8 @@ const ResumePage = () => {
           variants={fadeInUp}
           className="text-center"
         >
-          <Card className="relative overflow-hidden bg-gradient-to-br from-[--color-primary] via-[--color-primary-light] to-[--color-primary] border-none shadow-2xl">
-            <div className="absolute inset-0 bg-gradient-to-br from-black/20 to-transparent" />
+          <Card className="relative overflow-hidden bg-[--color-bg-card] border-2 border-[--color-border] shadow-2xl">
+            <div className="absolute inset-0 bg-gradient-to-br from-[--color-primary]/10 via-[--color-primary]/5 to-transparent" />
             <CardContent className="relative z-10 p-8 md:p-12">
               <motion.div
                 initial={{ scale: 0.9, opacity: 0 }}
@@ -535,19 +534,19 @@ const ResumePage = () => {
                 transition={{ duration: 0.5 }}
                 className="max-w-2xl mx-auto"
               >
-                <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                <h3 className="text-3xl md:text-4xl font-bold text-[--color-text] mb-4">
                   Let&apos;s Work Together
                 </h3>
-                <p className="text-white/90 text-lg mb-8 leading-relaxed">
+                <p className="text-[--color-text-light] text-lg mb-8 leading-relaxed">
                   I&apos;m always interested in hearing about new projects and opportunities. 
                   Whether you have a question or just want to say hi, feel free to reach out!
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link href="/#contact">
                     <Button 
-                      variant="outline" 
+                      variant="default" 
                       size="lg"
-                      className="w-full sm:w-auto bg-[--color-bg] text-[--color-primary] hover:bg-[--color-bg-hover] border-2 border-white/20 font-bold px-8 py-6 rounded-full shadow-lg hover:scale-105 transition-all"
+                      className="w-full sm:w-auto bg-[--color-primary] hover:bg-[--color-primary-light] text-white font-bold px-8 py-6 rounded-full shadow-lg shadow-[--color-primary]/20 hover:shadow-xl hover:shadow-[--color-primary]/30 hover:scale-105 transition-all"
                     >
                       Get In Touch
                     </Button>
@@ -556,7 +555,7 @@ const ResumePage = () => {
                     onClick={handleDownloadPDF}
                     variant="outline" 
                     size="lg"
-                    className="w-full sm:w-auto bg-white/10 dark:bg-[--color-bg-card] text-white dark:text-[--color-text] border-2 border-white/30 dark:border-[--color-border] hover:bg-white/20 dark:hover:bg-[--color-bg-hover] font-bold px-8 py-6 rounded-full backdrop-blur-sm hover:scale-105 transition-all gap-2"
+                    className="w-full sm:w-auto bg-transparent border-2 border-[--color-primary] text-[--color-primary] hover:bg-[--color-primary] hover:text-white font-bold px-8 py-6 rounded-full hover:scale-105 transition-all gap-2"
                   >
                     <FaDownload /> Download Resume
                   </Button>

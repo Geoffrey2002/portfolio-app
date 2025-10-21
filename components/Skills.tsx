@@ -260,18 +260,25 @@ const Skills = () => {
           className="text-center mb-16"
         >
           {/* Section badge */}
-          <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[--color-primary]/10 border border-[--color-primary]/20 mb-6">
-            <span className="w-2 h-2 rounded-full bg-[--color-primary] animate-pulse" />
-            <span className="text-sm font-medium text-[--color-primary] uppercase tracking-wider">
+          <motion.div 
+            variants={fadeInUp} 
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 relative overflow-hidden border-2 border-[--color-border]"
+          >
+            {/* Animated gradient background */}
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 opacity-20 dark:opacity-30 animate-gradient-rotate" />
+            <div className="absolute inset-[2px] bg-[--color-bg] rounded-full" />
+            
+            {/* Content */}
+            <span className="relative z-10 w-2 h-2 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 animate-pulse shadow-lg shadow-cyan-500/50" />
+            <span className="relative z-10 text-sm font-semibold bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 bg-clip-text text-transparent uppercase tracking-wider">
               Skills & Expertise
             </span>
           </motion.div>
 
           {/* Heading */}
           <motion.div variants={fadeInUp}>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">My Skillset</h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-[--color-primary] to-[--color-primary-light] rounded-full mx-auto mb-6" />
-            <p className="text-[--color-text-light] text-lg max-w-2xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[--color-text]">My Skillset</h2>
+            <p className="text-[--color-text-light] text-lg max-w-2xl mx-auto leading-relaxed">
               A comprehensive collection of technologies and tools I use to build modern, scalable web applications
             </p>
           </motion.div>
@@ -285,17 +292,17 @@ const Skills = () => {
         >
           <Tabs defaultValue="all" value={activeTab} onValueChange={setActiveTab} className="w-full">
             <div className="flex justify-center mb-12">
-              <TabsList className="gap-2 bg-[--color-bg-card] p-1 border border-[--color-border]">
-                <TabsTrigger value="all" className="data-[state=active]:bg-[--color-primary] data-[state=active]:text-white">
+              <TabsList className="gap-2 bg-[--color-bg-card] p-2 border-2 border-[--color-border] rounded-xl shadow-lg">
+                <TabsTrigger value="all" className="rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-500 data-[state=active]:to-blue-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-cyan-500/20 transition-all">
                   All Skills
                 </TabsTrigger>
-                <TabsTrigger value="frontend" className="data-[state=active]:bg-[--color-primary] data-[state=active]:text-white">
+                <TabsTrigger value="frontend" className="rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-500 data-[state=active]:to-blue-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-cyan-500/20 transition-all">
                   Frontend
                 </TabsTrigger>
-                <TabsTrigger value="backend" className="data-[state=active]:bg-[--color-primary] data-[state=active]:text-white">
+                <TabsTrigger value="backend" className="rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-500 data-[state=active]:to-blue-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-cyan-500/20 transition-all">
                   Backend
                 </TabsTrigger>
-                <TabsTrigger value="cms" className="data-[state=active]:bg-[--color-primary] data-[state=active]:text-white">
+                <TabsTrigger value="cms" className="rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-500 data-[state=active]:to-blue-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-cyan-500/20 transition-all">
                   CMS
                 </TabsTrigger>
               </TabsList>
@@ -360,12 +367,12 @@ const Skills = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
               transition={{ delay: 0.9 + index * 0.1, duration: 0.5 }}
-              className="text-center p-6 rounded-2xl bg-[--color-bg-card] border border-[--color-border] hover:border-[--color-primary]/30 transition-all"
+              className="text-center p-6 rounded-2xl bg-[--color-bg-card] border-2 border-[--color-border] hover:border-[--color-primary]/30 hover:shadow-lg transition-all group"
             >
-              <div className="text-3xl md:text-4xl font-bold text-[--color-primary] mb-2">
+              <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent mb-2">
                 {stat.value}
               </div>
-              <div className="text-sm text-[--color-text-light]">{stat.label}</div>
+              <div className="text-sm text-[--color-text-light] font-medium">{stat.label}</div>
             </motion.div>
           ))}
         </motion.div>

@@ -90,19 +90,38 @@ const Projects = () => {
   const allProjects = [...nextjsProjects, ...reactProjects, ...wordpressProjects];
 
   return (
-    <div id="projects" className="w-full py-16 md:py-24 px-4">
+    <div id="projects" className="relative w-full py-16 md:py-24 px-4 overflow-hidden">
+      {/* Decorative background */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute top-20 -left-20 w-96 h-96 bg-[--color-primary]/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-40 -right-20 w-96 h-96 bg-[--color-primary]/5 rounded-full blur-3xl" />
+      </div>
+
       <div ref={ref} className="max-w-[1240px] mx-auto">
         <motion.div
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={fadeInUp}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
-          <p className="text-xl tracking-widest uppercase text-[--color-primary] font-semibold">
-            Projects
-          </p>
-          <h2 className="py-4">What I&apos;ve Built</h2>
-          <p className="text-[--color-text-light] max-w-2xl mx-auto">
+          {/* Section badge */}
+          <motion.div 
+            variants={fadeInUp} 
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 relative overflow-hidden border-2 border-[--color-border]"
+          >
+            {/* Animated gradient background */}
+            <div className="absolute inset-0 bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500 opacity-20 dark:opacity-30 animate-gradient-rotate" />
+            <div className="absolute inset-[2px] bg-[--color-bg] rounded-full" />
+            
+            {/* Content */}
+            <span className="relative z-10 w-2 h-2 rounded-full bg-gradient-to-r from-violet-500 to-purple-500 animate-pulse shadow-lg shadow-violet-500/50" />
+            <span className="relative z-10 text-sm font-semibold bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500 bg-clip-text text-transparent uppercase tracking-wider">
+              Projects
+            </span>
+          </motion.div>
+
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[--color-text]">What I&apos;ve Built</h2>
+          <p className="text-[--color-text-light] text-lg max-w-2xl mx-auto leading-relaxed">
             A collection of my recent work showcasing expertise in modern web technologies
           </p>
         </motion.div>
@@ -115,17 +134,17 @@ const Projects = () => {
         >
           <Tabs defaultValue="all" className="w-full">
             <div className="flex justify-center mb-12">
-              <TabsList className="gap-1">
-                <TabsTrigger value="all">
+              <TabsList className="gap-2 bg-[--color-bg-card] p-2 border-2 border-[--color-border] rounded-xl shadow-lg">
+                <TabsTrigger value="all" className="rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-violet-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-violet-500/20 transition-all">
                   All Projects
                 </TabsTrigger>
-                <TabsTrigger value="nextjs">
+                <TabsTrigger value="nextjs" className="rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-violet-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-violet-500/20 transition-all">
                   Next.js
                 </TabsTrigger>
-                <TabsTrigger value="react">
+                <TabsTrigger value="react" className="rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-violet-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-violet-500/20 transition-all">
                   React
                 </TabsTrigger>
-                <TabsTrigger value="wordpress">
+                <TabsTrigger value="wordpress" className="rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-violet-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-violet-500/20 transition-all">
                   WordPress
                 </TabsTrigger>
               </TabsList>
