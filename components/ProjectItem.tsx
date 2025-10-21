@@ -3,7 +3,7 @@
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { Github, ExternalLink } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { TechBadge } from "@/components/TechBadge";
@@ -40,6 +40,10 @@ const ProjectItem = ({
             src={backgroundImg}
             alt={`${title} project screenshot`}
             className="object-cover w-full h-full transition-all duration-500 md:group-hover:opacity-10 md:group-hover:scale-110"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            loading="lazy"
+            placeholder="blur"
           />
 
           {/* Gradient Overlay on Hover - Desktop Only */}
@@ -92,7 +96,7 @@ const ProjectItem = ({
                     variant="outline"
                     className="bg-white text-gray-900 hover:bg-white/90 border-2 border-white font-bold min-h-[48px] px-6 rounded-xl gap-2 shadow-xl hover:shadow-2xl hover:scale-105 transition-all"
                   >
-                    <FaExternalLinkAlt size={14} />
+                    <ExternalLink size={14} />
                     Live Demo
                   </Button>
                 </a>
@@ -103,7 +107,7 @@ const ProjectItem = ({
                     variant="outline"
                     className="bg-white text-gray-900 hover:bg-white/90 border-2 border-white font-bold min-h-[48px] px-6 rounded-xl gap-2 shadow-xl hover:shadow-2xl hover:scale-105 transition-all"
                   >
-                    <FaGithub size={16} />
+                    <Github size={16} />
                     GitHub
                   </Button>
                 </a>
@@ -150,7 +154,7 @@ const ProjectItem = ({
                   size="sm"
                   className="w-full bg-[--color-primary] text-white hover:bg-[--color-primary-light] border-2 border-[--color-primary] font-semibold rounded-lg gap-1.5 transition-all"
                 >
-                  <FaExternalLinkAlt size={12} />
+                  <ExternalLink size={12} />
                   Live Demo
                 </Button>
               </a>
@@ -162,7 +166,7 @@ const ProjectItem = ({
                   size="sm"
                   className="w-full bg-[--color-bg] text-[--color-text] hover:bg-[--color-primary] hover:text-white border-2 border-[--color-border] hover:border-[--color-primary] font-semibold rounded-lg gap-1.5 transition-all"
                 >
-                  <FaGithub size={14} />
+                  <Github size={14} />
                   GitHub
                 </Button>
               </a>

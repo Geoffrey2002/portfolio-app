@@ -9,52 +9,111 @@ import { GoogleAnalytics } from "@/components/Analytics";
 
 const raleway = Raleway({
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  weight: ["400", "600", "700", "800"],
   variable: "--font-raleway",
+  display: "swap",
+  preload: true,
 });
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
+  preload: true,
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://geoffreymuthoni.com';
+
 export const metadata: Metadata = {
-  title: "Geoffrey Muthoni | Frontend Developer - React, Next.js & WordPress Expert",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Geoffrey Muthoni | Frontend Developer - React, Next.js & WordPress Expert",
+    template: "%s | Geoffrey Muthoni - Frontend Developer",
+  },
   description: "Self-taught Frontend Developer specializing in React, Next.js, and WordPress. Building modern, responsive web applications with exceptional user experiences. 4+ years of experience.",
-  keywords: ["Frontend Developer", "React Developer", "Next.js Developer", "WordPress Developer", "Web Developer", "Geoffrey Muthoni", "Supabase", "TypeScript", "JavaScript"],
-  authors: [{ name: "Geoffrey Mwangi Muthoni" }],
+  keywords: [
+    "Frontend Developer",
+    "React Developer", 
+    "Next.js Developer",
+    "WordPress Developer",
+    "Web Developer",
+    "Geoffrey Muthoni",
+    "Geoffrey Mwangi",
+    "Supabase",
+    "TypeScript",
+    "JavaScript",
+    "Tailwind CSS",
+    "UI/UX Developer",
+    "Full Stack Developer",
+  ],
+  authors: [{ name: "Geoffrey Mwangi Muthoni", url: siteUrl }],
   creator: "Geoffrey Mwangi Muthoni",
+  publisher: "Geoffrey Mwangi Muthoni",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   icons: {
     icon: "/assets/navlogo.png",
     shortcut: "/assets/navlogo.png",
     apple: "/assets/navlogo.png",
   },
   openGraph: {
-    title: "Geoffrey Muthoni | Frontend Developer",
-    description: "Self-taught Frontend Developer with 4+ years of experience specializing in React, Next.js, and WordPress",
-    type: "website",
-    locale: "en_US",
+    title: "Geoffrey Muthoni | Frontend Developer - React, Next.js & WordPress Expert",
+    description: "Self-taught Frontend Developer with 4+ years of experience specializing in React, Next.js, and WordPress. Building modern, responsive web applications.",
+    url: siteUrl,
     siteName: "Geoffrey Muthoni Portfolio",
+    images: [
+      {
+        url: `${siteUrl}/assets/about.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "Geoffrey Muthoni - Frontend Developer",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Geoffrey Muthoni | Frontend Developer",
-    description: "Self-taught Frontend Developer specializing in React, Next.js, and WordPress",
+    description: "Self-taught Frontend Developer specializing in React, Next.js, and WordPress. 4+ years of experience building modern web applications.",
+    images: [`${siteUrl}/assets/about.jpg`],
+    creator: "@geoffreymuthoni",
   },
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
+      noimageindex: false,
       "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
     },
   },
+  alternates: {
+    canonical: siteUrl,
+  },
   verification: {
     google: "your-google-verification-code",
+    // yandex: "your-yandex-verification-code",
+    // bing: "your-bing-verification-code",
   },
+  category: "technology",
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#0f172a' },
+  ],
 };
 
 export default function RootLayout({

@@ -5,10 +5,7 @@ import Link from "next/link";
 import { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { motion, useInView } from "framer-motion";
-import { AiOutlineMail } from "react-icons/ai";
-import { BsFillPersonLinesFill } from "react-icons/bs";
-import { FaGithub, FaLinkedinIn } from "react-icons/fa";
-import { HiOutlineChevronDoubleUp } from "react-icons/hi";
+import { Mail, FileUser, Github, Linkedin, ChevronsUp } from "lucide-react";
 import ContactImg from "@/public/assets/contact.jpg";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -40,25 +37,25 @@ const Contact = () => {
   const socialLinks = [
     {
       href: "https://www.linkedin.com/in/geoffrey-muthoni/",
-      icon: FaLinkedinIn,
+      icon: Linkedin,
       label: "LinkedIn",
       external: true,
     },
     {
       href: "https://github.com/Geoffrey2002",
-      icon: FaGithub,
+      icon: Github,
       label: "GitHub",
       external: true,
     },
     {
       href: "/#contact",
-      icon: AiOutlineMail,
+      icon: Mail,
       label: "Email",
       external: false,
     },
     {
       href: "/resume",
-      icon: BsFillPersonLinesFill,
+      icon: FileUser,
       label: "Resume",
       external: false,
     },
@@ -126,6 +123,9 @@ const Contact = () => {
                     src={ContactImg}
                     alt="Contact Geoffrey Muthoni"
                     className="relative rounded-2xl w-full object-cover shadow-xl border-2 border-[--color-border]"
+                    loading="lazy"
+                    placeholder="blur"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 40vw, 30vw"
                   />
                 </motion.div>
 
@@ -334,7 +334,7 @@ const Contact = () => {
               <div className="absolute -inset-1 bg-gradient-to-r from-[--color-primary] via-[--color-primary-light] to-[--color-primary] rounded-full opacity-70 blur-sm group-hover:opacity-100 transition-opacity animate-gradient-rotate" />
               
               <div className="relative rounded-full shadow-xl p-5 cursor-pointer bg-[--color-bg-card] group-hover:bg-gradient-to-br group-hover:from-[--color-primary] group-hover:to-[--color-primary-light] transition-all duration-300 min-h-[68px] min-w-[68px] flex flex-col items-center justify-center border-2 border-[--color-border] group-hover:border-transparent">
-                <HiOutlineChevronDoubleUp
+                <ChevronsUp
                   className="text-[--color-primary] group-hover:text-white transition-colors mb-1"
                   size={28}
                 />

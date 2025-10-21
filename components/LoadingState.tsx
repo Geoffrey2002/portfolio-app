@@ -71,6 +71,19 @@ export function ButtonLoading() {
   );
 }
 
+// Default export for dynamic imports
+export default function LoadingState() {
+  return (
+    <div className="w-full py-16 md:py-24 px-4">
+      <div className="max-w-[1240px] mx-auto">
+        <div className="grid gap-6 md:gap-8">
+          <Skeleton className="h-[400px] w-full rounded-2xl" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 
 
 

@@ -4,9 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { AiOutlineMail, AiOutlineMenu } from "react-icons/ai";
-import { FaGithub, FaLinkedinIn } from "react-icons/fa";
-import { BsFillPersonLinesFill } from "react-icons/bs";
+import { Mail, Menu, Github, Linkedin, FileUser } from "lucide-react";
 import { motion } from "framer-motion";
 import navLogo from "@/public/assets/navlogo.png";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet";
@@ -84,10 +82,10 @@ const Navbar = () => {
   ];
 
   const socialLinks = [
-    { href: "https://www.linkedin.com/in/geoffrey-muthoni/", icon: FaLinkedinIn, label: "LinkedIn" },
-    { href: "https://github.com/Geoffrey2002", icon: FaGithub, label: "GitHub" },
-    { href: "/#contact", icon: AiOutlineMail, label: "Email", internal: true },
-    { href: "/resume", icon: BsFillPersonLinesFill, label: "Resume", internal: true },
+    { href: "https://www.linkedin.com/in/geoffrey-muthoni/", icon: Linkedin, label: "LinkedIn" },
+    { href: "https://github.com/Geoffrey2002", icon: Github, label: "GitHub" },
+    { href: "/#contact", icon: Mail, label: "Email", internal: true },
+    { href: "/resume", icon: FileUser, label: "Resume", internal: true },
   ];
 
   return (
@@ -116,6 +114,7 @@ const Navbar = () => {
               height={80}
               className="cursor-pointer"
               priority
+              sizes="125px"
             />
           </motion.div>
         </Link>
@@ -172,7 +171,7 @@ const Navbar = () => {
                 className="p-2 rounded-lg hover:bg-[--color-bg-hover] transition-colors focus:outline-none focus:ring-2 focus:ring-[--color-primary]"
                 aria-label="Open navigation menu"
               >
-                <AiOutlineMenu size={25} className="text-[--color-text]" />
+                <Menu size={25} className="text-[--color-text]" />
               </button>
             </SheetTrigger>
 
@@ -184,7 +183,7 @@ const Navbar = () => {
               </SheetDescription>
               
               <div className="flex items-center mb-4">
-                <Image src={navLogo} width={87} height={50} alt="Logo" />
+                <Image src={navLogo} width={87} height={50} alt="Logo" sizes="87px" />
               </div>
 
               <Separator className="my-4" />

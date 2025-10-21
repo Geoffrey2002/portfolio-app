@@ -11,7 +11,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { fadeInUp } from "@/lib/animations";
-import { FaQuoteLeft } from "react-icons/fa";
+import { Quote } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
 
 interface Testimonial {
@@ -131,7 +131,7 @@ const Testimonials = () => {
                       <CardContent className="p-6 md:p-8 lg:p-12 relative z-10">
                         {/* Quote icon with enhanced styling */}
                         <div className="mb-4 md:mb-6 inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-gradient-to-br from-amber-500 to-orange-500 shadow-lg shadow-amber-500/20">
-                          <FaQuoteLeft className="text-lg md:text-2xl text-white" />
+                          <Quote className="text-lg md:text-2xl text-white" />
                         </div>
                         
                         {/* Testimonial text */}

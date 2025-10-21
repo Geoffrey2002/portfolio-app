@@ -2,13 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { AiOutlineMail } from "react-icons/ai";
-import { BsFillPersonLinesFill } from "react-icons/bs";
-import { FaGithub, FaLinkedinIn } from "react-icons/fa";
-import { HiArrowDown } from "react-icons/hi";
+import { Mail, FileUser, Github, Linkedin } from "lucide-react";
 import { motion } from "framer-motion";
-import { TypeAnimation } from "react-type-animation";
 import Passport from "@/public/assets/my passport.jpg";
+import { TypingAnimation } from "@/components/TypingAnimation";
 import { fadeInUp, staggerContainer, staggerItem } from "@/lib/animations";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -17,25 +14,25 @@ const Main = () => {
   const socialLinks = [
     {
       href: "https://www.linkedin.com/in/geoffrey-muthoni/",
-      icon: FaLinkedinIn,
+      icon: Linkedin,
       label: "LinkedIn",
       external: true,
     },
     {
       href: "https://github.com/Geoffrey2002",
-      icon: FaGithub,
+      icon: Github,
       label: "GitHub",
       external: true,
     },
     {
       href: "/#contact",
-      icon: AiOutlineMail,
+      icon: Mail,
       label: "Contact via Email",
       external: false,
     },
     {
       href: "/resume",
-      icon: BsFillPersonLinesFill,
+      icon: FileUser,
       label: "View Resume",
       external: false,
     },
@@ -59,11 +56,13 @@ const Main = () => {
             >
               <Image
                 src={Passport}
-                width={150}
-                height={150}
+                width={200}
+                height={200}
                 alt="Geoffrey Muthoni - Front-End Developer"
                 className="rounded-full p-3 md:p-4 shadow-lg shadow-black/30 object-cover border-4 border-[--color-primary] w-[150px] h-[150px] md:w-[200px] md:h-[200px]"
                 priority
+                placeholder="blur"
+                sizes="(max-width: 768px) 150px, 200px"
               />
             </motion.div>
           </motion.div>
@@ -84,20 +83,13 @@ const Main = () => {
             variants={fadeInUp}
             className="py-2 text-lg sm:text-2xl md:text-3xl font-bold min-h-[2rem] sm:min-h-[2.5rem] md:min-h-[3rem]"
           >
-            <TypeAnimation
-              sequence={[
+            <TypingAnimation
+              texts={[
                 "Self-Taught Frontend Developer",
-                2000,
                 "React & Next.js Specialist",
-                2000,
                 "WordPress Expert",
-                2000,
                 "UI/UX Enthusiast",
-                2000,
               ]}
-              wrapper="h2"
-              speed={50}
-              repeat={Infinity}
               className="text-[--color-text]"
             />
           </motion.div>

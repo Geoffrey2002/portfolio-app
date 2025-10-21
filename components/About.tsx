@@ -9,16 +9,16 @@ import AboutImg from "@/public/assets/about.jpg";
 import { fadeInUp, slideInLeft, slideInRight } from "@/lib/animations";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { FaArrowRight, FaCode, FaLaptopCode, FaRocket } from "react-icons/fa";
+import { ArrowRight, Code, Laptop, Rocket } from "lucide-react";
 
 const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const highlights = [
-    { icon: FaCode, label: "Self-Taught Developer", value: "4+ Years" },
-    { icon: FaLaptopCode, label: "Projects Completed", value: "50+" },
-    { icon: FaRocket, label: "Technologies", value: "10+" },
+    { icon: Code, label: "Self-Taught Developer", value: "4+ Years" },
+    { icon: Laptop, label: "Projects Completed", value: "50+" },
+    { icon: Rocket, label: "Technologies", value: "10+" },
   ];
 
   return (
@@ -111,7 +111,7 @@ const About = () => {
                   className="group bg-[--color-primary] hover:bg-[--color-primary-light] text-white font-semibold px-6 md:px-8 py-5 md:py-6 rounded-full shadow-lg shadow-[--color-primary]/20 hover:shadow-xl hover:shadow-[--color-primary]/30 transition-all text-sm md:text-base"
                 >
                   View My Projects
-                  <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={14} />
+                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={14} />
                 </Button>
               </Link>
             </motion.div>
@@ -141,6 +141,8 @@ const About = () => {
                     className="object-cover w-full h-full"
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
+                    loading="lazy"
+                    placeholder="blur"
                   />
                   {/* Gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[--color-bg]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />

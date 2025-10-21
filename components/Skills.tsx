@@ -21,7 +21,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { fadeInUp, staggerContainer, staggerItem } from "@/lib/animations";
-import { FaStar, FaTrophy } from "react-icons/fa";
+import { Star, Trophy } from "lucide-react";
 
 interface Skill {
   name: string;
@@ -164,7 +164,7 @@ const SkillCard = ({ skill, isInView }: { skill: Skill; isInView: boolean }) => 
               className="absolute top-3 right-3"
             >
               <div className="bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full p-2 shadow-lg">
-                <FaTrophy className="w-4 h-4 text-white" />
+                <Trophy className="w-4 h-4 text-white" />
               </div>
             </motion.div>
           )}
@@ -181,6 +181,7 @@ const SkillCard = ({ skill, isInView }: { skill: Skill; isInView: boolean }) => 
                     height={48}
                     alt={`${skill.name} logo`}
                     className="object-contain group-hover:scale-110 transition-transform duration-300"
+                    loading="lazy"
                   />
                 </div>
               </div>
@@ -218,7 +219,7 @@ const SkillCard = ({ skill, isInView }: { skill: Skill; isInView: boolean }) => 
           {/* Experience */}
           {skill.yearsOfExperience && (
             <div className="mt-auto flex items-center gap-2 text-[--color-text-light]">
-              <FaStar className="w-3 h-3 text-[--color-primary]" />
+              <Star className="w-3 h-3 text-[--color-primary]" />
               <span className="text-sm font-medium">
                 {skill.yearsOfExperience}+ years experience
               </span>

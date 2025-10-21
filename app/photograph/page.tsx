@@ -2,9 +2,42 @@ import ProjectDetailTemplate from "@/components/ProjectDetailTemplate";
 import captureImg from "@/public/assets/projects/capture.png";
 import { Metadata } from "next";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://geoffreymuthoni.com';
+
 export const metadata: Metadata = {
-  title: "Photography Portfolio | Geoffrey Muthoni",
-  description: "A Next.js photography landing page with modern design",
+  title: "Photography Portfolio - Next.js Landing Page",
+  description: "A stunning Next.js 14 photography portfolio landing page with modern design, smooth animations, and optimized image loading. Built with TypeScript and Tailwind CSS showcasing elegant UI/UX.",
+  keywords: [
+    "Photography Portfolio",
+    "Next.js Landing Page",
+    "TypeScript",
+    "Tailwind CSS",
+    "Modern Web Design",
+    "Geoffrey Muthoni Projects",
+  ],
+  openGraph: {
+    title: "Photography Portfolio - Next.js Landing Page | Geoffrey Muthoni",
+    description: "Modern photography portfolio built with Next.js 14, TypeScript, and Tailwind CSS featuring stunning visuals and optimized performance.",
+    url: `${siteUrl}/photograph`,
+    type: "website",
+    images: [
+      {
+        url: `${siteUrl}/assets/projects/capture.png`,
+        width: 1200,
+        height: 630,
+        alt: "Photography Portfolio Screenshot",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Photography Portfolio - Next.js Project",
+    description: "Stunning Next.js photography portfolio with modern design",
+    images: [`${siteUrl}/assets/projects/capture.png`],
+  },
+  alternates: {
+    canonical: `${siteUrl}/photograph`,
+  },
 };
 
 export default function PhotographPage() {
