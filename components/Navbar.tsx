@@ -94,7 +94,9 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       className={`fixed w-full h-20 z-50 transition-all duration-300 ${
-        shadow ? "bg-[--color-bg]/80 backdrop-blur-md shadow-xl border-b" : "bg-transparent"
+        shadow 
+          ? "bg-[--color-bg]/95 backdrop-blur-md shadow-xl border-b" 
+          : "bg-[--color-bg]/80 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none"
       }`}
       style={{
         borderColor: shadow ? 'var(--color-border)' : 'transparent'
