@@ -23,6 +23,11 @@ export const metadata: Metadata = {
   keywords: ["Frontend Developer", "React Developer", "Next.js Developer", "WordPress Developer", "Web Developer", "Geoffrey Muthoni", "Supabase", "TypeScript", "JavaScript"],
   authors: [{ name: "Geoffrey Mwangi Muthoni" }],
   creator: "Geoffrey Mwangi Muthoni",
+  icons: {
+    icon: "/assets/navlogo.png",
+    shortcut: "/assets/navlogo.png",
+    apple: "/assets/navlogo.png",
+  },
   openGraph: {
     title: "Geoffrey Muthoni | Frontend Developer",
     description: "Self-taught Frontend Developer with 4+ years of experience specializing in React, Next.js, and WordPress",

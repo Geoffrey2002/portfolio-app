@@ -68,14 +68,17 @@ const ProjectItem = ({
             </div>
 
             <div className="flex gap-3 flex-wrap justify-center">
-              <Link href={projectUrl}>
-                <Button
-                  variant="outline"
-                  className="bg-white text-gray-900 hover:bg-gray-100 border-white font-bold min-h-[44px]"
-                >
-                  More Info
-                </Button>
-              </Link>
+              {/* Show More Info only if projectUrl is different from liveUrl */}
+              {projectUrl !== liveUrl && (
+                <Link href={projectUrl}>
+                  <Button
+                    variant="outline"
+                    className="bg-white text-gray-900 hover:bg-gray-100 border-white font-bold min-h-[44px]"
+                  >
+                    More Info
+                  </Button>
+                </Link>
+              )}
               {liveUrl && (
                 <a href={liveUrl} target="_blank" rel="noopener noreferrer">
                   <Button
