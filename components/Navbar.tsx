@@ -96,10 +96,10 @@ const Navbar = () => {
       className={`fixed w-full h-20 z-50 transition-all duration-300 ${
         shadow 
           ? "bg-[--color-bg]/95 backdrop-blur-md shadow-xl border-b" 
-          : "bg-[--color-bg]/80 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none"
+          : "bg-[--color-bg]/90 backdrop-blur-md border-b"
       }`}
       style={{
-        borderColor: shadow ? 'var(--color-border)' : 'transparent'
+        borderColor: 'var(--color-border)'
       }}
     >
       <div className="flex justify-between items-center w-full h-full px-4 2xl:px-16">
@@ -177,77 +177,98 @@ const Navbar = () => {
               </button>
             </SheetTrigger>
 
-          <SheetContent side="left" className="w-[75%] sm:w-[60%] p-0 bg-[--color-bg-card] border-[--color-border]">
-            <div className="flex flex-col h-full p-6">
+          <SheetContent side="right" className="w-[85%] sm:w-[70%] p-0 bg-[--color-bg] border-[--color-border]">
+            <div className="flex flex-col h-full">
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               <SheetDescription className="sr-only">
                 Main navigation menu with links and social connections
               </SheetDescription>
               
-              <div className="flex items-center mb-4">
-                <Image src={navLogo} width={87} height={50} alt="Logo" sizes="87px" />
+              {/* Header Section */}
+              <div className="border-b border-[--color-border] p-6 pb-4">
+                <div className="flex items-center justify-between mb-2">
+                  <Image src={navLogo} width={100} height={60} alt="Logo" sizes="100px" className="h-auto" />
+                </div>
+                <p className="text-xs text-[--color-text-light] mt-3">
+                  Self-Taught Frontend Developer
+                </p>
               </div>
 
-              <Separator className="my-4" />
-
-              <p className="text-sm text-[--color-text-light] py-2">
-                Self-Taught Frontend Developer
-              </p>
-
-              <Separator className="my-4" />
-
-              <motion.ul
+              {/* Navigation Links */}
+              <motion.div
                 variants={staggerContainer}
                 initial="hidden"
                 animate="visible"
-                className="flex flex-col gap-4 uppercase flex-1"
+                className="flex-1 overflow-y-auto py-6 px-4"
               >
-                {navLinks.map((link) => (
-                  <motion.li key={link.href} variants={staggerItem}>
-                    <Link
-                      href={link.href}
-                      onClick={() => setNav(false)}
-                      className="text-sm font-medium transition-all duration-300 block py-3 px-4 rounded-lg relative group"
-                      style={{
-                        color: activeSection === link.section ? 'var(--color-primary)' : 'var(--color-text)',
-                        backgroundColor: activeSection === link.section ? 'var(--color-primary)' : 'transparent',
-                        opacity: activeSection === link.section ? 0.15 : 1
-                      }}
-                    >
-                      <span className="relative z-10" style={{ color: activeSection === link.section ? 'var(--color-primary)' : 'var(--color-text)' }}>
-                        {link.label}
-                      </span>
-                      {activeSection === link.section && (
-                        <span 
-                          className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-3/4 rounded-r-full"
-                          style={{ backgroundColor: 'var(--color-primary)' }}
-                        />
-                      )}
-                    </Link>
-                  </motion.li>
-                ))}
-              </motion.ul>
+                <nav aria-label="Mobile Navigation">
+                  <ul className="flex flex-col gap-1">
+                    {navLinks.map((link) => (
+                      <motion.li key={link.href} variants={staggerItem}>
+                        <Link
+                          href={link.href}
+                          onClick={() => setNav(false)}
+                          className={`text-sm font-medium transition-all duration-300 block py-4 px-5 rounded-lg relative group hover:bg-[--color-bg-hover] ${
+                            activeSection === link.section ? 'bg-[--color-primary]/10' : ''
+                          }`}
+                        >
+                          <div className="flex items-center justify-between">
+                            <span 
+                              className="uppercase tracking-wide"
+                              style={{
+                                color: activeSection === link.section ? 'var(--color-primary)' : 'var(--color-text)',
+                                fontWeight: activeSection === link.section ? '600' : '500'
+                              }}
+                            >
+                              {link.label}
+                            </span>
+                            {activeSection === link.section && (
+                              <motion.span 
+                                initial={{ scale: 0 }}
+                                animate={{ scale: 1 }}
+                                className="w-2 h-2 rounded-full"
+                                style={{ backgroundColor: 'var(--color-primary)' }}
+                              />
+                            )}
+                          </div>
+                          {activeSection === link.section && (
+                            <motion.span 
+                              layoutId="activeIndicator"
+                              className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 rounded-r-full"
+                              style={{ backgroundColor: 'var(--color-primary)' }}
+                              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                            />
+                          )}
+                        </Link>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </nav>
+              </motion.div>
 
-              <div className="mt-auto">
-                <p className="uppercase tracking-widest text-sm mb-4" style={{ color: 'var(--color-primary)' }}>
+              {/* Footer Social Section */}
+              <div className="mt-auto border-t border-[--color-border] p-6">
+                <p className="uppercase tracking-wider text-xs font-semibold mb-4" style={{ color: 'var(--color-primary)' }}>
                   Let&apos;s Connect
                 </p>
                 <motion.div
                   variants={staggerContainer}
                   initial="hidden"
                   animate="visible"
-                  className="grid grid-cols-4 gap-4"
+                  className="flex gap-3"
                 >
                   {socialLinks.map((social) => {
                     const Icon = social.icon;
                     const content = (
                       <motion.div
+                        key={social.href}
                         variants={staggerItem}
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        className="rounded-full shadow-lg shadow-black/20 p-4 cursor-pointer bg-[--color-bg] hover:bg-[--color-bg-hover] transition-colors flex items-center justify-center min-h-[44px] min-w-[44px] border border-[--color-border]"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="rounded-lg p-3.5 cursor-pointer bg-[--color-bg-card] hover:bg-[--color-bg-hover] transition-all duration-200 flex items-center justify-center border border-[--color-border] hover:border-[--color-primary]/30"
+                        title={social.label}
                       >
-                        <Icon className="text-[--color-text]" size={18} />
+                        <Icon className="text-[--color-text]" size={20} />
                       </motion.div>
                     );
 
