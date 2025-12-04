@@ -5,7 +5,8 @@ import Link from "next/link";
 import { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { motion, useInView } from "framer-motion";
-import { Mail, FileUser, Github, Linkedin, ChevronsUp } from "lucide-react";
+import { toast } from "sonner";
+import { Mail, FileUser, Github, Linkedin, ChevronsUp, Copy } from "lucide-react";
 import ContactImg from "@/public/assets/contact.jpg";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -77,21 +78,21 @@ const Contact = () => {
           className="text-center mb-12"
         >
           {/* Section badge */}
-          <motion.div 
-            variants={fadeInUp} 
+          <motion.div
+            variants={fadeInUp}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 relative overflow-hidden border-2 border-[--color-border]"
           >
             {/* Animated gradient background */}
             <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 opacity-20 dark:opacity-30 animate-gradient-rotate" />
             <div className="absolute inset-[2px] bg-[--color-bg] rounded-full" />
-            
+
             {/* Content */}
             <span className="relative z-10 w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 animate-pulse shadow-lg shadow-blue-500/50" />
             <span className="relative z-10 text-sm font-semibold bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent uppercase tracking-wider">
               Contact
             </span>
           </motion.div>
-          
+
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-[--color-text]">Get In Touch</h2>
           <p className="text-[--color-text-light] text-base md:text-lg max-w-2xl mx-auto">
             Have a question or want to work together? I&apos;d love to hear from you.
@@ -109,7 +110,7 @@ const Contact = () => {
             <Card className="relative overflow-hidden h-full bg-[--color-bg-card] border-2 border-[--color-border] shadow-xl hover:shadow-2xl transition-all duration-300">
               {/* Decorative gradient overlay */}
               <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-br from-[--color-primary]/10 to-transparent rounded-full blur-3xl" />
-              
+
               <CardContent className="p-6 lg:p-8 flex flex-col h-full relative z-10">
                 <motion.div
                   whileHover={{ scale: 1.02 }}
@@ -118,7 +119,7 @@ const Contact = () => {
                 >
                   {/* Decorative border effect */}
                   <div className="absolute -inset-2 bg-gradient-to-r from-[--color-primary] to-[--color-primary-light] rounded-2xl opacity-20 blur-lg group-hover:opacity-30 transition-opacity" />
-                  
+
                   <Image
                     src={ContactImg}
                     alt="Contact Geoffrey Muthoni"
@@ -141,12 +142,24 @@ const Contact = () => {
                       </p>
                     </div>
                   </div>
-                  
-                  <div className="p-3 md:p-4 rounded-lg md:rounded-xl bg-[--color-bg] border border-[--color-border]">
+
+                  <div className="p-3 md:p-4 rounded-lg md:rounded-xl bg-[--color-bg] border border-[--color-border] space-y-3">
                     <p className="text-[--color-text-light] leading-relaxed text-sm md:text-base">
                       Open to freelance and full-time opportunities. Let&apos;s
                       discuss how I can contribute to your projects.
                     </p>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="w-full gap-2 text-[--color-primary] border-[--color-primary]/20 hover:bg-[--color-primary]/5"
+                      onClick={() => {
+                        navigator.clipboard.writeText("gmwangi3174@gmail.com");
+                        toast.success("Email copied to clipboard!");
+                      }}
+                    >
+                      <Copy size={14} />
+                      Copy Email Address
+                    </Button>
                   </div>
                 </div>
 
@@ -212,7 +225,7 @@ const Contact = () => {
             <Card className="relative overflow-hidden bg-[--color-bg-card] border-2 border-[--color-border] shadow-xl hover:shadow-2xl transition-all duration-300">
               {/* Decorative gradient overlay */}
               <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-[--color-primary]/10 to-transparent rounded-full blur-3xl" />
-              
+
               <CardContent className="p-6 lg:p-8 relative z-10">
                 <form
                   action="https://getform.io/f/fab4ff9f-c8b1-4076-a534-f5f98a069666"
@@ -332,7 +345,7 @@ const Contact = () => {
             >
               {/* Animated gradient border */}
               <div className="absolute -inset-1 bg-gradient-to-r from-[--color-primary] via-[--color-primary-light] to-[--color-primary] rounded-full opacity-70 blur-sm group-hover:opacity-100 transition-opacity animate-gradient-rotate" />
-              
+
               <div className="relative rounded-full shadow-xl p-5 cursor-pointer bg-[--color-bg-card] group-hover:bg-gradient-to-br group-hover:from-[--color-primary] group-hover:to-[--color-primary-light] transition-all duration-300 min-h-[68px] min-w-[68px] flex flex-col items-center justify-center border-2 border-[--color-border] group-hover:border-transparent">
                 <ChevronsUp
                   className="text-[--color-primary] group-hover:text-white transition-colors mb-1"

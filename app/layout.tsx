@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/theme-provider";
 import { PersonStructuredData, WebsiteStructuredData, ProfilePageStructuredData } from "@/components/StructuredData";
 import { GoogleAnalytics } from "@/components/Analytics";
+import { Toaster } from "sonner";
 
 const raleway = Raleway({
   subsets: ["latin"],
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
   description: "Self-taught Frontend Developer specializing in React, Next.js, and WordPress. Building modern, responsive web applications with exceptional user experiences. 4+ years of experience.",
   keywords: [
     "Frontend Developer",
-    "React Developer", 
+    "React Developer",
     "Next.js Developer",
     "WordPress Developer",
     "Web Developer",
@@ -136,6 +137,7 @@ export default function RootLayout({
           <Navbar />
           {children}
           <Footer />
+          <Toaster position="bottom-right" richColors />
         </ThemeProvider>
       </body>
     </html>

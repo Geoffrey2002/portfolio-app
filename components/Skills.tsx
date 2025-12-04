@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/carousel";
 import { fadeInUp, staggerContainer, staggerItem } from "@/lib/animations";
 import { Star, Trophy } from "lucide-react";
+import Marquee from "react-fast-marquee";
 
 interface Skill {
   name: string;
@@ -33,67 +34,67 @@ interface Skill {
 }
 
 const skills: Skill[] = [
-  { 
-    name: "HTML", 
-    image: Html, 
-    proficiency: 95, 
-    category: "Frontend", 
+  {
+    name: "HTML",
+    image: Html,
+    proficiency: 95,
+    category: "Frontend",
     yearsOfExperience: 4,
     description: "Semantic markup & accessibility"
   },
-  { 
-    name: "CSS", 
-    image: Css, 
-    proficiency: 90, 
-    category: "Frontend", 
+  {
+    name: "CSS",
+    image: Css,
+    proficiency: 90,
+    category: "Frontend",
     yearsOfExperience: 4,
     description: "Modern styling & animations"
   },
-  { 
-    name: "JavaScript", 
-    image: Javascript, 
-    proficiency: 90, 
-    category: "Frontend", 
+  {
+    name: "JavaScript",
+    image: Javascript,
+    proficiency: 90,
+    category: "Frontend",
     yearsOfExperience: 4,
     description: "ES6+ & async programming"
   },
-  { 
-    name: "React", 
-    image: ReactImg, 
-    proficiency: 85, 
-    category: "Frontend", 
+  {
+    name: "React",
+    image: ReactImg,
+    proficiency: 85,
+    category: "Frontend",
     yearsOfExperience: 3,
     description: "Hooks, Context & performance"
   },
-  { 
-    name: "Tailwind", 
-    image: Tailwind, 
-    proficiency: 90, 
-    category: "Frontend", 
+  {
+    name: "Tailwind",
+    image: Tailwind,
+    proficiency: 90,
+    category: "Frontend",
     yearsOfExperience: 3,
     description: "Utility-first CSS framework"
   },
-  { 
-    name: "Next.js", 
-    image: NextJS, 
-    proficiency: 85, 
-    category: "Frontend", 
+  {
+    name: "Next.js",
+    image: NextJS,
+    proficiency: 85,
+    category: "Frontend",
     yearsOfExperience: 2,
     description: "SSR, SSG & App Router"
   },
-  { 
-    name: "Supabase", 
-    image: Supabase, 
-    proficiency: 75, 
-    category: "Backend", 
+  {
+    name: "Supabase",
+    image: Supabase,
+    proficiency: 75,
+    category: "Backend",
     yearsOfExperience: 2,
     description: "Authentication & database"
   },
-  { 
-    name: "WordPress", 
-    image: WordPress, 
-    proficiency: 80, 
-    category: "CMS", 
+  {
+    name: "WordPress",
+    image: WordPress,
+    proficiency: 80,
+    category: "CMS",
     yearsOfExperience: 4,
     description: "Theme & plugin development"
   },
@@ -153,7 +154,7 @@ const SkillCard = ({ skill, isInView }: { skill: Skill; isInView: boolean }) => 
       <Card className="relative overflow-hidden h-full bg-[--color-bg-card] border-2 border-[--color-border] hover:border-[--color-primary]/30 transition-all duration-300 hover:shadow-2xl hover:shadow-[--color-primary]/10">
         {/* Gradient overlay on hover */}
         <div className="absolute inset-0 bg-gradient-to-br from-[--color-primary]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        
+
         <CardContent className="p-6 flex flex-col items-center text-center relative z-10 h-full">
           {/* Top badge for expert level */}
           {skill.proficiency >= 90 && (
@@ -261,14 +262,14 @@ const Skills = () => {
           className="text-center mb-16"
         >
           {/* Section badge */}
-          <motion.div 
-            variants={fadeInUp} 
+          <motion.div
+            variants={fadeInUp}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 relative overflow-hidden border-2 border-[--color-border]"
           >
             {/* Animated gradient background */}
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 opacity-20 dark:opacity-30 animate-gradient-rotate" />
             <div className="absolute inset-[2px] bg-[--color-bg] rounded-full" />
-            
+
             {/* Content */}
             <span className="relative z-10 w-2 h-2 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 animate-pulse shadow-lg shadow-cyan-500/50" />
             <span className="relative z-10 text-sm font-semibold bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 bg-clip-text text-transparent uppercase tracking-wider">
@@ -285,71 +286,38 @@ const Skills = () => {
           </motion.div>
         </motion.div>
 
-        {/* Tabs */}
+        {/* Tech Stack Marquee */}
         <motion.div
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={fadeInUp}
+          className="mb-16"
         >
-          <Tabs defaultValue="all" value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <div className="flex justify-center mb-8 md:mb-12">
-              <div className="w-full overflow-x-auto pb-2 px-2 md:px-0">
-                <TabsList className="flex gap-1 md:gap-2 bg-[--color-bg-card] p-1.5 md:p-2 border-2 border-[--color-border] rounded-xl shadow-lg min-w-max mx-auto">
-                  <TabsTrigger value="all" className="text-xs md:text-sm px-3 md:px-4 py-2 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-500 data-[state=active]:to-blue-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-cyan-500/20 transition-all whitespace-nowrap">
-                    All Skills
-                  </TabsTrigger>
-                  <TabsTrigger value="frontend" className="text-xs md:text-sm px-3 md:px-4 py-2 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-500 data-[state=active]:to-blue-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-cyan-500/20 transition-all whitespace-nowrap">
-                    Frontend
-                  </TabsTrigger>
-                  <TabsTrigger value="backend" className="text-xs md:text-sm px-3 md:px-4 py-2 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-500 data-[state=active]:to-blue-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-cyan-500/20 transition-all whitespace-nowrap">
-                    Backend
-                  </TabsTrigger>
-                  <TabsTrigger value="cms" className="text-xs md:text-sm px-3 md:px-4 py-2 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-500 data-[state=active]:to-blue-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-cyan-500/20 transition-all whitespace-nowrap">
-                    CMS
-                  </TabsTrigger>
-                </TabsList>
+          <div className="w-full py-8 overflow-hidden bg-[--color-bg-card]/50 border-y border-[--color-border] relative">
+            {/* Gradient masks for smooth fade effect */}
+            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[--color-bg] to-transparent z-10" />
+            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[--color-bg] to-transparent z-10" />
+
+            <Marquee gradient={false} speed={40} pauseOnHover={true}>
+              <div className="flex items-center gap-12 md:gap-24 px-6 md:px-12">
+                {skills.map((skill, index) => (
+                  <div key={index} className="flex flex-col items-center gap-3 group cursor-pointer">
+                    <div className="relative w-16 h-16 md:w-20 md:h-20 transition-transform duration-300 group-hover:scale-110 grayscale group-hover:grayscale-0 opacity-70 group-hover:opacity-100 bg-[--color-bg-card] rounded-2xl p-3 border border-[--color-border] shadow-sm group-hover:shadow-md">
+                      <Image
+                        src={skill.image}
+                        alt={skill.name}
+                        fill
+                        className="object-contain p-2"
+                      />
+                    </div>
+                    <span className="text-xs md:text-sm font-medium text-[--color-text-light] group-hover:text-[--color-primary] transition-colors">
+                      {skill.name}
+                    </span>
+                  </div>
+                ))}
               </div>
-            </div>
-
-            {Object.entries(categories).map(([key, categorySkills]) => (
-              <TabsContent key={key} value={key} className="mt-0">
-                {/* Desktop Grid View */}
-                <motion.div
-                  variants={staggerContainer}
-                  initial="hidden"
-                  animate={isInView ? "visible" : "hidden"}
-                  className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
-                >
-                  {categorySkills.map((skill) => (
-                    <motion.div key={skill.name} variants={staggerItem}>
-                      <SkillCard skill={skill} isInView={isInView} />
-                    </motion.div>
-                  ))}
-                </motion.div>
-
-                {/* Mobile Carousel View */}
-                <div className="md:hidden">
-                  <Carousel
-                    opts={{
-                      align: "start",
-                      loop: true,
-                    }}
-                    className="w-full"
-                  >
-                    <CarouselContent>
-                      {categorySkills.map((skill) => (
-                        <CarouselItem key={skill.name} className="basis-[85%] sm:basis-1/2">
-                          <SkillCard skill={skill} isInView={isInView} />
-                        </CarouselItem>
-                      ))}
-                    </CarouselContent>
-                    <CarouselPrevious className="left-2" />
-                    <CarouselNext className="right-2" />
-                  </Carousel>
-                </div>
-              </TabsContent>
-            ))}
-          </Tabs>
+            </Marquee>
+          </div>
         </motion.div>
 
         {/* Stats section */}

@@ -9,6 +9,7 @@ import capture from "@/public/assets/projects/capture.png";
 import ezziaProject from "@/public/assets/projects/EzziaProject.jpg";
 import kingsgateProject from "@/public/assets/projects/kingsgateProject.jpg";
 import mwangoProject from "@/public/assets/projects/mwangoProject.jpg";
+import jendieProject from "@/public/assets/projects/jendieweb.png";
 import ProjectItem from "./ProjectItem";
 import { fadeInUp, staggerContainer, staggerItem } from "@/lib/animations";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -26,6 +27,14 @@ const Projects = () => {
       description: "A stunning photography portfolio with modern UI and smooth animations",
       liveUrl: "https://example.com",
       githubUrl: "https://github.com/Geoffrey2002",
+    },
+    {
+      title: "Jendie Automobiles",
+      backgroundImg: jendieProject,
+      projectUrl: "https://jendie.co.ke/",
+      tech: ["Next.js", "TypeScript", "Shadcn UI"],
+      description: "A modern and responsive website for Jendie Automobiles Limited",
+      liveUrl: "https://jendie.co.ke/",
     },
   ];
 
@@ -46,7 +55,7 @@ const Projects = () => {
       tech: ["React", "JavaScript", "API"],
       description: "Order food online with real-time updates and seamless checkout",
       liveUrl: "https://example.com",
-      githubUrl: "https://github.com/Geoffrey2002",
+      githubUrl: "https://github.com/Geoffrey2002/foodApp",
     },
     {
       title: "Weather App",
@@ -55,7 +64,7 @@ const Projects = () => {
       tech: ["React", "JavaScript", "API"],
       description: "Get real-time weather updates for any location worldwide",
       liveUrl: "https://example.com",
-      githubUrl: "https://github.com/Geoffrey2002",
+      githubUrl: "https://github.com/Geoffrey2002/nxt-weather-apptw",
     },
   ];
 
@@ -81,7 +90,7 @@ const Projects = () => {
       backgroundImg: mwangoProject,
       projectUrl: "https://mwangocapital.com/",
       tech: ["WordPress", "Custom Development", "Business Tools"],
-      description: "Professional financial services and investment management platform",
+      description: "Professional financial website for Mwango Capital",
       liveUrl: "https://mwangocapital.com/",
     },
   ];
@@ -105,14 +114,14 @@ const Projects = () => {
           className="text-center mb-16"
         >
           {/* Section badge */}
-          <motion.div 
-            variants={fadeInUp} 
+          <motion.div
+            variants={fadeInUp}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 relative overflow-hidden border-2 border-[--color-border]"
           >
             {/* Animated gradient background */}
             <div className="absolute inset-0 bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500 opacity-20 dark:opacity-30 animate-gradient-rotate" />
             <div className="absolute inset-[2px] bg-[--color-bg] rounded-full" />
-            
+
             {/* Content */}
             <span className="relative z-10 w-2 h-2 rounded-full bg-gradient-to-r from-violet-500 to-purple-500 animate-pulse shadow-lg shadow-violet-500/50" />
             <span className="relative z-10 text-sm font-semibold bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500 bg-clip-text text-transparent uppercase tracking-wider">
@@ -133,23 +142,21 @@ const Projects = () => {
           className="mt-8"
         >
           <Tabs defaultValue="all" className="w-full">
-            <div className="flex justify-center mb-8 md:mb-12">
-              <div className="w-full overflow-x-auto pb-2 px-2 md:px-0">
-                <TabsList className="flex gap-1 md:gap-2 bg-[--color-bg-card] p-1.5 md:p-2 border-2 border-[--color-border] rounded-xl shadow-lg min-w-max mx-auto">
-                  <TabsTrigger value="all" className="text-xs md:text-sm px-3 md:px-4 py-2 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-violet-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-violet-500/20 transition-all whitespace-nowrap">
-                    All Projects
-                  </TabsTrigger>
-                  <TabsTrigger value="nextjs" className="text-xs md:text-sm px-3 md:px-4 py-2 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-violet-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-violet-500/20 transition-all whitespace-nowrap">
-                    Next.js
-                  </TabsTrigger>
-                  <TabsTrigger value="react" className="text-xs md:text-sm px-3 md:px-4 py-2 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-violet-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-violet-500/20 transition-all whitespace-nowrap">
-                    React
-                  </TabsTrigger>
-                  <TabsTrigger value="wordpress" className="text-xs md:text-sm px-3 md:px-4 py-2 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-violet-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-violet-500/20 transition-all whitespace-nowrap">
-                    WordPress
-                  </TabsTrigger>
-                </TabsList>
-              </div>
+            <div className="flex justify-center mb-8 md:mb-12 w-full">
+              <TabsList className="grid grid-cols-2 md:flex md:flex-row gap-2 bg-[--color-bg-card] p-2 border-2 border-[--color-border] rounded-xl shadow-lg w-full md:w-auto h-auto">
+                <TabsTrigger value="all" className="text-sm px-4 py-2 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-violet-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-violet-500/20 transition-all">
+                  All Projects
+                </TabsTrigger>
+                <TabsTrigger value="nextjs" className="text-sm px-4 py-2 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-violet-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-violet-500/20 transition-all">
+                  Next.js
+                </TabsTrigger>
+                <TabsTrigger value="react" className="text-sm px-4 py-2 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-violet-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-violet-500/20 transition-all">
+                  React
+                </TabsTrigger>
+                <TabsTrigger value="wordpress" className="text-sm px-4 py-2 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-violet-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-violet-500/20 transition-all">
+                  WordPress
+                </TabsTrigger>
+              </TabsList>
             </div>
 
             <TabsContent value="all" className="mt-0">

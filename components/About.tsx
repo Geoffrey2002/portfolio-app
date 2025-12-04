@@ -17,8 +17,8 @@ const About = () => {
 
   const highlights = [
     { icon: Code, label: "Self-Taught Developer", value: "4+ Years" },
-    { icon: Laptop, label: "Projects Completed", value: "50+" },
-    { icon: Rocket, label: "Technologies", value: "10+" },
+    { icon: Laptop, label: "Projects Completed", value: "10+" },
+    { icon: Rocket, label: "Technologies", value: "8" },
   ];
 
   return (

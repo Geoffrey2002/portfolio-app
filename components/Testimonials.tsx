@@ -26,36 +26,21 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: "John Doe",
-    role: "CEO",
-    company: "Tech Solutions Inc",
+    name: "Dr. Sarah Miller",
+    role: "Medical Director",
+    company: "Ezzia Healthcare PLLC",
     content:
-      "Geoffrey's expertise in React and Next.js helped us build a modern, performant web application. His attention to detail and commitment to quality is outstanding.",
+      "Geoffrey transformed our online presence. The new website is not only beautiful but also makes it easy for our patients to find the services they need. Highly recommended!",
   },
   {
     id: 2,
-    name: "Sarah Johnson",
-    role: "Product Manager",
-    company: "Digital Ventures",
+    name: "James Wilson",
+    role: "Administrator",
+    company: "Kingsgate Highlands AFH",
     content:
-      "Working with Geoffrey was a pleasure. He delivered our project on time and exceeded our expectations. His technical skills and communication are top-notch.",
+      "Our adult family home needed a professional website to showcase our care services. Geoffrey delivered a site that perfectly represents our compassionate approach and has helped families find us easily.",
   },
-  {
-    id: 3,
-    name: "Michael Chen",
-    role: "CTO",
-    company: "Innovate Labs",
-    content:
-      "Geoffrey is a talented developer who brings creative solutions to complex problems. His work on our WordPress site was exceptional and the results speak for themselves.",
-  },
-  {
-    id: 4,
-    name: "Emily Rodriguez",
-    role: "Marketing Director",
-    company: "Growth Co",
-    content:
-      "The website Geoffrey built for us has increased our conversion rates significantly. His understanding of both design and development made the process seamless.",
-  },
+ 
 ];
 
 const Testimonials = () => {
@@ -82,14 +67,14 @@ const Testimonials = () => {
           className="text-center mb-10 md:mb-16"
         >
           {/* Section badge */}
-          <motion.div 
-            variants={fadeInUp} 
+          <motion.div
+            variants={fadeInUp}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 relative overflow-hidden border-2 border-[--color-border]"
           >
             {/* Animated gradient background */}
             <div className="absolute inset-0 bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 opacity-20 dark:opacity-30 animate-gradient-rotate" />
             <div className="absolute inset-[2px] bg-[--color-bg] rounded-full" />
-            
+
             {/* Content */}
             <span className="relative z-10 w-2 h-2 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 animate-pulse shadow-lg shadow-amber-500/50" />
             <span className="relative z-10 text-sm font-semibold bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 bg-clip-text text-transparent uppercase tracking-wider">
@@ -127,21 +112,21 @@ const Testimonials = () => {
                     <Card className="relative overflow-hidden border-2 border-[--color-border] bg-[--color-bg-card] shadow-xl hover:shadow-2xl transition-all duration-300">
                       {/* Decorative gradient corner */}
                       <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[--color-primary]/10 to-transparent rounded-full blur-2xl" />
-                      
+
                       <CardContent className="p-6 md:p-8 lg:p-12 relative z-10">
                         {/* Quote icon with enhanced styling */}
                         <div className="mb-4 md:mb-6 inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-gradient-to-br from-amber-500 to-orange-500 shadow-lg shadow-amber-500/20">
                           <Quote className="text-lg md:text-2xl text-white" />
                         </div>
-                        
+
                         {/* Testimonial text */}
                         <p className="text-[--color-text] text-base md:text-lg lg:text-xl leading-relaxed mb-6 md:mb-8 font-medium">
                           &quot;{testimonial.content}&quot;
                         </p>
-                        
+
                         {/* Divider */}
                         <div className="h-px bg-gradient-to-r from-transparent via-[--color-border] to-transparent mb-6" />
-                        
+
                         {/* Author info */}
                         <div className="flex items-center gap-3 md:gap-4">
                           <div className="relative group">
@@ -186,7 +171,7 @@ const Testimonials = () => {
             </motion.div>
           ))}
         </div>
-        
+
         {/* Trust indicators */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -206,7 +191,7 @@ const Testimonials = () => {
           <div className="h-10 md:h-12 w-px bg-[--color-border]" />
           <div className="text-center">
             <div className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-orange-500 to-rose-500 bg-clip-text text-transparent mb-1 md:mb-2">
-              50+
+              10+
             </div>
             <div className="text-xs md:text-sm text-[--color-text-light] font-medium">
               Projects Delivered

@@ -34,7 +34,7 @@ const Navbar = () => {
     if (pathname === "/resume") {
       setActiveSection("resume");
       return;
-    } 
+    }
     // Blog section commented out
     // else if (pathname === "/blog" || pathname.startsWith("/blog/")) {
     //   setActiveSection("blog");
@@ -48,7 +48,7 @@ const Navbar = () => {
 
     // Only track scroll position on home page
     const handleScroll = () => {
-      const sections = ["home", "about", "skills", "projects", "contact"];
+      const sections = ["home", "about", "skills", "experience", "projects", "contact"];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -56,7 +56,7 @@ const Navbar = () => {
         if (element) {
           const offsetTop = element.offsetTop;
           const offsetHeight = element.offsetHeight;
-          
+
           if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
             setActiveSection(section);
             break;
@@ -74,6 +74,7 @@ const Navbar = () => {
     { href: "/", label: "Home", section: "home" },
     { href: "/#about", label: "About", section: "about" },
     { href: "/#skills", label: "Skills", section: "skills" },
+    { href: "/#experience", label: "Experience", section: "experience" },
     { href: "/#projects", label: "Projects", section: "projects" },
     // { href: "/blog", label: "Blog", section: "blog" }, // Commented out - Blog section
     { href: "/resume", label: "Resume", section: "resume" },
@@ -92,11 +93,10 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed w-full h-20 z-50 transition-all duration-300 ${
-        shadow 
-          ? "bg-[--color-bg]/95 backdrop-blur-md shadow-xl border-b" 
-          : "bg-[--color-bg]/90 backdrop-blur-md border-b"
-      }`}
+      className={`fixed w-full h-20 z-50 transition-all duration-300 ${shadow
+        ? "bg-[--color-bg]/95 backdrop-blur-md shadow-xl border-b"
+        : "bg-[--color-bg]/90 backdrop-blur-md border-b"
+        }`}
       style={{
         borderColor: 'var(--color-border)'
       }}
@@ -140,20 +140,18 @@ const Navbar = () => {
                 >
                   <span className="relative z-10">{link.label}</span>
                   {/* Active background pill */}
-                  <span 
-                    className={`absolute inset-0 rounded-full transition-all duration-300 ${
-                      activeSection === link.section ? "opacity-100 scale-100" : "opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100"
-                    }`}
-                    style={{ 
+                  <span
+                    className={`absolute inset-0 rounded-full transition-all duration-300 ${activeSection === link.section ? "opacity-100 scale-100" : "opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100"
+                      }`}
+                    style={{
                       backgroundColor: 'var(--color-primary)',
                       opacity: activeSection === link.section ? 0.15 : 0.1
                     }}
                   />
                   {/* Bottom indicator line */}
-                  <span 
-                    className={`absolute -bottom-1 left-1/2 -translate-x-1/2 h-0.5 rounded-full transition-all duration-300 ${
-                      activeSection === link.section ? "w-3/4 opacity-100" : "w-0 opacity-0 group-hover:w-1/2 group-hover:opacity-100"
-                    }`}
+                  <span
+                    className={`absolute -bottom-1 left-1/2 -translate-x-1/2 h-0.5 rounded-full transition-all duration-300 ${activeSection === link.section ? "w-3/4 opacity-100" : "w-0 opacity-0 group-hover:w-1/2 group-hover:opacity-100"
+                      }`}
                     style={{ backgroundColor: 'var(--color-primary)' }}
                   />
                 </Link>
@@ -176,126 +174,125 @@ const Navbar = () => {
               </button>
             </SheetTrigger>
 
-          <SheetContent side="right" className="w-[85%] sm:w-[70%] p-0 bg-[--color-bg] border-[--color-border]">
-            <div className="flex flex-col h-full">
-              <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
-              <SheetDescription className="sr-only">
-                Main navigation menu with links and social connections
-              </SheetDescription>
-              
-              {/* Header Section */}
-              <div className="border-b border-[--color-border] p-6 pb-4">
-                <div className="flex items-center justify-between mb-2">
-                  <Image src={navLogo} width={100} height={60} alt="Logo" sizes="100px" className="h-auto" />
+            <SheetContent side="right" className="w-[85%] sm:w-[70%] p-0 bg-[--color-bg] border-[--color-border]">
+              <div className="flex flex-col h-full">
+                <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+                <SheetDescription className="sr-only">
+                  Main navigation menu with links and social connections
+                </SheetDescription>
+
+                {/* Header Section */}
+                <div className="border-b border-[--color-border] p-6 pb-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <Image src={navLogo} width={100} height={60} alt="Logo" sizes="100px" className="h-auto" />
+                  </div>
+                  <p className="text-xs text-[--color-text-light] mt-3">
+                    Self-Taught Frontend Developer
+                  </p>
                 </div>
-                <p className="text-xs text-[--color-text-light] mt-3">
-                  Self-Taught Frontend Developer
-                </p>
-              </div>
 
-              {/* Navigation Links */}
-              <motion.div
-                variants={staggerContainer}
-                initial="hidden"
-                animate="visible"
-                className="flex-1 overflow-y-auto py-6 px-4"
-              >
-                <nav aria-label="Mobile Navigation">
-                  <ul className="flex flex-col gap-1">
-                    {navLinks.map((link) => (
-                      <motion.li key={link.href} variants={staggerItem}>
-                        <Link
-                          href={link.href}
-                          onClick={() => setNav(false)}
-                          className={`text-sm font-medium transition-all duration-300 block py-4 px-5 rounded-lg relative group hover:bg-[--color-bg-hover] ${
-                            activeSection === link.section ? 'bg-[--color-primary]/10' : ''
-                          }`}
-                        >
-                          <div className="flex items-center justify-between">
-                            <span 
-                              className="uppercase tracking-wide"
-                              style={{
-                                color: activeSection === link.section ? 'var(--color-primary)' : 'var(--color-text)',
-                                fontWeight: activeSection === link.section ? '600' : '500'
-                              }}
-                            >
-                              {link.label}
-                            </span>
-                            {activeSection === link.section && (
-                              <motion.span 
-                                initial={{ scale: 0 }}
-                                animate={{ scale: 1 }}
-                                className="w-2 h-2 rounded-full"
-                                style={{ backgroundColor: 'var(--color-primary)' }}
-                              />
-                            )}
-                          </div>
-                          {activeSection === link.section && (
-                            <motion.span 
-                              layoutId="activeIndicator"
-                              className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 rounded-r-full"
-                              style={{ backgroundColor: 'var(--color-primary)' }}
-                              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                            />
-                          )}
-                        </Link>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </nav>
-              </motion.div>
-
-              {/* Footer Social Section */}
-              <div className="mt-auto border-t border-[--color-border] p-6">
-                <p className="uppercase tracking-wider text-xs font-semibold mb-4" style={{ color: 'var(--color-primary)' }}>
-                  Let&apos;s Connect
-                </p>
+                {/* Navigation Links */}
                 <motion.div
                   variants={staggerContainer}
                   initial="hidden"
                   animate="visible"
-                  className="flex gap-3"
+                  className="flex-1 overflow-y-auto py-6 px-4"
                 >
-                  {socialLinks.map((social) => {
-                    const Icon = social.icon;
-                    const content = (
-                      <motion.div
-                        key={social.href}
-                        variants={staggerItem}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="rounded-lg p-3.5 cursor-pointer bg-[--color-bg-card] hover:bg-[--color-bg-hover] transition-all duration-200 flex items-center justify-center border border-[--color-border] hover:border-[--color-primary]/30"
-                        title={social.label}
-                      >
-                        <Icon className="text-[--color-text]" size={20} />
-                      </motion.div>
-                    );
-
-                    return social.internal ? (
-                      <Link
-                        key={social.href}
-                        href={social.href}
-                        onClick={() => setNav(false)}
-                        aria-label={social.label}
-                      >
-                        {content}
-                      </Link>
-                    ) : (
-                      <a
-                        key={social.href}
-                        href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={social.label}
-                      >
-                        {content}
-                      </a>
-                    );
-                  })}
+                  <nav aria-label="Mobile Navigation">
+                    <ul className="flex flex-col gap-1">
+                      {navLinks.map((link) => (
+                        <motion.li key={link.href} variants={staggerItem}>
+                          <Link
+                            href={link.href}
+                            onClick={() => setNav(false)}
+                            className={`text-sm font-medium transition-all duration-300 block py-4 px-5 rounded-lg relative group hover:bg-[--color-bg-hover] ${activeSection === link.section ? 'bg-[--color-primary]/10' : ''
+                              }`}
+                          >
+                            <div className="flex items-center justify-between">
+                              <span
+                                className="uppercase tracking-wide"
+                                style={{
+                                  color: activeSection === link.section ? 'var(--color-primary)' : 'var(--color-text)',
+                                  fontWeight: activeSection === link.section ? '600' : '500'
+                                }}
+                              >
+                                {link.label}
+                              </span>
+                              {activeSection === link.section && (
+                                <motion.span
+                                  initial={{ scale: 0 }}
+                                  animate={{ scale: 1 }}
+                                  className="w-2 h-2 rounded-full"
+                                  style={{ backgroundColor: 'var(--color-primary)' }}
+                                />
+                              )}
+                            </div>
+                            {activeSection === link.section && (
+                              <motion.span
+                                layoutId="activeIndicator"
+                                className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 rounded-r-full"
+                                style={{ backgroundColor: 'var(--color-primary)' }}
+                                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                              />
+                            )}
+                          </Link>
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </nav>
                 </motion.div>
+
+                {/* Footer Social Section */}
+                <div className="mt-auto border-t border-[--color-border] p-6">
+                  <p className="uppercase tracking-wider text-xs font-semibold mb-4" style={{ color: 'var(--color-primary)' }}>
+                    Let&apos;s Connect
+                  </p>
+                  <motion.div
+                    variants={staggerContainer}
+                    initial="hidden"
+                    animate="visible"
+                    className="flex gap-3"
+                  >
+                    {socialLinks.map((social) => {
+                      const Icon = social.icon;
+                      const content = (
+                        <motion.div
+                          key={social.href}
+                          variants={staggerItem}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className="rounded-lg p-3.5 cursor-pointer bg-[--color-bg-card] hover:bg-[--color-bg-hover] transition-all duration-200 flex items-center justify-center border border-[--color-border] hover:border-[--color-primary]/30"
+                          title={social.label}
+                        >
+                          <Icon className="text-[--color-text]" size={20} />
+                        </motion.div>
+                      );
+
+                      return social.internal ? (
+                        <Link
+                          key={social.href}
+                          href={social.href}
+                          onClick={() => setNav(false)}
+                          aria-label={social.label}
+                        >
+                          {content}
+                        </Link>
+                      ) : (
+                        <a
+                          key={social.href}
+                          href={social.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={social.label}
+                        >
+                          {content}
+                        </a>
+                      );
+                    })}
+                  </motion.div>
+                </div>
               </div>
-            </div>
-          </SheetContent>
+            </SheetContent>
           </Sheet>
         </div>
       </div>

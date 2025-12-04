@@ -24,12 +24,18 @@ const Contact = dynamic(() => import("@/components/Contact"), {
   ssr: true,
 });
 
+const Experience = dynamic(() => import("@/components/Experience"), {
+  loading: () => <LoadingState />,
+  ssr: true,
+});
+
 export default function Home() {
   return (
     <main>
       <Main />
       <About />
       <Skills />
+      <Experience />
       <Projects />
       <Testimonials />
       <Contact />
