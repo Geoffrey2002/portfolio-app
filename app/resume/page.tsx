@@ -23,7 +23,7 @@ const ResumePage = () => {
     {
       id: 1,
       title: "Front-End Developer & Customer Care Head",
-      company: "Jendie Automilies Ltd",
+      company: "Jendie Automobiles Ltd",
       period: "Jun 2022 - October 2025",
       location: "Nairobi",
       description: [
