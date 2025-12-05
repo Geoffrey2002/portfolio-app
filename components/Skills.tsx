@@ -13,16 +13,8 @@ import Supabase from "@/public/assets/skills/supaBase__1_-removebg-preview.png";
 import WordPress from "@/public/assets/skills/wordpress.png";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import { fadeInUp, staggerContainer, staggerItem } from "@/lib/animations";
 import { Star, Trophy } from "lucide-react";
-import Marquee from "react-fast-marquee";
 
 interface Skill {
   name: string;
@@ -100,132 +92,36 @@ const skills: Skill[] = [
   },
 ];
 
-// Circular progress component
-const CircularProgress = ({ percentage, isInView, skillName }: { percentage: number; isInView: boolean; skillName: string }) => {
-  const radius = 45;
-  const circumference = 2 * Math.PI * radius;
-  const strokeDashoffset = circumference - (percentage / 100) * circumference;
 
-  return (
-    <div className="relative w-28 h-28">
-      <svg className="transform -rotate-90 w-28 h-28">
-        {/* Background circle */}
-        <circle
-          cx="56"
-          cy="56"
-          r={radius}
-          stroke="currentColor"
-          strokeWidth="5"
-          fill="none"
-          className="text-[--color-border]"
-        />
-        {/* Progress circle */}
-        <motion.circle
-          cx="56"
-          cy="56"
-          r={radius}
-          stroke={`url(#gradient-${skillName})`}
-          strokeWidth="5"
-          fill="none"
-          strokeLinecap="round"
-          strokeDasharray={circumference}
-          initial={{ strokeDashoffset: circumference }}
-          animate={isInView ? { strokeDashoffset: strokeDashoffset } : { strokeDashoffset: circumference }}
-          transition={{ duration: 1.5, ease: "easeOut", delay: 0.3 }}
-        />
-        <defs>
-          <linearGradient id={`gradient-${skillName}`} x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="var(--color-primary)" />
-            <stop offset="100%" stopColor="var(--color-primary-light)" />
-          </linearGradient>
-        </defs>
-      </svg>
-    </div>
-  );
-};
 
 const SkillCard = ({ skill, isInView }: { skill: Skill; isInView: boolean }) => {
   return (
     <motion.div
-      whileHover={{ y: -8, scale: 1.02 }}
+      whileHover={{ y: -5, scale: 1.02 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
       className="group h-full"
     >
-      <Card className="relative overflow-hidden h-full bg-[--color-bg-card] border-2 border-[--color-border] hover:border-[--color-primary]/30 transition-all duration-300 hover:shadow-2xl hover:shadow-[--color-primary]/10">
+      <Card className="relative overflow-hidden h-full bg-[--color-bg-card] border-2 border-[--color-border] hover:border-[--color-primary]/30 transition-all duration-300 hover:shadow-lg hover:shadow-[--color-primary]/10">
         {/* Gradient overlay on hover */}
         <div className="absolute inset-0 bg-gradient-to-br from-[--color-primary]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-        <CardContent className="p-6 flex flex-col items-center text-center relative z-10 h-full">
-          {/* Top badge for expert level */}
-          {skill.proficiency >= 90 && (
-            <motion.div
-              initial={{ scale: 0, rotate: -180 }}
-              animate={isInView ? { scale: 1, rotate: 0 } : { scale: 0, rotate: -180 }}
-              transition={{ delay: 0.5, duration: 0.5, type: "spring" }}
-              className="absolute top-3 right-3"
-            >
-              <div className="bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full p-2 shadow-lg">
-                <Trophy className="w-4 h-4 text-white" />
-              </div>
-            </motion.div>
-          )}
-
-          {/* Icon container with circular progress */}
-          <div className="relative mb-4 flex flex-col items-center">
-            <div className="relative">
-              <CircularProgress percentage={skill.proficiency} isInView={isInView} skillName={skill.name} />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-16 h-16 flex items-center justify-center">
-                  <Image
-                    src={skill.image}
-                    width={48}
-                    height={48}
-                    alt={`${skill.name} logo`}
-                    className="object-contain group-hover:scale-110 transition-transform duration-300"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-            </div>
-            {/* Percentage display below circle */}
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-              className="mt-2"
-            >
-              <span className="text-2xl font-bold text-[--color-primary]">{skill.proficiency}%</span>
-            </motion.div>
+        <CardContent className="p-4 flex flex-col items-center text-center relative z-10 h-full justify-center gap-3">
+          {/* Icon container */}
+          <div className="relative w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-[--color-bg] rounded-2xl border border-[--color-border] group-hover:border-[--color-primary]/20 transition-colors shadow-sm">
+            <Image
+              src={skill.image}
+              width={40}
+              height={40}
+              alt={`${skill.name} logo`}
+              className="object-contain group-hover:scale-110 transition-transform duration-300 w-10 h-10 md:w-12 md:h-12"
+              loading="lazy"
+            />
           </div>
 
           {/* Skill name */}
-          <h3 className="text-xl font-bold text-[--color-text] mb-2 group-hover:text-[--color-primary] transition-colors">
+          <h3 className="text-sm md:text-base font-bold text-[--color-text] group-hover:text-[--color-primary] transition-colors">
             {skill.name}
           </h3>
-
-          {/* Category badge */}
-          <div className="inline-flex items-center px-3 py-1 rounded-full bg-[--color-primary]/10 border border-[--color-primary]/20 mb-3">
-            <span className="text-xs font-medium text-[--color-primary]">
-              {skill.category}
-            </span>
-          </div>
-
-          {/* Description */}
-          {skill.description && (
-            <p className="text-sm text-[--color-text-light] mb-4 leading-relaxed">
-              {skill.description}
-            </p>
-          )}
-
-          {/* Experience */}
-          {skill.yearsOfExperience && (
-            <div className="mt-auto flex items-center gap-2 text-[--color-text-light]">
-              <Star className="w-3 h-3 text-[--color-primary]" />
-              <span className="text-sm font-medium">
-                {skill.yearsOfExperience}+ years experience
-              </span>
-            </div>
-          )}
         </CardContent>
       </Card>
     </motion.div>
@@ -286,38 +182,48 @@ const Skills = () => {
           </motion.div>
         </motion.div>
 
-        {/* Tech Stack Marquee */}
+        {/* Tabs */}
         <motion.div
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={fadeInUp}
-          className="mb-16"
         >
-          <div className="w-full py-8 overflow-hidden bg-[--color-bg-card]/50 border-y border-[--color-border] relative">
-            {/* Gradient masks for smooth fade effect */}
-            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[--color-bg] to-transparent z-10" />
-            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[--color-bg] to-transparent z-10" />
+          <Tabs defaultValue="all" value={activeTab} onValueChange={setActiveTab} className="w-full">
+            <div className="flex justify-center mb-8 md:mb-12 w-full">
+              <TabsList className="grid grid-cols-2 md:flex md:flex-row gap-2 bg-[--color-bg-card] p-2 border-2 border-[--color-border] rounded-xl shadow-lg w-full md:w-auto h-auto">
+                <TabsTrigger value="all" className="text-sm px-4 py-2 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-500 data-[state=active]:to-blue-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-cyan-500/20 transition-all">
+                  All Skills
+                </TabsTrigger>
+                <TabsTrigger value="frontend" className="text-sm px-4 py-2 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-500 data-[state=active]:to-blue-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-cyan-500/20 transition-all">
+                  Frontend
+                </TabsTrigger>
+                <TabsTrigger value="backend" className="text-sm px-4 py-2 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-500 data-[state=active]:to-blue-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-cyan-500/20 transition-all">
+                  Backend
+                </TabsTrigger>
+                <TabsTrigger value="cms" className="text-sm px-4 py-2 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-500 data-[state=active]:to-blue-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-cyan-500/20 transition-all">
+                  CMS
+                </TabsTrigger>
+              </TabsList>
+            </div>
 
-            <Marquee gradient={false} speed={40} pauseOnHover={true}>
-              <div className="flex items-center gap-12 md:gap-24 px-6 md:px-12">
-                {skills.map((skill, index) => (
-                  <div key={index} className="flex flex-col items-center gap-3 group cursor-pointer">
-                    <div className="relative w-16 h-16 md:w-20 md:h-20 transition-transform duration-300 group-hover:scale-110 grayscale group-hover:grayscale-0 opacity-70 group-hover:opacity-100 bg-[--color-bg-card] rounded-2xl p-3 border border-[--color-border] shadow-sm group-hover:shadow-md">
-                      <Image
-                        src={skill.image}
-                        alt={skill.name}
-                        fill
-                        className="object-contain p-2"
-                      />
-                    </div>
-                    <span className="text-xs md:text-sm font-medium text-[--color-text-light] group-hover:text-[--color-primary] transition-colors">
-                      {skill.name}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </Marquee>
-          </div>
+            {Object.entries(categories).map(([key, categorySkills]) => (
+              <TabsContent key={key} value={key} className="mt-0">
+                {/* Unified Grid View for Mobile and Desktop */}
+                <motion.div
+                  variants={staggerContainer}
+                  initial="hidden"
+                  animate={isInView ? "visible" : "hidden"}
+                  className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6 lg:gap-8"
+                >
+                  {categorySkills.map((skill) => (
+                    <motion.div key={skill.name} variants={staggerItem}>
+                      <SkillCard skill={skill} isInView={isInView} />
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </TabsContent>
+            ))}
+          </Tabs>
         </motion.div>
 
         {/* Stats section */}
@@ -353,4 +259,3 @@ const Skills = () => {
 };
 
 export default Skills;
-

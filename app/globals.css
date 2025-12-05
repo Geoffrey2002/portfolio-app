@@ -82,9 +82,11 @@ button {
   0% {
     background-position: 0% center;
   }
+
   50% {
     background-position: 100% center;
   }
+
   100% {
     background-position: 0% center;
   }
@@ -97,6 +99,8 @@ button {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+
 
 /* Accessibility: Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
@@ -111,7 +115,7 @@ button {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  
+
   .animate-gradient {
     animation: none !important;
   }
@@ -143,6 +147,7 @@ button {
 
 /* Mobile-specific improvements */
 @media (max-width: 768px) {
+
   /* Prevent horizontal scroll on mobile */
   body {
     overflow-x: hidden;
@@ -286,6 +291,7 @@ button {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -296,9 +302,11 @@ button {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -308,4 +316,3 @@ button {
   background-size: 200% 200%;
   animation: gradient-rotate 3s ease infinite;
 }
-
