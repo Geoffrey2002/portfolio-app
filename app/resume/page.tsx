@@ -23,8 +23,8 @@ const ResumePage = () => {
     {
       id: 1,
       title: "Front-End Developer & Customer Care Head",
-      company: "Jendie Procab Ltd",
-      period: "Jun 2022 - April 2025",
+      company: "Jendie Automilies Ltd",
+      period: "Jun 2022 - October 2025",
       location: "Nairobi",
       description: [
         "Designed and implemented responsive websites using HTML, CSS (Tailwind), and React",

@@ -10,6 +10,8 @@ import ezziaProject from "@/public/assets/projects/EzziaProject.jpg";
 import kingsgateProject from "@/public/assets/projects/kingsgateProject.jpg";
 import mwangoProject from "@/public/assets/projects/mwangoProject.jpg";
 import jendieProject from "@/public/assets/projects/jendieweb.png";
+import atozeeProject from "@/public/assets/projects/atozee.png";
+import securedProject from "@/public/assets/projects/secured.png";
 import ProjectItem from "./ProjectItem";
 import { fadeInUp, staggerContainer, staggerItem } from "@/lib/animations";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -20,6 +22,22 @@ const Projects = () => {
 
   const nextjsProjects = [
     {
+      title: "Jendie Automobiles",
+      backgroundImg: jendieProject,
+      projectUrl: "https://jendie.co.ke/",
+      tech: ["Next.js", "TypeScript", "Shadcn UI"],
+      description: "A modern and responsive website for Jendie Automobiles Limited",
+      liveUrl: "https://jendie.co.ke/",
+    },
+    {
+      title: "Atozee LLC",
+      backgroundImg: atozeeProject,
+      projectUrl: "https://atozeellc.com/",
+      tech: ["Next.js", "TypeScript", "Shadcn UI"],
+      description: "Corporate website for Atozee LLC built with modern technologies",
+      liveUrl: "https://atozeellc.com/",
+    },
+    {
       title: "Photography Portfolio",
       backgroundImg: capture,
       projectUrl: "/photograph",
@@ -28,17 +46,17 @@ const Projects = () => {
       liveUrl: "https://example.com",
       githubUrl: "https://github.com/Geoffrey2002",
     },
-    {
-      title: "Jendie Automobiles",
-      backgroundImg: jendieProject,
-      projectUrl: "https://jendie.co.ke/",
-      tech: ["Next.js", "TypeScript", "Shadcn UI"],
-      description: "A modern and responsive website for Jendie Automobiles Limited",
-      liveUrl: "https://jendie.co.ke/",
-    },
   ];
 
   const reactProjects = [
+    {
+      title: "Secured Wishes",
+      backgroundImg: securedProject,
+      projectUrl: "https://securedwishes.com/",
+      tech: ["React", "TailwindCSS", "CRUD"],
+      description: "A platform for securing personal documents and safekeeping wishes using a robust CRUD architecture",
+      liveUrl: "https://securedwishes.com/",
+    },
     {
       title: "Expense Tracker",
       backgroundImg: expenseApp,
@@ -62,7 +80,7 @@ const Projects = () => {
       backgroundImg: weatherApp,
       projectUrl: "/weather",
       tech: ["React", "JavaScript", "API"],
-      description: "Get real-time weather updates for any location worldwide",
+      description: "Real-time weather application consuming data from an external API for worldwide locations",
       liveUrl: "https://example.com",
       githubUrl: "https://github.com/Geoffrey2002/nxt-weather-apptw",
     },

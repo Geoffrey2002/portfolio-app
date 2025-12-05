@@ -149,12 +149,30 @@ const Contact = () => {
                       discuss how I can contribute to your projects.
                     </p>
                     <Button
+                      type="button"
                       variant="outline"
                       size="sm"
                       className="w-full gap-2 text-[--color-primary] border-[--color-primary]/20 hover:bg-[--color-primary]/5"
-                      onClick={() => {
-                        navigator.clipboard.writeText("gmwangi3174@gmail.com");
-                        toast.success("Email copied to clipboard!");
+                      onClick={async () => {
+                        const email = "gmwangi3174@gmail.com";
+                        try {
+                          await navigator.clipboard.writeText(email);
+                          toast.success("Email copied to clipboard!");
+                        } catch (err) {
+                          console.error("Failed to copy:", err);
+                          // Fallback for older browsers or non-secure contexts
+                          const textArea = document.createElement("textarea");
+                          textArea.value = email;
+                          document.body.appendChild(textArea);
+                          textArea.select();
+                          try {
+                            document.execCommand("copy");
+                            toast.success("Email copied to clipboard!");
+                          } catch (fallbackErr) {
+                            toast.error("Failed to copy email");
+                          }
+                          document.body.removeChild(textArea);
+                        }
                       }}
                     >
                       <Copy size={14} />

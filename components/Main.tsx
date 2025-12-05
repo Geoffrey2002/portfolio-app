@@ -73,7 +73,7 @@ const Main = () => {
               className="py-3 md:py-4 text-[--color-text] text-3xl md:text-4xl lg:text-5xl"
             >
               Hi, I&apos;m{" "}
-              <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-amber-500 animate-gradient font-bold">
+              <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-amber-500 animate-gradient font-bold whitespace-nowrap">
                 Geoffrey Mwangi
               </span>
             </motion.h1>

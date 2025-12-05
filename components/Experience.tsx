@@ -44,7 +44,7 @@ const Experience = () => {
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
     return (
-        <div id="experience" className="relative w-full py-20 md:py-32 px-4 overflow-hidden bg-[--color-bg]">
+        <div id="experience" className="relative w-full py-20 md:py-32 px-4 overflow-hidden bg-[var(--color-bg-alt)]">
             {/* Elegant background gradients */}
             <div className="absolute inset-0 -z-10 overflow-hidden">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl">

@@ -40,7 +40,7 @@ const testimonials: Testimonial[] = [
     content:
       "Our adult family home needed a professional website to showcase our care services. Geoffrey delivered a site that perfectly represents our compassionate approach and has helped families find us easily.",
   },
- 
+
 ];
 
 const Testimonials = () => {
@@ -52,7 +52,7 @@ const Testimonials = () => {
   );
 
   return (
-    <div id="testimonials" className="relative w-full py-16 md:py-24 px-4 overflow-hidden">
+    <div id="testimonials" className="relative w-full py-16 md:py-24 px-4 overflow-hidden bg-[var(--color-bg-alt)]">
       {/* Decorative background */}
       <div className="absolute inset-0 -z-10 overflow-hidden bg-[--color-bg-card]/30">
         <div className="absolute top-40 -left-20 w-96 h-96 bg-[--color-primary]/5 rounded-full blur-3xl" />

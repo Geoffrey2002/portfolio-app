@@ -25,7 +25,7 @@ const About = () => {
     <div
       id="about"
       ref={ref}
-      className="relative flex items-center w-full px-4 py-16 md:py-24 lg:py-32 overflow-hidden"
+      className="relative flex items-center w-full px-4 py-16 md:py-24 lg:py-32 overflow-hidden bg-[var(--color-bg-alt)]"
     >
       {/* Decorative background elements */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
@@ -33,24 +33,24 @@ const About = () => {
         <div className="absolute bottom-20 -right-20 w-96 h-96 bg-[--color-primary]/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="max-w-[1240px] m-auto w-full">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
-          {/* Content */}
+      <div className="max-w-[1240px] m-auto md:grid grid-cols-2 gap-8 items-center">
+        <div>
           <motion.div
+            ref={ref}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            variants={slideInLeft}
+            variants={fadeInUp}
             className="space-y-6"
           >
             {/* Section badge */}
-            <motion.div 
-              variants={fadeInUp} 
+            <motion.div
+              variants={fadeInUp}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full relative overflow-hidden border-2 border-[--color-border]"
             >
               {/* Animated gradient background */}
               <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-20 dark:opacity-30 animate-gradient-rotate" />
               <div className="absolute inset-[2px] bg-[--color-bg-card] rounded-full" />
-              
+
               {/* Content */}
               <span className="relative z-10 w-2 h-2 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 animate-pulse" />
               <span className="relative z-10 text-sm font-semibold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent uppercase tracking-wider">
@@ -117,12 +117,15 @@ const About = () => {
             </motion.div>
           </motion.div>
 
-          {/* Image */}
+        </div>
+
+        {/* Image Column - Now separated from text column */}
+        <div className="col-span-1 flex items-center justify-center">
           <motion.div
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             variants={slideInRight}
-            className="relative"
+            className="relative w-full max-w-sm md:max-w-none"
           >
             <motion.div
               whileHover={{ scale: 1.02 }}
@@ -131,7 +134,7 @@ const About = () => {
             >
               {/* Decorative border effect */}
               <div className="absolute -inset-4 bg-gradient-to-r from-[--color-primary] to-[--color-primary-light] rounded-3xl opacity-20 blur-xl group-hover:opacity-30 transition-opacity" />
-              
+
               {/* Main image card */}
               <Card className="relative overflow-hidden p-0 border-2 border-[--color-border] bg-[--color-bg-card] rounded-3xl shadow-2xl">
                 <div className="aspect-[4/5] relative">
@@ -140,7 +143,7 @@ const About = () => {
                     alt="Geoffrey working on development projects"
                     className="object-cover w-full h-full"
                     fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    sizes="(max-width: 768px) 100vw, 33vw"
                     loading="lazy"
                     placeholder="blur"
                   />

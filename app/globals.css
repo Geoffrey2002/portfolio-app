@@ -17,10 +17,12 @@
   --color-border: #e2e8f0;
   --color-accent: #f59e0b;
   --color-success: #10b981;
+  --color-bg-alt: #f1f5f9;
 }
 
 .dark {
   --color-bg: #0f172a;
+  --color-bg-alt: #111827;
   --color-bg-card: #1e293b;
   --color-bg-hover: #334155;
   --color-text: #f1f5f9;
