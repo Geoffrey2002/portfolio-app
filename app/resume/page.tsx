@@ -106,8 +106,8 @@ const ResumePage = () => {
 
   const handleDownloadPDF = () => {
     const link = document.createElement('a');
-    link.href = '/assets/projects/Geoffrey CV.pdf';
-    link.download = 'Geoffrey_Muthoni_CV.pdf';
+    link.href = '/GEOFFREY FRONTEND DEVELOPER CV.pdf';
+    link.download = 'Geoffrey_Muthoni_Frontend_Developer_CV.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

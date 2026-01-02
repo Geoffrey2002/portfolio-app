@@ -2,11 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { motion, useInView } from "framer-motion";
 import { toast } from "sonner";
-import { Mail, FileUser, Github, Linkedin, ChevronsUp, Copy } from "lucide-react";
+import { Mail, FileUser, Github, Linkedin, ChevronsUp, Copy, Loader2, Check } from "lucide-react";
 import ContactImg from "@/public/assets/contact.jpg";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -18,21 +18,59 @@ interface ContactFormData {
   email: string;
   subject: string;
   message: string;
+  website?: string; // Honeypot field
 }
 
 const Contact = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [emailCopied, setEmailCopied] = useState(false);
   const {
     register,
     handleSubmit,
     reset,
+    formState: { errors },
   } = useForm<ContactFormData>();
 
   const onSubmit = async (data: ContactFormData) => {
-    // Form will submit to getform.io via native form action
-    console.log("Form data:", data);
-    reset();
+    // Honeypot check - if website field is filled, it's spam
+    if (data.website) {
+      console.log("Spam detected");
+      return;
+    }
+
+    setIsSubmitting(true);
+    
+    try {
+      const formData = new FormData();
+      formData.append("name", data.name);
+      formData.append("phone", data.phone);
+      formData.append("email", data.email);
+      formData.append("subject", data.subject);
+      formData.append("message", data.message);
+
+      const response = await fetch("https://getform.io/f/fab4ff9f-c8b1-4076-a534-f5f98a069666", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        toast.success("Email sent successfully! I'll get back to you soon.", {
+          duration: 5000,
+        });
+        reset();
+      } else {
+        throw new Error("Failed to send email");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      toast.error("Failed to send email. Please try again or contact me directly.", {
+        duration: 5000,
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const socialLinks = [
@@ -152,31 +190,62 @@ const Contact = () => {
                       type="button"
                       variant="outline"
                       size="sm"
-                      className="w-full gap-2 text-[--color-primary] border-[--color-primary]/20 hover:bg-[--color-primary]/5"
+                      className={`w-full gap-2 cursor-pointer transition-all duration-300 ${
+                        emailCopied
+                          ? "bg-[--color-success]/10 border-[--color-success] text-[--color-success]"
+                          : "text-[--color-primary] border-[--color-primary]/20 hover:bg-[--color-primary]/5"
+                      }`}
                       onClick={async () => {
                         const email = "gmwangi3174@gmail.com";
                         try {
                           await navigator.clipboard.writeText(email);
-                          toast.success("Email copied to clipboard!");
+                          setEmailCopied(true);
+                          toast.success("Email copied to clipboard!", {
+                            duration: 3000,
+                          });
+                          // Reset button state after 3 seconds
+                          setTimeout(() => {
+                            setEmailCopied(false);
+                          }, 3000);
                         } catch (err) {
                           console.error("Failed to copy:", err);
                           // Fallback for older browsers or non-secure contexts
                           const textArea = document.createElement("textarea");
                           textArea.value = email;
+                          textArea.style.position = "fixed";
+                          textArea.style.opacity = "0";
                           document.body.appendChild(textArea);
                           textArea.select();
                           try {
                             document.execCommand("copy");
-                            toast.success("Email copied to clipboard!");
+                            setEmailCopied(true);
+                            toast.success("Email copied to clipboard!", {
+                              duration: 3000,
+                            });
+                            // Reset button state after 3 seconds
+                            setTimeout(() => {
+                              setEmailCopied(false);
+                            }, 3000);
                           } catch (fallbackErr) {
-                            toast.error("Failed to copy email");
+                            toast.error("Failed to copy email. Please copy manually: " + email, {
+                              duration: 5000,
+                            });
                           }
                           document.body.removeChild(textArea);
                         }
                       }}
                     >
-                      <Copy size={14} />
-                      Copy Email Address
+                      {emailCopied ? (
+                        <>
+                          <Check size={14} className="animate-in fade-in duration-200" />
+                          Email Copied!
+                        </>
+                      ) : (
+                        <>
+                          <Copy size={14} />
+                          Copy Email Address
+                        </>
+                      )}
                     </Button>
                   </div>
                 </div>
@@ -246,8 +315,6 @@ const Contact = () => {
 
               <CardContent className="p-6 lg:p-8 relative z-10">
                 <form
-                  action="https://getform.io/f/fab4ff9f-c8b1-4076-a534-f5f98a069666"
-                  method="POST"
                   onSubmit={handleSubmit(onSubmit)}
                   className="space-y-6"
                 >
@@ -258,15 +325,21 @@ const Contact = () => {
                     >
                       <label className="uppercase text-xs font-bold tracking-wider text-[--color-text] flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-[--color-primary]"></span>
-                        Name
+                        Name <span className="text-red-500">*</span>
                       </label>
                       <input
-                        {...register("name", { required: true })}
-                        className="border-2 rounded-xl p-4 border-[--color-border] bg-[--color-bg] text-[--color-text] placeholder:text-[--color-text-light]/50 focus:border-[--color-primary] focus:ring-2 focus:ring-[--color-primary]/20 focus:outline-none transition-all min-h-[52px] shadow-sm hover:shadow-md"
+                        {...register("name", { required: "Name is required" })}
+                        disabled={isSubmitting}
+                        className={`border-2 rounded-xl p-4 border-[--color-border] bg-[--color-bg] text-[--color-text] placeholder:text-[--color-text-light]/50 focus:border-[--color-primary] focus:ring-2 focus:ring-[--color-primary]/20 focus:outline-none transition-all min-h-[52px] shadow-sm hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed ${
+                          errors.name ? "border-red-500" : ""
+                        }`}
                         type="text"
                         name="name"
                         placeholder="Your full name"
                       />
+                      {errors.name && (
+                        <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>
+                      )}
                     </motion.div>
 
                     <motion.div
@@ -275,66 +348,123 @@ const Contact = () => {
                     >
                       <label className="uppercase text-xs font-bold tracking-wider text-[--color-text] flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-[--color-primary]"></span>
-                        Phone Number
+                        Phone Number <span className="text-red-500">*</span>
                       </label>
                       <input
-                        {...register("phone", { required: true })}
-                        className="border-2 rounded-xl p-4 border-[--color-border] bg-[--color-bg] text-[--color-text] placeholder:text-[--color-text-light]/50 focus:border-[--color-primary] focus:ring-2 focus:ring-[--color-primary]/20 focus:outline-none transition-all min-h-[52px] shadow-sm hover:shadow-md"
+                        {...register("phone", { required: "Phone number is required" })}
+                        disabled={isSubmitting}
+                        className={`border-2 rounded-xl p-4 border-[--color-border] bg-[--color-bg] text-[--color-text] placeholder:text-[--color-text-light]/50 focus:border-[--color-primary] focus:ring-2 focus:ring-[--color-primary]/20 focus:outline-none transition-all min-h-[52px] shadow-sm hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed ${
+                          errors.phone ? "border-red-500" : ""
+                        }`}
                         type="text"
                         name="phone"
                         placeholder="+254 XXX XXX XXX"
                       />
+                      {errors.phone && (
+                        <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>
+                      )}
                     </motion.div>
                   </div>
 
                   <motion.div variants={fadeInUp} className="flex flex-col space-y-2">
                     <label className="uppercase text-xs font-bold tracking-wider text-[--color-text] flex items-center gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-[--color-primary]"></span>
-                      Email
+                      Email <span className="text-red-500">*</span>
                     </label>
                     <input
-                      {...register("email", { required: true })}
-                      className="border-2 rounded-xl p-4 border-[--color-border] bg-[--color-bg] text-[--color-text] placeholder:text-[--color-text-light]/50 focus:border-[--color-primary] focus:ring-2 focus:ring-[--color-primary]/20 focus:outline-none transition-all min-h-[52px] shadow-sm hover:shadow-md"
+                      {...register("email", { 
+                        required: "Email is required",
+                        pattern: {
+                          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                          message: "Invalid email address"
+                        }
+                      })}
+                      disabled={isSubmitting}
+                      className={`border-2 rounded-xl p-4 border-[--color-border] bg-[--color-bg] text-[--color-text] placeholder:text-[--color-text-light]/50 focus:border-[--color-primary] focus:ring-2 focus:ring-[--color-primary]/20 focus:outline-none transition-all min-h-[52px] shadow-sm hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed ${
+                        errors.email ? "border-red-500" : ""
+                      }`}
                       type="email"
                       name="email"
                       placeholder="your.email@example.com"
                     />
+                    {errors.email && (
+                      <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>
+                    )}
                   </motion.div>
 
                   <motion.div variants={fadeInUp} className="flex flex-col space-y-2">
                     <label className="uppercase text-xs font-bold tracking-wider text-[--color-text] flex items-center gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-[--color-primary]"></span>
-                      Subject
+                      Subject <span className="text-red-500">*</span>
                     </label>
                     <input
-                      {...register("subject", { required: true })}
-                      className="border-2 rounded-xl p-4 border-[--color-border] bg-[--color-bg] text-[--color-text] placeholder:text-[--color-text-light]/50 focus:border-[--color-primary] focus:ring-2 focus:ring-[--color-primary]/20 focus:outline-none transition-all min-h-[52px] shadow-sm hover:shadow-md"
+                      {...register("subject", { required: "Subject is required" })}
+                      disabled={isSubmitting}
+                      className={`border-2 rounded-xl p-4 border-[--color-border] bg-[--color-bg] text-[--color-text] placeholder:text-[--color-text-light]/50 focus:border-[--color-primary] focus:ring-2 focus:ring-[--color-primary]/20 focus:outline-none transition-all min-h-[52px] shadow-sm hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed ${
+                        errors.subject ? "border-red-500" : ""
+                      }`}
                       type="text"
                       name="subject"
                       placeholder="How can I help you?"
                     />
+                    {errors.subject && (
+                      <p className="text-red-500 text-xs mt-1">{errors.subject.message}</p>
+                    )}
                   </motion.div>
 
                   <motion.div variants={fadeInUp} className="flex flex-col space-y-2">
                     <label className="uppercase text-xs font-bold tracking-wider text-[--color-text] flex items-center gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-[--color-primary]"></span>
-                      Message
+                      Message <span className="text-red-500">*</span>
                     </label>
                     <textarea
-                      {...register("message", { required: true })}
-                      className="border-2 rounded-xl p-4 border-[--color-border] bg-[--color-bg] text-[--color-text] placeholder:text-[--color-text-light]/50 focus:border-[--color-primary] focus:ring-2 focus:ring-[--color-primary]/20 focus:outline-none transition-all resize-none shadow-sm hover:shadow-md"
+                      {...register("message", { 
+                        required: "Message is required",
+                        minLength: {
+                          value: 10,
+                          message: "Message must be at least 10 characters"
+                        }
+                      })}
+                      disabled={isSubmitting}
+                      className={`border-2 rounded-xl p-4 border-[--color-border] bg-[--color-bg] text-[--color-text] placeholder:text-[--color-text-light]/50 focus:border-[--color-primary] focus:ring-2 focus:ring-[--color-primary]/20 focus:outline-none transition-all resize-none shadow-sm hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed ${
+                        errors.message ? "border-red-500" : ""
+                      }`}
                       rows={8}
                       name="message"
                       placeholder="Tell me about your project or inquiry..."
                     />
+                    {errors.message && (
+                      <p className="text-red-500 text-xs mt-1">{errors.message.message}</p>
+                    )}
                   </motion.div>
+
+                  {/* Honeypot field - hidden from users, visible to bots */}
+                  <div className="hidden" aria-hidden="true">
+                    <label htmlFor="website">Website</label>
+                    <input
+                      {...register("website")}
+                      type="text"
+                      id="website"
+                      name="website"
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
+                  </div>
 
                   <motion.div variants={fadeInUp}>
                     <Button
                       type="submit"
-                      className="w-full mt-4 min-h-[56px] text-base font-bold bg-[--color-primary] hover:bg-[--color-primary-light] text-white rounded-xl shadow-lg shadow-[--color-primary]/20 hover:shadow-xl hover:shadow-[--color-primary]/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                      disabled={isSubmitting}
+                      className="w-full mt-4 min-h-[56px] text-base font-bold bg-[--color-primary] hover:bg-[--color-primary-light] text-white rounded-xl shadow-lg shadow-[--color-primary]/20 hover:shadow-xl hover:shadow-[--color-primary]/30 transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 cursor-pointer"
                     >
-                      Send Message
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="animate-spin" size={18} />
+                          Sending...
+                        </>
+                      ) : (
+                        "Send Message"
+                      )}
                     </Button>
                   </motion.div>
                 </form>

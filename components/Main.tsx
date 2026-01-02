@@ -77,11 +77,16 @@ const Main = () => {
                 Geoffrey Mwangi
               </span>
             </motion.h1>
+            {/* Hidden heading for screen readers to maintain hierarchy */}
+            <h2 className="sr-only">Frontend Developer Portfolio</h2>
 
             {/* Typing Animation Subheading */}
             <motion.div
               variants={fadeInUp}
               className="py-2 text-lg sm:text-2xl md:text-3xl font-bold min-h-[2rem] sm:min-h-[2.5rem] md:min-h-[3rem]"
+              role="status"
+              aria-live="polite"
+              aria-label="Professional title"
             >
               <TypingAnimation
                 texts={[

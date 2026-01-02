@@ -133,10 +133,11 @@ const Navbar = () => {
               >
                 <Link
                   href={link.href}
-                  className="transition-all duration-300 focus:outline-none relative group px-5 py-2 block"
+                  className="transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[--color-primary] focus:ring-offset-2 rounded-lg relative group px-5 py-2 block"
                   style={{
                     color: activeSection === link.section ? 'var(--color-primary)' : 'var(--color-text)'
                   }}
+                  aria-current={activeSection === link.section ? "page" : undefined}
                 >
                   <span className="relative z-10 transition-colors uppercase tracking-wider text-xs font-semibold">{link.label}</span>
 

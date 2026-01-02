@@ -7,6 +7,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { PersonStructuredData, WebsiteStructuredData, ProfilePageStructuredData } from "@/components/StructuredData";
 import { GoogleAnalytics } from "@/components/Analytics";
 import { Toaster } from "sonner";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const raleway = Raleway({
   subsets: ["latin"],
@@ -134,10 +136,19 @@ export default function RootLayout({
       </head>
       <body className={raleway.className}>
         <ThemeProvider defaultTheme="dark" storageKey="portfolio-theme">
+          {/* Skip to main content link for accessibility */}
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[--color-primary] focus:text-white focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-[--color-primary] focus:ring-offset-2"
+          >
+            Skip to main content
+          </a>
           <Navbar />
-          {children}
+          <main id="main-content">{children}</main>
           <Footer />
           <Toaster position="bottom-right" richColors />
+          <Analytics />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>
