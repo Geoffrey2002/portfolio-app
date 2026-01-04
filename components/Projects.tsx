@@ -44,7 +44,7 @@ const Projects = () => {
       tech: ["Next.js", "TypeScript", "Tailwind"],
       description: "A stunning photography portfolio with modern UI and smooth animations",
       liveUrl: "https://landingpage-tw-next.vercel.app/",
-      githubUrl: "https://github.com/Geoffrey2002",
+      githubUrl: "https://github.com/Geoffrey2002/next-landingpage-tw",
     },
   ];
 
@@ -64,7 +64,7 @@ const Projects = () => {
       tech: ["React", "JavaScript", "CSS"],
       description: "Track your expenses efficiently with beautiful charts and insights",
       liveUrl: "https://expense-app-drab.vercel.app/",
-      githubUrl: "https://github.com/Geoffrey2002",
+      githubUrl: "https://github.com/Geoffrey2002/Expense-App",
     },
     {
       title: "Food Ordering App",
