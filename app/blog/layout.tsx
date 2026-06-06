@@ -22,6 +22,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${siteUrl}/blog`,
   },
+  // Blog is hidden with placeholder content — keep it out of search indexes
+  // until real articles are published. Remove this when the blog goes live.
+  robots: {
+    index: false,
+    follow: true,
+  },
 };
 
 export default function BlogLayout({
