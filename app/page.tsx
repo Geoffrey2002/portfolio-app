@@ -1,9 +1,9 @@
 import dynamic from "next/dynamic";
 import Main from "@/components/Main";
 import About from "@/components/About";
+import FAQ from "@/components/FAQ";
 import LoadingState from "@/components/LoadingState";
 
-// Lazy load below-fold components
 const Skills = dynamic(() => import("@/components/Skills"), {
   loading: () => <LoadingState />,
   ssr: true,
@@ -31,15 +31,15 @@ const Experience = dynamic(() => import("@/components/Experience"), {
 
 export default function Home() {
   return (
-    <main>
+    <>
       <Main />
       <About />
       <Skills />
       <Experience />
       <Projects />
       <Testimonials />
+      <FAQ />
       <Contact />
-    </main>
+    </>
   );
 }
-

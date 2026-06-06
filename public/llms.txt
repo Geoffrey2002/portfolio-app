@@ -1,0 +1,48 @@
+# Geoffrey Muthoni — Frontend Developer & IT Lead Portfolio
+
+> Frontend Developer and IT Lead in Nairobi, Kenya. 4+ years building Next.js, React, TypeScript, and Supabase web apps, plus NSE data pipelines and AI-powered automation.
+
+Geoffrey Muthoni (Geoffrey Mwangi) is available for remote, contract, and full-time Frontend Developer, AI/Automation, and IT Lead roles.
+
+## About
+
+- Name: Geoffrey Mwangi Muthoni
+- Role: Frontend Developer & IT Lead
+- Current: IT Lead & Frontend Developer at Mwango Capital (Dec 2025 - Present)
+- Focus: Data-driven web apps, automated NSE financial dashboards, AI & workflow automation
+- Location: Nairobi, Kenya (remote-friendly)
+- Experience: 4+ years
+- Certifications: Google AI Professional Certificate (Coursera, 2026), Anthropic Claude AI
+- Email: gmwangi3174@gmail.com
+- LinkedIn: https://www.linkedin.com/in/geoffrey-muthoni/
+- GitHub: https://github.com/Geoffrey2002
+
+## Core Technologies
+
+Next.js (App Router, Server Components), React, TypeScript, Tailwind CSS, shadcn/ui, Supabase, PostgreSQL, Node.js, Framer Motion, Claude AI, Cursor, n8n, Google Apps Script, Git, Vercel
+
+## Services
+
+- Custom website and web application development
+- React and Next.js frontend engineering
+- WordPress themes, plugins, WooCommerce, Elementor
+- Wix and Velo development
+- Responsive, accessible, SEO-optimized UI builds
+
+## Key Pages
+
+- Home: https://geoffreymuthoni.com/
+- Resume: https://geoffreymuthoni.com/resume
+- Blog: https://geoffreymuthoni.com/blog
+- Contact: https://geoffreymuthoni.com/#contact
+- Projects: https://geoffreymuthoni.com/#projects
+- Skills: https://geoffreymuthoni.com/#skills
+
+## Notable Projects
+
+- Jendie Automobiles — https://jendie.co.ke/
+- Atozee LLC — https://atozeellc.com/
+
+## Last Updated
+
+2026-06-06

@@ -19,23 +19,33 @@ interface ExperienceItem {
 const experiences: ExperienceItem[] = [
     {
         id: 1,
-        role: "Freelance Frontend Developer",
-        company: "Self-Employed",
-        period: "2025 - Present",
-        location: "Remote",
+        role: "IT Lead & Frontend Developer",
+        company: "Mwango Capital",
+        period: "Dec 2025 - Present",
+        location: "Nairobi",
         description:
-            "Successfully delivered over 4 web projects for diverse clients, ranging from healthcare providers to financial firms. Specialized in building responsive, SEO-optimized websites using Next.js, React, and WordPress.",
-        skills: ["Next.js", "React", "TypeScript", "Tailwind CSS", "WordPress"],
+            "Architect internal web apps and dashboards with Next.js, TypeScript, and Supabase. Built automated NSE (Nairobi Securities Exchange) data pipelines feeding live financial data into real-time investment dashboards, and lead IT infrastructure, vendor management, and AI tooling adoption across the organisation.",
+        skills: ["Next.js", "TypeScript", "Supabase", "n8n", "Claude AI", "Google Apps Script"],
     },
     {
         id: 2,
-        role: "Frontend Developer",
-        company: "Jendie Automobiles Limited",
-        period: "2022 - 2025",
-        location: "Contract",
+        role: "Frontend Developer & Customer Care Head",
+        company: "Jendie Automobiles Ltd",
+        period: "Jun 2022 - Nov 2025",
+        location: "Nairobi",
         description:
-            "Developed and maintained  website for Jendie Automobiles Limited. Created frontend for the website using Next.js, React, and TypeScript. I also created a tracking frontend platform to be used to showcase data ",
-        skills: ["WordPress", "PHP", "JavaScript", "CSS3", "SEO"],
+            "Designed and built responsive websites with React, Next.js, and Tailwind CSS, improving page-load performance and customer engagement. Managed IoT platform accounts and coordinated NTSA inspection-code issuance for nationwide compliance operations.",
+        skills: ["Next.js", "React", "TypeScript", "Tailwind CSS", "SEO"],
+    },
+    {
+        id: 3,
+        role: "Business Support Executive — Data & Technology",
+        company: "Various Organisations",
+        period: "2018 - 2021",
+        location: "Nairobi & Nyeri",
+        description:
+            "Delivered data management, administrative, and technology support across government offices, retail, and NGO sectors. Built automated reporting systems and implemented stock-management IT systems, improving accuracy and saving significant team hours each week.",
+        skills: ["Data Management", "Reporting Automation", "IT Support", "Training"],
     },
 ];
 
@@ -48,8 +58,8 @@ const Experience = () => {
             {/* Elegant background gradients */}
             <div className="absolute inset-0 -z-10 overflow-hidden">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl">
-                    <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[100px]" />
-                    <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px]" />
+                    <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[--color-primary]/10 rounded-full blur-[100px]" />
+                    <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[--color-accent]/10 rounded-full blur-[100px]" />
                 </div>
             </div>
 
@@ -63,10 +73,10 @@ const Experience = () => {
                     {/* Section badge */}
                     <motion.div
                         variants={fadeInUp}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 bg-[--color-bg-card] border border-[--color-border] shadow-sm"
+                        className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full mb-6 border border-[--color-primary]/20 bg-[--color-primary]/5"
                     >
-                        <span className="w-2 h-2 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 animate-pulse" />
-                        <span className="text-sm font-medium bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent uppercase tracking-wider">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[--color-primary]" />
+                        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[--color-primary]">
                             Career Journey
                         </span>
                     </motion.div>
@@ -81,7 +91,10 @@ const Experience = () => {
 
                 <div className="relative">
                     {/* Central Timeline Line */}
-                    <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-transparent via-[--color-border] to-transparent md:-translate-x-1/2" />
+                    <div
+                      className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] md:-translate-x-1/2"
+                      style={{ backgroundImage: "linear-gradient(to bottom, transparent, var(--color-border), transparent)" }}
+                    />
 
                     <div className="space-y-12 md:space-y-24">
                         {experiences.map((exp, index) => (
@@ -101,7 +114,7 @@ const Experience = () => {
                                 <div className={`ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? "md:pl-16" : "md:pr-16"}`}>
                                     <div className="relative group">
                                         {/* Card Glow Effect */}
-                                        <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-500 to-blue-500 rounded-2xl opacity-0 group-hover:opacity-20 transition duration-500 blur-lg" />
+                                        <div className="absolute -inset-0.5 bg-gradient-to-r from-[--color-primary] to-[--color-accent] rounded-2xl opacity-0 group-hover:opacity-20 transition duration-500 blur-lg" />
 
                                         <Card className="relative overflow-hidden border border-[--color-border] bg-[--color-bg-card]/80 backdrop-blur-sm hover:border-[--color-primary]/30 transition-all duration-300 rounded-2xl shadow-lg">
                                             <CardContent className="p-6 md:p-8">

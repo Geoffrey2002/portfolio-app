@@ -6,7 +6,7 @@ import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { motion, useInView } from "framer-motion";
 import { toast } from "sonner";
-import { Mail, FileUser, Github, Linkedin, ChevronsUp, Copy, Loader2, Check } from "lucide-react";
+import { Mail, FileUser, Github, Linkedin, Copy, Loader2, Check } from "lucide-react";
 import ContactImg from "@/public/assets/contact.jpg";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -323,11 +323,13 @@ const Contact = () => {
                       variants={fadeInUp}
                       className="flex flex-col space-y-2"
                     >
-                      <label className="uppercase text-xs font-bold tracking-wider text-[--color-text] flex items-center gap-2">
+                      <label htmlFor="contact-name" className="uppercase text-xs font-bold tracking-wider text-[--color-text] flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-[--color-primary]"></span>
                         Name <span className="text-red-500">*</span>
                       </label>
                       <input
+                        id="contact-name"
+                        aria-invalid={!!errors.name}
                         {...register("name", { required: "Name is required" })}
                         disabled={isSubmitting}
                         className={`border-2 rounded-xl p-4 border-[--color-border] bg-[--color-bg] text-[--color-text] placeholder:text-[--color-text-light]/50 focus:border-[--color-primary] focus:ring-2 focus:ring-[--color-primary]/20 focus:outline-none transition-all min-h-[52px] shadow-sm hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed ${
@@ -346,11 +348,13 @@ const Contact = () => {
                       variants={fadeInUp}
                       className="flex flex-col space-y-2"
                     >
-                      <label className="uppercase text-xs font-bold tracking-wider text-[--color-text] flex items-center gap-2">
+                      <label htmlFor="contact-phone" className="uppercase text-xs font-bold tracking-wider text-[--color-text] flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-[--color-primary]"></span>
                         Phone Number <span className="text-red-500">*</span>
                       </label>
                       <input
+                        id="contact-phone"
+                        aria-invalid={!!errors.phone}
                         {...register("phone", { required: "Phone number is required" })}
                         disabled={isSubmitting}
                         className={`border-2 rounded-xl p-4 border-[--color-border] bg-[--color-bg] text-[--color-text] placeholder:text-[--color-text-light]/50 focus:border-[--color-primary] focus:ring-2 focus:ring-[--color-primary]/20 focus:outline-none transition-all min-h-[52px] shadow-sm hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed ${
@@ -367,12 +371,14 @@ const Contact = () => {
                   </div>
 
                   <motion.div variants={fadeInUp} className="flex flex-col space-y-2">
-                    <label className="uppercase text-xs font-bold tracking-wider text-[--color-text] flex items-center gap-2">
+                    <label htmlFor="contact-email" className="uppercase text-xs font-bold tracking-wider text-[--color-text] flex items-center gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-[--color-primary]"></span>
                       Email <span className="text-red-500">*</span>
                     </label>
                     <input
-                      {...register("email", { 
+                      id="contact-email"
+                      aria-invalid={!!errors.email}
+                      {...register("email", {
                         required: "Email is required",
                         pattern: {
                           value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
@@ -393,11 +399,13 @@ const Contact = () => {
                   </motion.div>
 
                   <motion.div variants={fadeInUp} className="flex flex-col space-y-2">
-                    <label className="uppercase text-xs font-bold tracking-wider text-[--color-text] flex items-center gap-2">
+                    <label htmlFor="contact-subject" className="uppercase text-xs font-bold tracking-wider text-[--color-text] flex items-center gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-[--color-primary]"></span>
                       Subject <span className="text-red-500">*</span>
                     </label>
                     <input
+                      id="contact-subject"
+                      aria-invalid={!!errors.subject}
                       {...register("subject", { required: "Subject is required" })}
                       disabled={isSubmitting}
                       className={`border-2 rounded-xl p-4 border-[--color-border] bg-[--color-bg] text-[--color-text] placeholder:text-[--color-text-light]/50 focus:border-[--color-primary] focus:ring-2 focus:ring-[--color-primary]/20 focus:outline-none transition-all min-h-[52px] shadow-sm hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed ${
@@ -413,12 +421,14 @@ const Contact = () => {
                   </motion.div>
 
                   <motion.div variants={fadeInUp} className="flex flex-col space-y-2">
-                    <label className="uppercase text-xs font-bold tracking-wider text-[--color-text] flex items-center gap-2">
+                    <label htmlFor="contact-message" className="uppercase text-xs font-bold tracking-wider text-[--color-text] flex items-center gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-[--color-primary]"></span>
                       Message <span className="text-red-500">*</span>
                     </label>
                     <textarea
-                      {...register("message", { 
+                      id="contact-message"
+                      aria-invalid={!!errors.message}
+                      {...register("message", {
                         required: "Message is required",
                         minLength: {
                           value: 10,
@@ -473,38 +483,16 @@ const Contact = () => {
           </motion.div>
         </div>
 
-        {/* Back to Top */}
+        {/* Closing note */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ delay: 0.5 }}
-          className="flex flex-col items-center justify-center py-16 gap-4"
+          className="flex items-center justify-center py-12"
         >
-          <div className="text-center mb-4">
-            <p className="text-[--color-text-light] text-sm">
-              Thank you for visiting!
-            </p>
-          </div>
-          <Link href="/#home" aria-label="Back to top">
-            <motion.div
-              whileHover={{ scale: 1.1, y: -5 }}
-              whileTap={{ scale: 0.95 }}
-              className="relative group"
-            >
-              {/* Animated gradient border */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-[--color-primary] via-[--color-primary-light] to-[--color-primary] rounded-full opacity-70 blur-sm group-hover:opacity-100 transition-opacity animate-gradient-rotate" />
-
-              <div className="relative rounded-full shadow-xl p-5 cursor-pointer bg-[--color-bg-card] group-hover:bg-gradient-to-br group-hover:from-[--color-primary] group-hover:to-[--color-primary-light] transition-all duration-300 min-h-[68px] min-w-[68px] flex flex-col items-center justify-center border-2 border-[--color-border] group-hover:border-transparent">
-                <ChevronsUp
-                  className="text-[--color-primary] group-hover:text-white transition-colors mb-1"
-                  size={28}
-                />
-                <span className="text-xs font-bold text-[--color-text] group-hover:text-white transition-colors uppercase tracking-wider">
-                  Top
-                </span>
-              </div>
-            </motion.div>
-          </Link>
+          <p className="text-[--color-text-light] text-sm">
+            Thanks for scrolling all the way down.
+          </p>
         </motion.div>
       </div>
     </div>

@@ -2,36 +2,49 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { FaHeart, FaGithub, FaLinkedinIn } from "react-icons/fa";
-import { AiOutlineMail } from "react-icons/ai";
+import {
+  Home,
+  User,
+  Code2,
+  FolderGit2,
+  FileText,
+  HelpCircle,
+  Mail,
+  Heart,
+  Github,
+  Linkedin,
+} from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { name: "Home", href: "/#home" },
-    { name: "About", href: "/#about" },
-    { name: "Skills", href: "/#skills" },
-    { name: "Projects", href: "/#projects" },
-    { name: "Resume", href: "/resume" },
-    { name: "Contact", href: "/#contact" },
+    { name: "Home", href: "/#home", icon: Home },
+    { name: "About", href: "/#about", icon: User },
+    { name: "Skills", href: "/#skills", icon: Code2 },
+    { name: "Projects", href: "/#projects", icon: FolderGit2 },
+    { name: "Resume", href: "/resume", icon: FileText },
+    // Blog hidden until real content is published:
+    // { name: "Blog", href: "/blog", icon: Newspaper },
+    { name: "FAQ", href: "/#faq", icon: HelpCircle },
+    { name: "Contact", href: "/#contact", icon: Mail },
   ];
 
   const socialLinks = [
     {
       name: "LinkedIn",
       href: "https://www.linkedin.com/in/geoffrey-muthoni/",
-      icon: FaLinkedinIn,
+      icon: Linkedin,
     },
     {
       name: "GitHub",
       href: "https://github.com/Geoffrey2002",
-      icon: FaGithub,
+      icon: Github,
     },
     {
       name: "Email",
       href: "mailto:gmwangi3174@gmail.com",
-      icon: AiOutlineMail,
+      icon: Mail,
     },
   ];
 
@@ -54,11 +67,21 @@ const Footer = () => {
             className="space-y-4"
           >
             <div>
-              <h3 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+              <h3
+                className="text-2xl md:text-3xl font-bold w-fit"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(90deg, #6366f1 0%, #818cf8 45%, #f59e0b 100%)",
+                  WebkitBackgroundClip: "text",
+                  backgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  color: "transparent",
+                }}
+              >
                 Geoffrey Muthoni
               </h3>
               <p className="text-[--color-text-light] mt-2">
-                Frontend Developer
+                Frontend Developer &amp; IT Lead
               </p>
             </div>
             <p className="text-[--color-text-light] text-sm leading-relaxed">
@@ -79,18 +102,23 @@ const Footer = () => {
               <span className="w-2 h-2 rounded-full bg-[--color-primary]"></span>
               Quick Links
             </h4>
-            <ul className="grid grid-cols-2 gap-3">
-              {quickLinks.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-[--color-text-light] hover:text-[--color-primary] transition-colors text-sm font-medium flex items-center gap-2 group"
-                  >
-                    <span className="w-1 h-1 rounded-full bg-[--color-text-light] group-hover:bg-[--color-primary] transition-colors"></span>
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
+            <ul className="grid grid-cols-2 gap-2.5">
+              {quickLinks.map((link) => {
+                const Icon = link.icon;
+                return (
+                  <li key={link.name}>
+                    <Link
+                      href={link.href}
+                      className="group flex items-center gap-2.5 rounded-lg px-2 py-1.5 -mx-2 text-sm font-medium text-[--color-text-light] hover:text-[--color-primary] hover:bg-[--color-bg-hover] transition-colors"
+                    >
+                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-[--color-border] bg-[--color-bg] text-[--color-text-light] group-hover:border-[--color-primary]/30 group-hover:text-[--color-primary] transition-colors">
+                        <Icon size={14} />
+                      </span>
+                      {link.name}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </motion.div>
 
@@ -124,7 +152,7 @@ const Footer = () => {
                     <motion.div
                       whileHover={{ scale: 1.1, y: -3 }}
                       whileTap={{ scale: 0.95 }}
-                      className="w-12 h-12 rounded-xl bg-[--color-bg] border-2 border-[--color-border] flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-[--color-primary] group-hover:to-[--color-primary-light] group-hover:border-transparent transition-all duration-300 shadow-sm group-hover:shadow-lg group-hover:shadow-[--color-primary]/20"
+                      className="w-12 h-12 rounded-xl bg-[--color-bg] border-2 border-[--color-border] flex items-center justify-center group-hover:bg-[--color-primary] group-hover:border-transparent transition-all duration-300 shadow-sm group-hover:shadow-lg group-hover:shadow-[--color-primary]/20"
                     >
                       <Icon className="text-[--color-text] group-hover:text-white transition-colors" size={18} />
                     </motion.div>
@@ -136,7 +164,10 @@ const Footer = () => {
         </div>
 
         {/* Divider */}
-        <div className="h-px bg-gradient-to-r from-transparent via-[--color-border] to-transparent mb-8" />
+        <div
+          className="h-px mb-8"
+          style={{ backgroundImage: "linear-gradient(to right, transparent, var(--color-border), transparent)" }}
+        />
 
         {/* Bottom Section */}
         <motion.div
@@ -150,7 +181,7 @@ const Footer = () => {
             <span>© {currentYear} Geoffrey Muthoni.</span>
             <span className="hidden md:inline">•</span>
             <span className="flex items-center gap-1">
-              Made with <FaHeart className="text-red-500 animate-pulse" size={14} /> and lots of coffee
+              Made with <Heart className="text-red-500 animate-pulse fill-red-500" size={14} /> and lots of coffee
             </span>
           </p>
           <p className="flex items-center gap-2">

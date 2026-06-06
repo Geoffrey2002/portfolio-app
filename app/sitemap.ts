@@ -1,49 +1,53 @@
-import { MetadataRoute } from 'next'
+import { MetadataRoute } from "next";
+import { siteUrl } from "@/lib/site-config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://geoffreymuthoni.com'
-  const currentDate = new Date()
-  
+  const currentDate = new Date();
+
+  // Blog is hidden until real content is published — omit from sitemap:
+  // const blogEntries: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+  //   url: `${siteUrl}/blog/${post.slug}`,
+  //   lastModified: new Date(post.date),
+  //   changeFrequency: "monthly",
+  //   priority: 0.6,
+  // }));
+
   return [
     {
-      url: baseUrl,
+      url: siteUrl,
       lastModified: currentDate,
-      changeFrequency: 'weekly',
+      changeFrequency: "weekly",
       priority: 1.0,
     },
     {
-      url: `${baseUrl}/resume`,
+      url: `${siteUrl}/resume`,
       lastModified: currentDate,
-      changeFrequency: 'monthly',
+      changeFrequency: "monthly",
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/expense`,
+      url: `${siteUrl}/expense`,
       lastModified: currentDate,
-      changeFrequency: 'monthly',
+      changeFrequency: "monthly",
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/food`,
+      url: `${siteUrl}/food`,
       lastModified: currentDate,
-      changeFrequency: 'monthly',
+      changeFrequency: "monthly",
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/weather`,
+      url: `${siteUrl}/weather`,
       lastModified: currentDate,
-      changeFrequency: 'monthly',
+      changeFrequency: "monthly",
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/photograph`,
+      url: `${siteUrl}/photograph`,
       lastModified: currentDate,
-      changeFrequency: 'monthly',
+      changeFrequency: "monthly",
       priority: 0.7,
     },
-  ]
+  ];
 }
-
-
-
-

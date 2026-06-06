@@ -1,44 +1,39 @@
-// Server-side structured data components for SEO
+import { faqs, siteConfig, siteUrl } from "@/lib/site-config";
 
 export function PersonStructuredData() {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://geoffreymuthoni.com';
-  
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: "Geoffrey Mwangi Muthoni",
-    alternateName: "Geoffrey Muthoni",
-    jobTitle: "Frontend Developer",
-    description: "Self-taught Frontend Developer specializing in React, Next.js, and WordPress with 4+ years of experience",
-    url: baseUrl,
-    email: "mailto:contact@geoffreymuthoni.com",
-    image: `${baseUrl}/assets/my passport.jpg`,
-    sameAs: [
-      "https://www.linkedin.com/in/geoffrey-muthoni/",
-      "https://github.com/Geoffrey2002",
-    ],
-    knowsAbout: [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "JavaScript",
-      "WordPress",
-      "Tailwind CSS",
-      "Supabase",
-      "Web Development",
-      "Frontend Development",
-      "UI/UX Design",
-    ],
-    alumniOf: {
-      "@type": "Organization",
-      name: "Self-Taught Developer",
+    name: siteConfig.fullName,
+    alternateName: siteConfig.alternateNames,
+    jobTitle: siteConfig.title,
+    description: siteConfig.description,
+    url: siteUrl,
+    email: `mailto:${siteConfig.email}`,
+    image: `${siteUrl}/assets/my passport.jpg`,
+    sameAs: [siteConfig.linkedIn, siteConfig.github],
+    knowsAbout: siteConfig.skills,
+    nationality: {
+      "@type": "Country",
+      name: "Kenya",
     },
-    workLocation: {
+    homeLocation: {
       "@type": "Place",
+      name: siteConfig.location,
       address: {
         "@type": "PostalAddress",
-        addressCountry: "KE",
+        addressLocality: "Nairobi",
+        addressCountry: siteConfig.country,
       },
+    },
+    hasOccupation: {
+      "@type": "Occupation",
+      name: siteConfig.title,
+      occupationLocation: {
+        "@type": "City",
+        name: "Nairobi",
+      },
+      skills: siteConfig.skills.join(", "),
     },
   };
 
@@ -52,29 +47,20 @@ export function PersonStructuredData() {
 }
 
 export function WebsiteStructuredData() {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://geoffreymuthoni.com';
-  
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Geoffrey Muthoni Portfolio",
-    alternateName: "Geoffrey Mwangi Portfolio",
-    description: "Professional portfolio showcasing web development projects and skills of Geoffrey Muthoni - Frontend Developer specializing in React, Next.js, and WordPress",
-    url: baseUrl,
+    name: `${siteConfig.name} Portfolio`,
+    alternateName: `${siteConfig.fullName} Portfolio`,
+    description: siteConfig.description,
+    url: siteUrl,
     author: {
       "@type": "Person",
-      name: "Geoffrey Mwangi Muthoni",
+      name: siteConfig.fullName,
+      url: siteUrl,
     },
     inLanguage: "en-US",
-    copyrightYear: 2019,
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${baseUrl}/?s={search_term_string}`,
-      },
-      "query-input": "required name=search_term_string",
-    },
+    dateModified: siteConfig.lastUpdated,
   };
 
   return (
@@ -87,23 +73,18 @@ export function WebsiteStructuredData() {
 }
 
 export function ProfilePageStructuredData() {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://geoffreymuthoni.com';
-  
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "ProfilePage",
     dateCreated: "2019-01-01T00:00:00+00:00",
-    dateModified: new Date().toISOString(),
+    dateModified: `${siteConfig.lastUpdated}T00:00:00+00:00`,
     mainEntity: {
       "@type": "Person",
-      name: "Geoffrey Mwangi Muthoni",
-      alternateName: "Geoffrey Muthoni",
-      description: "Self-taught Frontend Developer with 4+ years of experience specializing in modern web technologies",
-      image: `${baseUrl}/assets/my passport.jpg`,
-      sameAs: [
-        "https://www.linkedin.com/in/geoffrey-muthoni/",
-        "https://github.com/Geoffrey2002",
-      ],
+      name: siteConfig.fullName,
+      alternateName: siteConfig.alternateNames,
+      description: siteConfig.description,
+      image: `${siteUrl}/assets/my passport.jpg`,
+      sameAs: [siteConfig.linkedIn, siteConfig.github],
     },
   };
 
@@ -116,7 +97,89 @@ export function ProfilePageStructuredData() {
   );
 }
 
-export function BreadcrumbStructuredData({ items }: { items: Array<{ name: string; url: string }> }) {
+export function FAQStructuredData() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+
+  return (
+    <script
+      id="faq-structured-data"
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+    />
+  );
+}
+
+export function ProfessionalServiceStructuredData() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: `${siteConfig.name} — Frontend Development`,
+    description: siteConfig.description,
+    url: siteUrl,
+    image: `${siteUrl}/assets/about.jpg`,
+    email: siteConfig.email,
+    areaServed: {
+      "@type": "Country",
+      name: "Kenya",
+    },
+    serviceType: siteConfig.services,
+    provider: {
+      "@type": "Person",
+      name: siteConfig.fullName,
+      jobTitle: siteConfig.title,
+      url: siteUrl,
+      sameAs: [siteConfig.linkedIn, siteConfig.github],
+    },
+  };
+
+  return (
+    <script
+      id="professional-service-structured-data"
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+    />
+  );
+}
+
+export function SkillsItemListStructuredData() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Geoffrey Muthoni Technical Skills",
+    description: "Technologies and tools used by Geoffrey Muthoni for web development",
+    numberOfItems: siteConfig.skills.length,
+    itemListElement: siteConfig.skills.map((skill, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: skill,
+    })),
+  };
+
+  return (
+    <script
+      id="skills-item-list-structured-data"
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+    />
+  );
+}
+
+export function BreadcrumbStructuredData({
+  items,
+}: {
+  items: Array<{ name: string; url: string }>;
+}) {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -136,7 +199,3 @@ export function BreadcrumbStructuredData({ items }: { items: Array<{ name: strin
     />
   );
 }
-
-
-
-

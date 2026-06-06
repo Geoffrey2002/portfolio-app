@@ -34,7 +34,9 @@ html {
   scroll-behavior: smooth;
   font-family: var(--font-family);
   overflow-x: hidden;
-  contain: layout style paint;
+  /* NOTE: do not add `contain` here — containment makes <html> the containing
+     block for position:fixed children, which breaks the sticky navbar and the
+     floating scroll-to-top button. */
 }
 
 body {
@@ -71,13 +73,9 @@ li {
   cursor: pointer;
 }
 
-button {
-  box-shadow: 0 20px 25px -5px rgba(107, 114, 128, 0.4);
-  border-radius: 0.75rem;
-  text-transform: uppercase;
-  background: linear-gradient(to right, var(--color-primary), var(--color-primary-light));
-  color: white;
-}
+/* NOTE: button styling lives in the Button component (components/ui/button.tsx)
+   and per-element classNames. Do NOT add global background/color/text-transform
+   here — it leaks onto every <button> (command palette, icon buttons, etc.). */
 
 /* Gradient Animation */
 @keyframes gradient {
@@ -349,4 +347,19 @@ button {
 .animate-gradient-rotate {
   background-size: 200% 200%;
   animation: gradient-rotate 3s ease infinite;
+}
+
+/* View Transitions (route cross-fade) */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 260ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
 }

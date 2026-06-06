@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { Mail, Menu, Github, Linkedin, FileUser } from "lucide-react";
+import { Mail, Menu, Github, Linkedin, FileUser, Search } from "lucide-react";
 import { motion } from "framer-motion";
 import navLogo from "@/public/assets/navlogo.png";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet";
@@ -36,11 +36,10 @@ const Navbar = () => {
       return;
     }
     // Blog section commented out
-    // else if (pathname === "/blog" || pathname.startsWith("/blog/")) {
-    //   setActiveSection("blog");
-    //   return;
-    // } 
-    else if (pathname !== "/") {
+    else if (pathname === "/blog" || pathname.startsWith("/blog/")) {
+      setActiveSection("blog");
+      return;
+    } else if (pathname !== "/") {
       // For other routes, don't highlight any section
       setActiveSection("");
       return;
@@ -76,7 +75,8 @@ const Navbar = () => {
     { href: "/#skills", label: "Skills", section: "skills" },
     { href: "/#experience", label: "Experience", section: "experience" },
     { href: "/#projects", label: "Projects", section: "projects" },
-    // { href: "/blog", label: "Blog", section: "blog" }, // Commented out - Blog section
+    // Blog hidden until real content is published:
+    // { href: "/blog", label: "Blog", section: "blog" },
     { href: "/resume", label: "Resume", section: "resume" },
     { href: "/#contact", label: "Contact", section: "contact" },
   ];
@@ -93,15 +93,17 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed w-full h-20 z-50 transition-all duration-300 ${shadow
-        ? "bg-[--color-bg]/95 backdrop-blur-md shadow-xl border-b"
-        : "bg-[--color-bg]/90 backdrop-blur-md border-b"
-        }`}
-      style={{
-        borderColor: 'var(--color-border)'
-      }}
+      className="fixed inset-x-0 top-0 z-50 px-3 pt-3 md:px-4 md:pt-4"
     >
-      <div className="flex justify-between items-center w-full h-full px-4 2xl:px-16">
+      <div
+        className={`mx-auto flex h-16 max-w-6xl items-center justify-between rounded-2xl border px-4 md:px-6 transition-all duration-300 ${shadow
+          ? "bg-[--color-bg]/85 backdrop-blur-md shadow-xl"
+          : "bg-[--color-bg]/70 backdrop-blur-md shadow-lg"
+          }`}
+        style={{
+          borderColor: 'var(--color-border)'
+        }}
+      >
         <Link href="/" className="focus:outline-none focus:ring-2 focus:ring-[--color-primary] rounded-lg">
           <motion.div
             whileHover={{ scale: 1.05 }}
@@ -113,7 +115,7 @@ const Navbar = () => {
               alt="Geoffrey Muthoni - Portfolio Logo"
               width={125}
               height={80}
-              className="cursor-pointer"
+              className="cursor-pointer h-9 w-auto md:h-10"
               priority
               sizes="125px"
             />
@@ -121,41 +123,55 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-6">
-          <ul className="flex items-center gap-6">
-            {navLinks.map((link, index) => (
-              <motion.li
-                key={link.href}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-                className="text-sm font-medium"
-              >
-                <Link
-                  href={link.href}
-                  className="transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[--color-primary] focus:ring-offset-2 rounded-lg relative group px-5 py-2 block"
-                  style={{
-                    color: activeSection === link.section ? 'var(--color-primary)' : 'var(--color-text)'
-                  }}
-                  aria-current={activeSection === link.section ? "page" : undefined}
+        <div className="hidden md:flex items-center gap-3">
+          <ul className="flex items-center gap-0.5 rounded-full border border-[--color-border] bg-[--color-bg-card]/60 px-1.5 py-1.5 backdrop-blur-md shadow-sm">
+            {navLinks.map((link, index) => {
+              const active = activeSection === link.section;
+              return (
+                <motion.li
+                  key={link.href}
+                  initial={{ opacity: 0, y: -16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.06, duration: 0.4 }}
                 >
-                  <span className="relative z-10 transition-colors uppercase tracking-wider text-xs font-semibold">{link.label}</span>
-
-                  {/* Active/Hover background pill */}
-                  <span
-                    className={`absolute inset-0 rounded-full transition-all duration-300 ease-out origin-center ${activeSection === link.section
-                      ? "opacity-100 scale-100"
-                      : "opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100"
+                  <Link
+                    href={link.href}
+                    className={`relative block rounded-full px-4 py-2 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[--color-primary] ${
+                      active ? "" : "hover:bg-[--color-bg-hover]"
+                    }`}
+                    aria-current={active ? "page" : undefined}
+                  >
+                    {active && (
+                      <motion.span
+                        layoutId="nav-active-pill"
+                        className="absolute inset-0 rounded-full bg-[--color-primary]/12"
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                    <span
+                      className={`relative z-10 text-xs font-semibold uppercase tracking-wider transition-colors ${
+                        active ? "text-[--color-primary]" : "text-[--color-text-light] hover:text-[--color-text]"
                       }`}
-                    style={{
-                      backgroundColor: 'var(--color-primary)',
-                      opacity: activeSection === link.section ? 0.12 : 0.08
-                    }}
-                  />
-                </Link>
-              </motion.li>
-            ))}
+                    >
+                      {link.label}
+                    </span>
+                  </Link>
+                </motion.li>
+              );
+            })}
           </ul>
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new Event("open-command-palette"))}
+            aria-label="Open command menu"
+            className="hidden items-center gap-2 rounded-full border border-[--color-border] bg-[--color-bg-card]/60 px-3 py-2 text-xs text-[--color-text-light] backdrop-blur-md transition-colors hover:border-[--color-primary]/30 hover:text-[--color-text] focus:outline-none focus-visible:ring-2 focus-visible:ring-[--color-primary] lg:flex"
+          >
+            <Search size={14} />
+            <span>Search</span>
+            <kbd className="rounded border border-[--color-border] px-1.5 py-0.5 text-[10px] font-medium">
+              ⌘K
+            </kbd>
+          </button>
           <ThemeToggle />
         </div>
 
@@ -185,7 +201,7 @@ const Navbar = () => {
                     <Image src={navLogo} width={100} height={60} alt="Logo" sizes="100px" className="h-auto" />
                   </div>
                   <p className="text-xs text-[--color-text-light] mt-3 font-medium">
-                    Self-Taught Frontend Developer
+                    Frontend Developer &amp; IT Lead
                   </p>
                 </div>
 

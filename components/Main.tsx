@@ -39,7 +39,7 @@ const Main = () => {
   ];
 
   return (
-    <div id="home" className="w-full min-h-screen text-center pt-20 md:pt-36 px-4 pb-10 md:pb-20">
+    <div id="home" className="w-full min-h-[100dvh] text-center pt-20 md:pt-36 px-4 pb-10 md:pb-20">
       <div className="max-w-[1240px] w-full mx-auto p-2 flex justify-center items-center">
         <Card className="w-full bg-[--color-bg-card] border-[--color-border] p-6 md:p-8 lg:p-12 rounded-2xl">
           <motion.div
@@ -67,13 +67,34 @@ const Main = () => {
               </motion.div>
             </motion.div>
 
+            {/* Availability badge */}
+            <motion.div variants={fadeInUp} className="mt-5">
+              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[--color-success]/30 bg-[--color-success]/10 text-xs font-semibold uppercase tracking-[0.18em] text-[--color-success]">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full rounded-full bg-[--color-success] opacity-60 animate-ping" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-[--color-success]" />
+                </span>
+                Available for new roles
+              </span>
+            </motion.div>
+
             {/* Main Heading */}
             <motion.h1
               variants={fadeInUp}
               className="py-3 md:py-4 text-[--color-text] text-3xl md:text-4xl lg:text-5xl"
             >
               Hi, I&apos;m{" "}
-              <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-amber-500 animate-gradient font-bold whitespace-nowrap">
+              <span
+                className="animate-gradient font-bold whitespace-nowrap"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(90deg, #6366f1 0%, #818cf8 45%, #f59e0b 100%)",
+                  WebkitBackgroundClip: "text",
+                  backgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  color: "transparent",
+                }}
+              >
                 Geoffrey Mwangi
               </span>
             </motion.h1>
@@ -90,41 +111,44 @@ const Main = () => {
             >
               <TypingAnimation
                 texts={[
-                  "Self-Taught Frontend Developer",
-                  "React & Next.js Specialist",
-                  "WordPress Expert",
-                  "UI/UX Enthusiast",
+                  "Frontend Developer",
+                  "IT Lead @ Mwango Capital",
+                  "AI & Automation Specialist",
+                  "Next.js & TypeScript Engineer",
                 ]}
                 className="text-[--color-text]"
               />
             </motion.div>
 
-            {/* Description */}
+            {/* Description — static text for search engines and AI extractors */}
             <motion.p
               variants={fadeInUp}
               className="py-3 md:py-4 text-[--color-text-light] sm:max-w-[70%] m-auto max-w-[95%] text-sm sm:text-base md:text-lg leading-relaxed"
             >
-              Specializing in WordPress, Next.js, and React to build modern, responsive web applications.
-              Passionate about creating exceptional user experiences through clean code and innovative design.
+              Frontend Developer and IT Lead in Nairobi, Kenya. I build data-driven web apps with Next.js,
+              TypeScript, and Supabase, automate NSE financial data pipelines, and ship faster with AI tools
+              like Claude and Cursor.
             </motion.p>
 
             {/* Stats */}
             <motion.div
               variants={fadeInUp}
-              className="flex flex-wrap justify-center gap-2 md:gap-4 py-4 md:py-6 max-w-2xl mx-auto"
+              className="flex flex-wrap justify-center divide-x divide-[--color-border] py-4 md:py-6 max-w-2xl mx-auto"
             >
-              <div className="px-3 py-1.5 md:px-6 md:py-3 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 shadow-lg hover:shadow-xl transition-shadow duration-300 flex items-center">
-                <span className="text-base md:text-2xl font-bold text-white">4+</span>
-                <span className="text-[10px] md:text-sm text-white/90 ml-1 md:ml-2">Years Experience</span>
-              </div>
-              <div className="px-3 py-1.5 md:px-6 md:py-3 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg hover:shadow-xl transition-shadow duration-300 flex items-center">
-                <span className="text-base md:text-2xl font-bold text-white">15+</span>
-                <span className="text-[10px] md:text-sm text-white/90 ml-1 md:ml-2">Projects Completed</span>
-              </div>
-              <div className="px-3 py-1.5 md:px-6 md:py-3 rounded-full bg-gradient-to-r from-pink-500 to-amber-500 shadow-lg hover:shadow-xl transition-shadow duration-300 flex items-center">
-                <span className="text-base md:text-2xl font-bold text-white">8+</span>
-                <span className="text-[10px] md:text-sm text-white/90 ml-1 md:ml-2">Technologies</span>
-              </div>
+              {[
+                { value: "4+", label: "Years Experience" },
+                { value: "15+", label: "Projects Shipped" },
+                { value: "16", label: "Technologies" },
+              ].map((stat) => (
+                <div key={stat.label} className="px-5 md:px-8 text-center">
+                  <div className="text-2xl md:text-3xl font-bold text-[--color-text] tabular-nums">
+                    {stat.value}
+                  </div>
+                  <div className="text-[10px] md:text-xs uppercase tracking-[0.15em] text-[--color-text-light] mt-1">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
             </motion.div>
 
             {/* CTA Buttons */}
@@ -154,11 +178,12 @@ const Main = () => {
                 const linkContent = (
                   <motion.div
                     variants={staggerItem}
-                    whileHover={{ scale: 1.1, y: -5 }}
+                    whileHover={{ y: -4 }}
                     whileTap={{ scale: 0.95 }}
-                    className="rounded-full shadow-lg shadow-black/20 p-3 md:p-5 cursor-pointer bg-[--color-bg-card] hover:bg-gradient-to-r hover:from-[--color-primary] hover:to-[--color-primary-light] transition-all duration-300 group min-h-[44px] min-w-[44px] md:min-h-[60px] md:min-w-[60px] flex items-center justify-center border border-[--color-border]"
+                    transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                    className="rounded-xl cursor-pointer bg-[--color-bg-card] hover:bg-[--color-primary] hover:border-[--color-primary] transition-colors duration-200 group h-11 w-11 md:h-12 md:w-12 flex items-center justify-center border border-[--color-border] shadow-sm"
                   >
-                    <Icon className="text-[--color-text] group-hover:text-white transition-colors" size={20} />
+                    <Icon className="text-[--color-text-light] group-hover:text-white transition-colors" size={20} />
                   </motion.div>
                 );
 

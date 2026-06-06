@@ -3,18 +3,19 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { 
-  FaDownload, 
-  FaEnvelope, 
-  FaGithub, 
-  FaLinkedin, 
-  FaPhone, 
-  FaBriefcase,
-  FaGraduationCap,
-  FaCode,
-  FaAward,
-  FaMapMarkerAlt
-} from "react-icons/fa";
+import {
+  Download,
+  Mail,
+  Github,
+  Linkedin,
+  Phone,
+  Briefcase,
+  GraduationCap,
+  Code2,
+  Award,
+  MapPin,
+  Lightbulb,
+} from "lucide-react";
 import { fadeInUp, staggerContainer, staggerItem } from "@/lib/animations";
 import Link from "next/link";
 
@@ -22,92 +23,150 @@ const ResumePage = () => {
   const experience = [
     {
       id: 1,
-      title: "Front-End Developer & Customer Care Head",
-      company: "Jendie Automobiles Ltd",
-      period: "Jun 2022 - October 2025",
+      title: "IT Lead & Frontend Developer",
+      company: "Mwango Capital",
+      period: "Dec 2025 - Present",
       location: "Nairobi",
       description: [
-        "Designed and implemented responsive websites using HTML, CSS (Tailwind), and React",
-        "Developed dynamic UI components, conducted testing and performance tuning",
-        "Provided customer support for IoT systems and coordinated NTSA-related services",
-        "Created accounts, issued inspection codes, and monitored platform usage",
+        "Architect and maintain internal web apps and dashboards using Next.js (App Router), TypeScript, Tailwind CSS, and Supabase",
+        "Built automated NSE (Nairobi Securities Exchange) data scraping pipelines that feed live market data into Google Sheets, powering real-time investment dashboards",
+        "Integrate AI tools (Claude, Cursor) into development workflows, reducing build time and improving code quality across the team",
+        "Lead IT infrastructure decisions, vendor management, and technology adoption across the organisation",
+        "Design and implement automation workflows using n8n and Google Apps Script to streamline operational processes",
       ],
       achievements: [
-        "Launched web apps that improved customer engagement and satisfaction",
-        "Improved load speed and streamlined technical support processes",
+        "Replaced manual market-data entry with automated pipelines feeding live dashboards",
+        "Accelerated delivery by embedding AI-assisted development into the team's workflow",
       ],
     },
     {
       id: 2,
-      title: "Business Support Executive - Data and Technology",
-      company: "Various Organizations",
-      period: "2018 - 2021",
-      location: "Nairobi & Nyeri",
+      title: "Frontend Developer & Customer Care Head",
+      company: "Jendie Automobiles Ltd",
+      period: "Jun 2022 - Nov 2025",
+      location: "Nairobi",
       description: [
-        "Supported tech operations in various organizations (ministries, NGOs, supermarkets)",
-        "Implemented stock systems, managed tech data, and trained users",
+        "Designed and built dynamic, responsive websites using React, Next.js, and Tailwind CSS, improving page-load performance through better component architecture",
+        "Developed interactive UI components and improved navigation flow, directly increasing user engagement and satisfaction",
+        "Managed IoT platform accounts (activations/suspensions) and coordinated NTSA inspection-code issuance for nationwide compliance",
+        "Administered agent accounts across IoT and NTSA platforms, ensuring regulatory compliance for all client operations",
       ],
       achievements: [
-        "Built data management systems and automated reporting tools",
+        "Launched new website features that measurably increased user engagement",
+        "Streamlined client service processes to reduce turnaround time",
       ],
     },
     {
       id: 3,
-      title: "Asset Administrator",
-      company: "Alma Kilifi Properties & Nyali Capital Ltd",
-      period: "2015 - 2018",
-      location: "Nairobi",
+      title: "Business Support Executive — Data & Technology",
+      company: "Various Organisations",
+      period: "2018 - 2021",
+      location: "Nairobi & Nyeri",
       description: [
-        "Handled payroll, reporting, account management, and admin functions",
+        "Delivered data management, administrative, and technology support across government offices, retail, and NGO sectors",
+        "Implemented stock-management IT systems and trained staff, improving operational efficiency and reducing manual errors",
+        "Captured, analysed, and managed organisational data to support strategic decision-making",
       ],
       achievements: [
-        "Reduced errors and enhanced financial tracking systems",
+        "Built automated reporting systems that improved accuracy and saved significant team hours each week",
       ],
+    },
+    {
+      id: 4,
+      title: "Asset Administrator & Office Support",
+      company: "Alma Kilifi Properties & Nyali Capital Ltd",
+      period: "2015 - 2018",
+      location: "Kenyan Coast",
+      description: [
+        "Managed rental property and office administration including accounts payable/receivable, payroll, and contract preparation",
+        "Prepared detailed business and financial reports for management review",
+      ],
+      achievements: [
+        "Improved overdue-account recovery through systematic follow-up and reduced payroll processing time",
+      ],
+    },
+  ];
+
+  const projects = [
+    {
+      title: "NSE Financial Dashboard Automation",
+      description:
+        "Live data pipeline scraping Nairobi Securities Exchange market data into Google Sheets, powering automated investment dashboards for Mwango Capital.",
+      tags: ["Next.js", "Apps Script", "Automation"],
+    },
+    {
+      title: "Internal Investment Tools",
+      description:
+        "Internal dashboards and tools for financial data management, portfolio tracking, and reporting built with Next.js App Router, TypeScript, and Supabase.",
+      tags: ["Next.js", "TypeScript", "Supabase"],
+    },
+    {
+      title: "Workflow Automations",
+      description:
+        "Automated workflows with n8n and Google Apps Script that eliminate manual data entry and reduce operational overhead.",
+      tags: ["n8n", "Apps Script"],
+    },
+    {
+      title: "AI-Assisted Development",
+      description:
+        "Integrated Claude AI and Cursor into the daily development workflow, building AI-augmented features and speeding up code review.",
+      tags: ["Claude AI", "Cursor"],
     },
   ];
 
   const education = [
     {
       id: 1,
-      degree: "Certificate in Web Development",
-      institution: "Udemy.com",
-      period: "Jan 2021 - Nov 2021",
-      description: "Comprehensive web development training covering modern frameworks and best practices.",
-    },
-    {
-      id: 2,
       degree: "Certificate in Life Skills, Business Management & Technology",
-      institution: "KEPSA",
-      period: "Oct 2014 - Aug 2018",
+      institution: "KEPSA Youth Program",
+      period: "2014 - 2018",
       description: "Business management and technology skills development program.",
     },
     {
-      id: 3,
-      degree: "KCSE",
+      id: 2,
+      degree: "Kenya Certificate of Secondary Education (KCSE)",
       institution: "Matuu High School",
       period: "2006 - 2011",
-      description: "Kenya Certificate of Secondary Education.",
+      description: "Secondary education, Kenya national curriculum.",
     },
   ];
 
   const skills = {
-    frontend: ["HTML5", "CSS3", "JavaScript (ES6+)", "TypeScript", "React.js", "Next.js", "Tailwind CSS", "Framer Motion"],
-    backend: ["Node.js", "Supabase", "Firebase", "REST APIs", "Authentication"],
-    cms: ["WordPress", "Custom Themes", "Plugin Development", "WooCommerce"],
-    tools: ["Git", "GitHub", "VS Code", "Figma", "NPM", "Webpack"],
+    frontend: ["Next.js (App Router)", "React", "TypeScript", "JavaScript (ES6+)", "Tailwind CSS", "shadcn/ui", "HTML5", "CSS3"],
+    backend: ["Supabase (PostgreSQL, Auth, RLS, Edge Functions)", "REST APIs", "Node.js", "Google Apps Script"],
+    ai: ["Claude AI (Anthropic)", "Google Gemini", "Cursor IDE", "n8n", "Prompt Engineering", "AI-Assisted Coding"],
+    data: ["Google Sheets API", "NSE Data Pipelines", "Dashboard Automation", "Data Reporting"],
+    tools: ["Git", "GitHub", "Vercel", "VS Code", "Cursor"],
   };
 
   const certifications = [
-    { icon: "🎓", text: "Certificate in Web Development - Udemy.com" },
-    { icon: "💼", text: "Certificate in Life Skills, Business Management & Technology - KEPSA" },
-    { icon: "🎨", text: "Adobe Photoshop (basic), UX Design" },
-    { icon: "⚙️", text: "Website Testing, Optimization & SEO" },
+    {
+      title: "Google AI Professional Certificate",
+      issuer: "Google / Coursera — 7 courses, 20+ AI artifacts built",
+      year: "Apr 2026",
+      link: "https://coursera.org/verify/professional-cert/ELAAW3EP9ZN7",
+    },
+    {
+      title: "Anthropic Claude AI — Prompt Engineering & AI Integration",
+      issuer: "Prompt engineering, AI-assisted development, responsible AI usage",
+      year: "2025 - 2026",
+    },
+    {
+      title: "Cursor AI-Powered IDE",
+      issuer: "AI-assisted coding, generation, and refactoring in Next.js/TypeScript",
+      year: "2025 - Present",
+    },
+    {
+      title: "Certificate in Web Development",
+      issuer: "Udemy — HTML, CSS, JavaScript, React fundamentals",
+      year: "2021",
+    },
   ];
 
   const handleDownloadPDF = () => {
     const link = document.createElement('a');
-    link.href = '/GEOFFREY FRONTEND DEVELOPER CV.pdf';
-    link.download = 'Geoffrey_Muthoni_Frontend_Developer_CV.pdf';
+    link.href = '/Geoffrey_Mwangi_CV.pdf';
+    link.download = 'Geoffrey_Mwangi_Muthoni_CV.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -133,17 +192,15 @@ const ResumePage = () => {
           <Card className="relative overflow-hidden bg-[--color-bg-card] border-2 border-[--color-border] shadow-2xl">
             <div className="absolute top-0 right-0 w-64 h-64 bg-[--color-primary]/10 rounded-full blur-3xl" />
             <CardContent className="p-8 md:p-12 relative z-10">
-              <motion.div 
-                variants={fadeInUp} 
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 relative overflow-hidden border-2 border-[--color-border]"
+              <motion.div
+                variants={fadeInUp}
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full mb-6 border border-[--color-success]/30 bg-[--color-success]/10"
               >
-                {/* Animated gradient background */}
-                <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 opacity-20 dark:opacity-30 animate-gradient-rotate" />
-                <div className="absolute inset-[2px] bg-[--color-bg-card] rounded-full" />
-                
-                {/* Content */}
-                <span className="relative z-10 w-2 h-2 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 animate-pulse shadow-lg shadow-emerald-500/50" />
-                <span className="relative z-10 text-sm font-semibold bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 bg-clip-text text-transparent uppercase tracking-wider">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full rounded-full bg-[--color-success] opacity-60 animate-ping" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-[--color-success]" />
+                </span>
+                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[--color-success]">
                   Available for Opportunities
                 </span>
               </motion.div>
@@ -151,9 +208,9 @@ const ResumePage = () => {
               <motion.h1 variants={fadeInUp} className="text-4xl md:text-6xl font-bold mb-4 text-[--color-text]">
                 Geoffrey Mwangi Muthoni
               </motion.h1>
-              
+
               <motion.p variants={fadeInUp} className="text-xl md:text-2xl text-[--color-text-light] mb-8 font-medium">
-                Self-Taught Frontend Developer
+                Frontend Developer · IT Lead · AI &amp; Automation Specialist
               </motion.p>
 
               {/* Contact Info */}
@@ -163,7 +220,7 @@ const ResumePage = () => {
                   className="flex items-center gap-3 p-3 rounded-xl bg-[--color-bg] border border-[--color-border] hover:border-[--color-primary]/50 transition-all group"
                 >
                   <div className="w-10 h-10 rounded-full bg-[--color-primary]/10 flex items-center justify-center group-hover:bg-[--color-primary]/20 transition-colors">
-                    <FaEnvelope className="text-[--color-primary]" />
+                    <Mail className="text-[--color-primary]" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="text-xs text-[--color-text-light]">Email</div>
@@ -176,7 +233,7 @@ const ResumePage = () => {
                   className="flex items-center gap-3 p-3 rounded-xl bg-[--color-bg] border border-[--color-border] hover:border-[--color-primary]/50 transition-all group"
                 >
                   <div className="w-10 h-10 rounded-full bg-[--color-primary]/10 flex items-center justify-center group-hover:bg-[--color-primary]/20 transition-colors">
-                    <FaPhone className="text-[--color-primary]" />
+                    <Phone className="text-[--color-primary]" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="text-xs text-[--color-text-light]">Phone</div>
@@ -184,14 +241,14 @@ const ResumePage = () => {
                   </div>
                 </a>
 
-                <a 
-                  href="https://linkedin.com/in/geoffrey-muthoni" 
-                  target="_blank" 
+                <a
+                  href="https://www.linkedin.com/in/geoffrey-muthoni/"
+                  target="_blank"
                   rel="noopener noreferrer" 
                   className="flex items-center gap-3 p-3 rounded-xl bg-[--color-bg] border border-[--color-border] hover:border-[--color-primary]/50 transition-all group"
                 >
                   <div className="w-10 h-10 rounded-full bg-[--color-primary]/10 flex items-center justify-center group-hover:bg-[--color-primary]/20 transition-colors">
-                    <FaLinkedin className="text-[--color-primary]" />
+                    <Linkedin className="text-[--color-primary]" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="text-xs text-[--color-text-light]">LinkedIn</div>
@@ -206,7 +263,7 @@ const ResumePage = () => {
                   className="flex items-center gap-3 p-3 rounded-xl bg-[--color-bg] border border-[--color-border] hover:border-[--color-primary]/50 transition-all group"
                 >
                   <div className="w-10 h-10 rounded-full bg-[--color-primary]/10 flex items-center justify-center group-hover:bg-[--color-primary]/20 transition-colors">
-                    <FaGithub className="text-[--color-primary]" />
+                    <Github className="text-[--color-primary]" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="text-xs text-[--color-text-light]">GitHub</div>
@@ -222,7 +279,7 @@ const ResumePage = () => {
                   className="gap-2 bg-[--color-primary] hover:bg-[--color-primary-light] text-white font-semibold px-8 py-6 rounded-full shadow-lg shadow-[--color-primary]/20 hover:shadow-xl hover:shadow-[--color-primary]/30 transition-all hover:scale-105"
                   size="lg"
                 >
-                  <FaDownload /> Download PDF Resume
+                  <Download /> Download PDF Resume
                 </Button>
                 <Link href="/#contact">
                   <Button 
@@ -250,18 +307,22 @@ const ResumePage = () => {
             <CardContent className="p-8">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 rounded-xl bg-[--color-primary]/10 flex items-center justify-center">
-                  <FaCode className="text-2xl text-[--color-primary]" />
+                  <Code2 className="text-2xl text-[--color-primary]" />
                 </div>
                 <motion.h2 variants={fadeInUp} className="text-3xl font-bold text-[--color-text]">
                   Professional Summary
                 </motion.h2>
               </div>
               <motion.p variants={fadeInUp} className="text-[--color-text-light] leading-relaxed text-lg">
-                I am a <span className="text-[--color-text] font-semibold">WordPress and front-end developer</span> with a strong background in building responsive, 
-                user-friendly websites and dashboards. Proficient in <span className="text-[--color-primary] font-semibold">HTML5, CSS3, JavaScript, WordPress</span>, 
-                and frameworks like <span className="text-[--color-primary] font-semibold">React and Next.js</span>. I&apos;ve worked with wordpress themes such as 
-                Harmony Care, Shopkeeper, Transpi, E-mart and have a deep understanding of website architecture, UX, and SEO. 
-                My experience spans both technical development and administrative support, making me a versatile asset to any team.
+                Results-driven <span className="text-[--color-text] font-semibold">Frontend Developer and IT Lead</span> with{" "}
+                <span className="text-[--color-primary] font-semibold">4+ years</span> of experience building responsive,
+                data-driven web applications using <span className="text-[--color-primary] font-semibold">Next.js, React, TypeScript,
+                and Tailwind CSS (shadcn/ui)</span>. Currently spearheading digital infrastructure and internal tooling at{" "}
+                <span className="text-[--color-text] font-semibold">Mwango Capital</span>, including automated NSE data pipelines
+                powering real-time financial dashboards. Google AI Professional Certificate holder and Anthropic Claude AI
+                practitioner with hands-on experience integrating AI into development workflows using{" "}
+                <span className="text-[--color-primary] font-semibold">Cursor, n8n, and Google Apps Script</span> — delivering
+                automation that reduces manual workload, improves data accuracy, and accelerates decision-making.
               </motion.p>
             </CardContent>
           </Card>
@@ -277,7 +338,7 @@ const ResumePage = () => {
         >
           <div className="flex items-center gap-3 mb-8">
             <div className="w-12 h-12 rounded-xl bg-[--color-primary]/10 flex items-center justify-center">
-              <FaBriefcase className="text-2xl text-[--color-primary]" />
+              <Briefcase className="text-2xl text-[--color-primary]" />
             </div>
             <motion.h2 variants={fadeInUp} className="text-3xl font-bold text-[--color-text]">
               Work Experience
@@ -305,7 +366,7 @@ const ResumePage = () => {
                           <p className="text-[--color-primary] font-semibold">{job.company}</p>
                           <span className="hidden sm:inline">•</span>
                           <div className="flex items-center gap-2">
-                            <FaMapMarkerAlt className="text-sm" />
+                            <MapPin className="text-sm" />
                             <span>{job.location}</span>
                           </div>
                         </div>
@@ -327,7 +388,7 @@ const ResumePage = () => {
                     {job.achievements && job.achievements.length > 0 && (
                       <div className="mt-4 pt-4 border-t border-[--color-border]">
                         <h4 className="text-sm font-semibold text-[--color-text] mb-3 flex items-center gap-2">
-                          <FaAward className="text-[--color-primary]" />
+                          <Award className="text-[--color-primary]" />
                           Key Achievements:
                         </h4>
                         <ul className="space-y-2 text-[--color-text-light]">
@@ -357,7 +418,7 @@ const ResumePage = () => {
         >
           <div className="flex items-center gap-3 mb-8">
             <div className="w-12 h-12 rounded-xl bg-[--color-primary]/10 flex items-center justify-center">
-              <FaGraduationCap className="text-2xl text-[--color-primary]" />
+              <GraduationCap className="text-2xl text-[--color-primary]" />
             </div>
             <motion.h2 variants={fadeInUp} className="text-3xl font-bold text-[--color-text]">
               Education & Training
@@ -392,14 +453,32 @@ const ResumePage = () => {
               <Card className="bg-[--color-bg-card] border-2 border-[--color-border] hover:border-[--color-primary]/30 transition-all hover:shadow-xl h-full">
                 <CardContent className="p-6 md:p-8">
                   <div className="flex items-center gap-2 mb-6">
-                    <FaAward className="text-xl text-[--color-primary]" />
-                    <h3 className="text-xl font-bold text-[--color-text]">Certifications & Skills</h3>
+                    <Award className="text-xl text-[--color-primary]" />
+                    <h3 className="text-xl font-bold text-[--color-text]">Certifications</h3>
                   </div>
-                  <ul className="space-y-4">
+                  <ul className="space-y-5">
                     {certifications.map((cert, index) => (
                       <li key={index} className="flex gap-3 items-start">
-                        <span className="text-2xl flex-shrink-0">{cert.icon}</span>
-                        <span className="text-[--color-text-light] leading-relaxed pt-1">{cert.text}</span>
+                        <span className="mt-1 flex-shrink-0 w-8 h-8 rounded-lg bg-[--color-primary]/10 border border-[--color-primary]/20 flex items-center justify-center">
+                          <Award className="text-sm text-[--color-primary]" />
+                        </span>
+                        <div className="min-w-0">
+                          <div className="flex flex-wrap items-baseline gap-x-2">
+                            <span className="font-semibold text-[--color-text] leading-snug">{cert.title}</span>
+                            <span className="text-xs text-[--color-text-light] whitespace-nowrap">{cert.year}</span>
+                          </div>
+                          <p className="text-sm text-[--color-text-light] leading-relaxed mt-0.5">{cert.issuer}</p>
+                          {cert.link && (
+                            <a
+                              href={cert.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 text-xs font-medium text-[--color-primary] hover:underline mt-1"
+                            >
+                              Verify certificate →
+                            </a>
+                          )}
+                        </div>
                       </li>
                     ))}
                   </ul>
@@ -419,7 +498,7 @@ const ResumePage = () => {
         >
           <div className="flex items-center gap-3 mb-8">
             <div className="w-12 h-12 rounded-xl bg-[--color-primary]/10 flex items-center justify-center">
-              <FaCode className="text-2xl text-[--color-primary]" />
+              <Code2 className="text-2xl text-[--color-primary]" />
             </div>
             <motion.h2 variants={fadeInUp} className="text-3xl font-bold text-[--color-text]">
               Technical Skills
@@ -427,93 +506,75 @@ const ResumePage = () => {
           </div>
           
           <div className="grid md:grid-cols-2 gap-6">
-            <motion.div variants={fadeInUp}>
-              <Card className="bg-[--color-bg-card] border-2 border-[--color-border] hover:border-[--color-primary]/30 transition-all hover:shadow-xl h-full">
-                <CardContent className="p-6 md:p-8">
-                  <h3 className="font-bold text-xl mb-4 text-[--color-text] flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-[--color-primary]" />
-                    Frontend Development
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {skills.frontend.map((skill) => (
-                      <motion.span 
-                        key={skill} 
-                        whileHover={{ scale: 1.05 }}
-                        className="px-4 py-2 bg-[--color-primary]/10 text-[--color-primary] rounded-xl text-sm font-semibold border border-[--color-primary]/30 hover:bg-[--color-primary]/20 transition-colors cursor-default"
-                      >
-                        {skill}
-                      </motion.span>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+            {[
+              { label: "Frontend Development", items: skills.frontend },
+              { label: "Backend & Database", items: skills.backend },
+              { label: "AI & Automation", items: skills.ai },
+              { label: "Data & Analytics", items: skills.data },
+              { label: "Tools & Workflow", items: skills.tools },
+            ].map((group) => (
+              <motion.div key={group.label} variants={fadeInUp}>
+                <Card className="bg-[--color-bg-card] border-2 border-[--color-border] hover:border-[--color-primary]/30 transition-all hover:shadow-xl h-full">
+                  <CardContent className="p-6 md:p-8">
+                    <h3 className="font-bold text-xl mb-4 text-[--color-text] flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-[--color-primary]" />
+                      {group.label}
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {group.items.map((skill) => (
+                        <span
+                          key={skill}
+                          className="px-3.5 py-1.5 bg-[--color-primary]/10 text-[--color-primary] rounded-lg text-sm font-medium border border-[--color-primary]/20 hover:bg-[--color-primary]/15 transition-colors"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </motion.section>
 
-            <motion.div variants={fadeInUp}>
-              <Card className="bg-[--color-bg-card] border-2 border-[--color-border] hover:border-[--color-primary]/30 transition-all hover:shadow-xl h-full">
-                <CardContent className="p-6 md:p-8">
-                  <h3 className="font-bold text-xl mb-4 text-[--color-text] flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-[--color-primary]" />
-                    Backend & Database
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {skills.backend.map((skill) => (
-                      <motion.span 
-                        key={skill} 
-                        whileHover={{ scale: 1.05 }}
-                        className="px-4 py-2 bg-[--color-primary]/10 text-[--color-primary] rounded-xl text-sm font-semibold border border-[--color-primary]/30 hover:bg-[--color-primary]/20 transition-colors cursor-default"
-                      >
-                        {skill}
-                      </motion.span>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+        {/* Key Projects */}
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={staggerContainer}
+          className="mb-12"
+        >
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-12 h-12 rounded-xl bg-[--color-primary]/10 flex items-center justify-center">
+              <Lightbulb className="text-2xl text-[--color-primary]" />
+            </div>
+            <motion.h2 variants={fadeInUp} className="text-3xl font-bold text-[--color-text]">
+              Key Projects
+            </motion.h2>
+          </div>
 
-            <motion.div variants={fadeInUp}>
-              <Card className="bg-[--color-bg-card] border-2 border-[--color-border] hover:border-[--color-primary]/30 transition-all hover:shadow-xl h-full">
-                <CardContent className="p-6 md:p-8">
-                  <h3 className="font-bold text-xl mb-4 text-[--color-text] flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-[--color-primary]" />
-                    CMS & Platforms
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {skills.cms.map((skill) => (
-                      <motion.span 
-                        key={skill} 
-                        whileHover={{ scale: 1.05 }}
-                        className="px-4 py-2 bg-[--color-primary]/10 text-[--color-primary] rounded-xl text-sm font-semibold border border-[--color-primary]/30 hover:bg-[--color-primary]/20 transition-colors cursor-default"
-                      >
-                        {skill}
-                      </motion.span>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            <motion.div variants={fadeInUp}>
-              <Card className="bg-[--color-bg-card] border-2 border-[--color-border] hover:border-[--color-primary]/30 transition-all hover:shadow-xl h-full">
-                <CardContent className="p-6 md:p-8">
-                  <h3 className="font-bold text-xl mb-4 text-[--color-text] flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-[--color-primary]" />
-                    Tools & Workflow
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {skills.tools.map((skill) => (
-                      <motion.span 
-                        key={skill} 
-                        whileHover={{ scale: 1.05 }}
-                        className="px-4 py-2 bg-[--color-primary]/10 text-[--color-primary] rounded-xl text-sm font-semibold border border-[--color-primary]/30 hover:bg-[--color-primary]/20 transition-colors cursor-default"
-                      >
-                        {skill}
-                      </motion.span>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {projects.map((project) => (
+              <motion.div key={project.title} variants={fadeInUp}>
+                <Card className="bg-[--color-bg-card] border-2 border-[--color-border] hover:border-[--color-primary]/30 transition-all hover:shadow-xl h-full">
+                  <CardContent className="p-6 md:p-8">
+                    <h3 className="text-lg font-bold text-[--color-text] mb-2">{project.title}</h3>
+                    <p className="text-[--color-text-light] leading-relaxed text-sm mb-4">{project.description}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-3 py-1 text-xs font-medium rounded-md bg-[--color-bg] border border-[--color-border] text-[--color-text-light]"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
           </div>
         </motion.section>
 
@@ -557,7 +618,7 @@ const ResumePage = () => {
                     size="lg"
                     className="w-full sm:w-auto bg-transparent border-2 border-[--color-primary] text-[--color-primary] hover:bg-[--color-primary] hover:text-white font-bold px-8 py-6 rounded-full hover:scale-105 transition-all gap-2"
                   >
-                    <FaDownload /> Download Resume
+                    <Download /> Download Resume
                   </Button>
                 </div>
               </motion.div>

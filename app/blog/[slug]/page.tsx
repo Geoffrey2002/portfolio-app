@@ -89,7 +89,10 @@ export default function BlogPostPage() {
           </Card>
 
           <div className="mt-12 text-center">
-            <Card className="bg-gradient-to-r from-[--color-primary] to-[--color-primary-light] border-none">
+            <Card
+              className="border-none"
+              style={{ backgroundImage: "linear-gradient(90deg, #6366f1, #818cf8)" }}
+            >
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold text-white mb-4">Enjoyed this article?</h3>
                 <p className="text-white/90 mb-6">

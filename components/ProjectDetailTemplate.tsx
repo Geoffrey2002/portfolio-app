@@ -7,9 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { TechBadge } from "@/components/TechBadge";
 import { fadeInUp, staggerContainer, staggerItem } from "@/lib/animations";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
-import { ArrowLeft } from "lucide-react";
-import { Check } from "lucide-react";
+import { ArrowLeft, Check, Github, ExternalLink } from "lucide-react";
 
 interface ProjectDetailProps {
   title: string;
@@ -71,7 +69,7 @@ export default function ProjectDetailTemplate({
               {liveUrl && (
                 <a href={liveUrl} target="_blank" rel="noopener noreferrer">
                   <Button size="lg" className="gap-2">
-                    <FaExternalLinkAlt />
+                    <ExternalLink size={18} />
                     View Live Demo
                   </Button>
                 </a>
@@ -79,7 +77,7 @@ export default function ProjectDetailTemplate({
               {githubUrl && (
                 <a href={githubUrl} target="_blank" rel="noopener noreferrer">
                   <Button size="lg" variant="outline" className="gap-2 bg-transparent border-2 border-[--color-primary] text-[--color-primary] hover:bg-[--color-primary] hover:text-white">
-                    <FaGithub size={20} />
+                    <Github size={20} />
                     View Code
                   </Button>
                 </a>
@@ -201,7 +199,10 @@ export default function ProjectDetailTemplate({
 
           {/* CTA */}
           <motion.div variants={fadeInUp} className="text-center">
-            <Card className="bg-gradient-to-r from-[--color-primary] to-[--color-primary-light] border-none">
+            <Card
+              className="border-none"
+              style={{ backgroundImage: "linear-gradient(90deg, #6366f1, #818cf8)" }}
+            >
               <CardContent className="p-8 md:p-12">
                 <h3 className="text-3xl font-bold text-white mb-4">Interested in similar work?</h3>
                 <p className="text-white/90 mb-6 text-lg">

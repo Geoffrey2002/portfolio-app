@@ -18,7 +18,8 @@ const nextConfig = {
     } : false,
   },
   experimental: {
-    optimizePackageImports: ['lucide-react', 'framer-motion', 'embla-carousel-react'],
+    optimizePackageImports: ['lucide-react', 'framer-motion', 'embla-carousel-react', 'react-icons/si'],
+    viewTransition: true,
   },
 };
 

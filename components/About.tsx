@@ -9,16 +9,16 @@ import AboutImg from "@/public/assets/about.jpg";
 import { fadeInUp, slideInLeft, slideInRight } from "@/lib/animations";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Code, Laptop, Rocket } from "lucide-react";
+import { ArrowRight, Code, LineChart, Bot, Sparkles } from "lucide-react";
 
 const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const highlights = [
-    { icon: Code, label: "Self-Taught Developer", value: "4+ Years" },
-    { icon: Laptop, label: "Projects Completed", value: "10+" },
-    { icon: Rocket, label: "Technologies", value: "8" },
+    { icon: Code, label: "Years Building", value: "4+" },
+    { icon: LineChart, label: "Live NSE Dashboards", value: "Daily" },
+    { icon: Bot, label: "AI-Assisted Dev", value: "Always" },
   ];
 
   return (
@@ -45,15 +45,10 @@ const About = () => {
             {/* Section badge */}
             <motion.div
               variants={fadeInUp}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full relative overflow-hidden border-2 border-[--color-border]"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[--color-primary]/20 bg-[--color-primary]/5"
             >
-              {/* Animated gradient background */}
-              <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-20 dark:opacity-30 animate-gradient-rotate" />
-              <div className="absolute inset-[2px] bg-[--color-bg-card] rounded-full" />
-
-              {/* Content */}
-              <span className="relative z-10 w-2 h-2 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 animate-pulse" />
-              <span className="relative z-10 text-sm font-semibold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent uppercase tracking-wider">
+              <span className="w-1.5 h-1.5 rounded-full bg-[--color-primary]" />
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[--color-primary]">
                 About Me
               </span>
             </motion.div>
@@ -63,26 +58,33 @@ const About = () => {
               <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
                 Who I Am
               </h2>
-              <div className="w-16 md:w-20 h-1 bg-gradient-to-r from-[--color-primary] to-[--color-primary-light] rounded-full" />
+              <div
+                className="w-16 md:w-20 h-1 rounded-full"
+                style={{ backgroundImage: "linear-gradient(90deg, #6366f1, #818cf8)" }}
+              />
             </motion.div>
 
             {/* Description */}
             <motion.div variants={fadeInUp} className="space-y-3 md:space-y-4">
               <p className="text-[--color-text-light] text-base md:text-lg leading-relaxed">
-                I am a <span className="text-[--color-text] font-semibold">self-taught web developer</span> with a passion for creating beautiful
-                and functional websites. Over the past <span className="text-[--color-primary] font-semibold">4 years</span>, I have dedicated myself to
-                mastering coding and crafting exceptional digital experiences.
+                <strong className="text-[--color-text]">Geoffrey Muthoni</strong> is a{" "}
+                <span className="text-[--color-text] font-semibold">Frontend Developer and IT Lead based in Nairobi, Kenya</span>{" "}
+                with <span className="text-[--color-primary] font-semibold">4+ years</span> of experience turning real business
+                problems into clean, data-driven web applications.
               </p>
 
               <p className="text-[--color-text-light] text-base md:text-lg leading-relaxed">
-                My journey began in 2019 with simple HTML and CSS edits for a small business website.
-                What started as minor tweaks quickly evolved into a <span className="text-[--color-text] font-semibold">deep passion for programming</span>.
+                My journey began in 2019 with simple HTML and CSS edits for a small business website. Self-taught from those
+                first tweaks, I grew into building production apps — and now lead technology at{" "}
+                <span className="text-[--color-text] font-semibold">Mwango Capital</span>, where I build internal tools and automated{" "}
+                <span className="text-[--color-text] font-semibold">NSE data pipelines</span> that power real-time financial dashboards.
               </p>
 
               <p className="text-[--color-text-light] text-base md:text-lg leading-relaxed">
-                Fascinated by the intricacy of code, I dove into JavaScript and became captivated by
-                creating interactive experiences. Today, I specialize in building modern applications with
-                <span className="text-[--color-primary] font-semibold"> React, Next.js, and Supabase</span>, constantly exploring new technologies.
+                My core stack is <span className="text-[--color-primary] font-semibold">Next.js, TypeScript, Tailwind, and Supabase</span>.
+                I&apos;m deeply embedded in the AI era — Google AI certified and an Anthropic Claude practitioner — using{" "}
+                <span className="text-[--color-primary] font-semibold">Claude, Cursor, and n8n</span> daily to ship faster and automate
+                the work that shouldn&apos;t be manual.
               </p>
             </motion.div>
 
@@ -160,11 +162,11 @@ const About = () => {
                 className="hidden md:block absolute -bottom-4 md:-bottom-6 -left-4 md:-left-6 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-600 rounded-xl md:rounded-2xl p-3 md:p-4 shadow-2xl backdrop-blur-sm"
               >
                 <div className="flex items-center gap-2 md:gap-3">
-                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center shadow-lg">
-                    <span className="text-xl md:text-2xl">💡</span>
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[--color-primary]/10 border border-[--color-primary]/20 flex items-center justify-center">
+                    <Sparkles className="w-5 h-5 md:w-6 md:h-6 text-[--color-primary]" />
                   </div>
                   <div>
-                    <div className="text-xs md:text-sm font-bold text-slate-900 dark:text-white">Always Learning</div>
+                    <div className="text-xs md:text-sm font-bold text-slate-900 dark:text-white">AI-Augmented</div>
                     <div className="text-[10px] md:text-xs font-medium text-slate-600 dark:text-slate-300">Building the future</div>
                   </div>
                 </div>

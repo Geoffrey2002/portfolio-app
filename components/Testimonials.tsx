@@ -125,7 +125,10 @@ const Testimonials = () => {
                         </p>
 
                         {/* Divider */}
-                        <div className="h-px bg-gradient-to-r from-transparent via-[--color-border] to-transparent mb-6" />
+                        <div
+                          className="h-px mb-6"
+                          style={{ backgroundImage: "linear-gradient(to right, transparent, var(--color-border), transparent)" }}
+                        />
 
                         {/* Author info */}
                         <div className="flex items-center gap-3 md:gap-4">
