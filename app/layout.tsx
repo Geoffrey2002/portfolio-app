@@ -108,6 +108,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteUrl,
   },
+  verification: {
+    google: "v6CadcpqfPPbuZ1CdssdCYpb4s3jEsjiBkvkQ-lVmxo",
+  },
   category: "technology",
   other: {
     "geo.region": "KE-30",
